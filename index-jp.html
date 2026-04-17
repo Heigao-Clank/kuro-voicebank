@@ -18,7 +18,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
   
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
@@ -33,28 +33,36 @@
 
   <!-- Header -->
   <header class="header">
-    <div class="container">
-      <div class="logo">
-        <img src="assets/images/icon.png" alt="Logo" class="logo-icon">
-        <span class="logo-text">熵尾音 クロ</span>
+    <div class="header-inner">
+      <div class="header-sns">
+        <p class="header-sns-text">OFFICIAL</p>
+        <ul class="header-sns-list">
+          <li><a href="https://twitter.com/heigao_tickle" target="_blank" class="header-sns-link" title="Twitter">𝕏</a></li>
+          <li><a href="https://github.com/Heigao-Clank/kuro-voicebank" target="_blank" class="header-sns-link" title="GitHub">🐱</a></li>
+        </ul>
       </div>
+      <a href="index-jp.html" class="header-logo">
+        <img src="assets/images/icon.png" alt="Logo">
+        <span class="header-logo-text">熵尾音 クロ</span>
+      </a>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero container">
-    <div class="hero-image">
+    <div class="hero-visual">
       <img src="assets/images/character.png" alt="熵尾音 クロ">
+      <p class="hero-visual-text">Illustration by H</p>
     </div>
-    <div class="hero-content">
+    <div class="hero-text">
       <h1 class="hero-title">熵尾音 クロ</h1>
-      <p class="hero-title-jp"> Shang Wei Yin Kuro</p>
-      <p class="hero-tagline">
+      <p class="hero-subtitle">Shang Wei Yin Kuro</p>
+      <p class="hero-description">
         穏やかな狼獣人ボイスライブラリ<br>
         自信に満ち、ぼんやりした面紋と二尾の狼<br>
         <span class="text-muted">未知の天外来物の独立サブエンティティ</span>
       </p>
-      <div class="hero-buttons">
+      <div class="hero-download">
         <a href="#download" class="btn btn-primary">⬇ ダウンロード</a>
         <a href="#guidelines" class="btn btn-secondary">📖 利用規約</a>
       </div>
@@ -64,9 +72,12 @@
   <!-- Profile Section -->
   <section class="section" id="profile">
     <div class="container">
-      <h2 class="section-title">キャラクター設定</h2>
+      <div class="section-title">
+        <h2>キャラクター設定</h2>
+        <p>Character Profile</p>
+      </div>
       <div class="profile-grid">
-        <div class="card card-fur">
+        <div class="card">
           <div class="profile-item">
             <div class="profile-icon">🐺</div>
             <div>
@@ -74,14 +85,14 @@
               <div class="profile-value">狼（獣人）</div>
             </div>
           </div>
-          <div class="profile-item mt-md">
+          <div class="profile-item">
             <div class="profile-icon">🎂</div>
             <div>
               <div class="profile-label">年齢</div>
               <div class="profile-value">約17歳</div>
             </div>
           </div>
-          <div class="profile-item mt-md">
+          <div class="profile-item">
             <div class="profile-icon">📏</div>
             <div>
               <div class="profile-label">身長</div>
@@ -90,7 +101,7 @@
           </div>
         </div>
         
-        <div class="card card-fur">
+        <div class="card">
           <div class="profile-item">
             <div class="profile-icon">🎤</div>
             <div>
@@ -98,14 +109,14 @@
               <div class="profile-value">自信に満ち、ぼんやり</div>
             </div>
           </div>
-          <div class="profile-item mt-md">
+          <div class="profile-item">
             <div class="profile-icon">✨</div>
             <div>
               <div class="profile-label">特徴</div>
               <div class="profile-value">面紋、二尾（状態に応じて変化）</div>
             </div>
           </div>
-          <div class="profile-item mt-md">
+          <div class="profile-item">
             <div class="profile-icon">🍉</div>
             <div>
               <div class="profile-label">好き</div>
@@ -114,12 +125,12 @@
           </div>
         </div>
         
-        <div class="card card-fur">
-          <h3 style="margin-bottom: var(--space-md); color: var(--primary);">キャラクター紹介</h3>
+        <div class="card">
+          <h3 style="margin-bottom: 1rem; color: var(--primary);">キャラクター紹介</h3>
           <p style="color: var(--text-light); line-height: 1.8;">
             未知の天外来物の独立したサブエンティティの一つであり、居眠りをしがちで、行動は無意識に動かされることが多い。顔面の紋様と二尾は天生形成であり、状態に応じて変化する。
           </p>
-          <p class="mt-md text-muted" style="font-size: 0.9rem;">
+          <p class="mt-md text-muted" style="font-size: 0.85rem;">
             ※ その他の設定は自由に補足または二次創作に使用できます
           </p>
         </div>
@@ -128,10 +139,13 @@
   </section>
 
   <!-- Voice Info Section -->
-  <section class="section" style="background: rgba(126, 157, 190, 0.05);">
+  <section class="section section-alt">
     <div class="container">
-      <h2 class="section-title">音源情報</h2>
-      <div class="voice-info">
+      <div class="section-title">
+        <h2>音源情報</h2>
+        <p>Voicebank Information</p>
+      </div>
+      <div class="voice-grid">
         <div class="voice-stat">
           <div class="voice-stat-value">VCV</div>
           <div class="voice-stat-label">形式</div>
@@ -149,8 +163,8 @@
           <div class="voice-stat-label">推奨エンジン</div>
         </div>
       </div>
-      <p class="text-center mt-lg text-muted">
-        💡 <code style="background: var(--bg-blue); padding: 2px 8px; border-radius: 4px;">g</code>、<code style="background: var(--bg-blue); padding: 2px 8px; border-radius: 4px;">t</code> パラメータで音色を微調整することを推奨
+      <p class="text-center mt-md text-muted">
+        💡 <code style="background: rgba(126,157,190,0.15); padding: 2px 8px; border-radius: 4px; font-family: 'Source Code Pro', monospace;">g</code>、<code style="background: rgba(126,157,190,0.15); padding: 2px 8px; border-radius: 4px; font-family: 'Source Code Pro', monospace;">t</code> パラメータで音色を微調整することを推奨
       </p>
     </div>
   </section>
@@ -158,62 +172,82 @@
   <!-- Download Section -->
   <section class="section" id="download">
     <div class="container">
-      <h2 class="section-title">ダウンロード</h2>
-      <div class="download-grid">
-        <div class="download-card">
-          <div class="download-header secondary">
-            <div class="download-number">01</div>
-            <div class="download-title">GitHub</div>
+      <div class="section-title">
+        <h2>ダウンロード</h2>
+        <p>Download</p>
+      </div>
+      <div class="download-list">
+        <div class="accordion" data-type="primary">
+          <div class="accordion-title" onclick="toggleAccordion(this)">
+            <div class="accordion-title-inner">
+              <span class="accordion-number">01</span>
+              <span class="accordion-name">GitHub</span>
+            </div>
+            <div class="accordion-icon"></div>
           </div>
-          <div class="download-body">
-            <p class="download-desc">公式サイト、最新バージョンを配布</p>
-            <a href="#" class="btn btn-primary download-btn" onclick="alert('GitHub Release のリンクを設定してください'); return false;">
-              ⬇ ダウンロード
-            </a>
-          </div>
-        </div>
-        
-        <div class="download-card">
-          <div class="download-header">
-            <div class="download-number">02</div>
-            <div class="download-title">Bowroll</div>
-          </div>
-          <div class="download-body">
-            <p class="download-desc">ミラーサイト、高速ダウンロード</p>
-            <a href="#" class="btn btn-warm download-btn" onclick="alert('Bowroll のリンクを設定してください'); return false;">
-              ⬇ ダウンロード
-            </a>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">公式サイト、最新バージョンを配布</p>
+              <a href="#" class="accordion-link" onclick="alert('GitHub Release のリンクを設定してください'); return false;">
+                ⬇ ダウンロード
+              </a>
+            </div>
           </div>
         </div>
         
-        <div class="download-card">
-          <div class="download-header tertiary">
-            <div class="download-number">03</div>
-            <div class="download-title">クラウドストレージ</div>
+        <div class="accordion" data-type="warm">
+          <div class="accordion-title" onclick="toggleAccordion(this)">
+            <div class="accordion-title-inner">
+              <span class="accordion-number">02</span>
+              <span class="accordion-name">Bowroll</span>
+            </div>
+            <div class="accordion-icon"></div>
           </div>
-          <div class="download-body">
-            <p class="download-desc">予備のダウンロード方法</p>
-            <a href="#" class="btn btn-secondary download-btn" onclick="alert('クラウドストレージのリンクを設定してください'); return false;">
-              ⬇ ダウンロード
-            </a>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">ミラーサイト、高速ダウンロード</p>
+              <a href="#" class="accordion-link" onclick="alert('Bowroll のリンクを設定してください'); return false;">
+                ⬇ ダウンロード
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion" data-type="secondary">
+          <div class="accordion-title" onclick="toggleAccordion(this)">
+            <div class="accordion-title-inner">
+              <span class="accordion-number">03</span>
+              <span class="accordion-name">クラウドストレージ</span>
+            </div>
+            <div class="accordion-icon"></div>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">予備のダウンロード方法</p>
+              <a href="#" class="accordion-link" onclick="alert('クラウドストレージのリンクを設定してください'); return false;">
+                ⬇ ダウンロード
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      <p class="text-center mt-lg text-muted" style="font-size: 0.9rem;">
+      <p class="text-center mt-lg text-muted" style="font-size: 0.85rem;">
         ⚠️ 本バージョンはテスト版であり、音源と設定は今後調整される場合があります
       </p>
     </div>
   </section>
 
   <!-- Guidelines Section -->
-  <section class="section" id="guidelines" style="background: rgba(126, 157, 190, 0.05);">
+  <section class="section section-alt" id="guidelines">
     <div class="container">
-      <h2 class="section-title">利用規約</h2>
+      <div class="section-title">
+        <h2>利用規約</h2>
+        <p>Usage Guidelines</p>
+      </div>
       <div class="guidelines-grid">
-        <!-- OK -->
         <div class="guideline-card">
           <div class="guideline-header">
-            <div class="guideline-icon icon-ok">✓</div>
+            <div class="guideline-icon guideline-icon-ok">✓</div>
             <div class="guideline-title">許可される事項</div>
           </div>
           <ul class="guideline-list">
@@ -227,36 +261,34 @@
           </ul>
         </div>
         
-        <!-- NO -->
         <div class="guideline-card">
           <div class="guideline-header">
-            <div class="guideline-icon icon-no">✗</div>
+            <div class="guideline-icon guideline-icon-no">✗</div>
             <div class="guideline-title">禁止される事項</div>
           </div>
           <ul class="guideline-list">
-            <li class="negative">オリジナル音声サンプル（.wav）の配布</li>
-            <li class="negative">有料製品へのパッケージング</li>
-            <li class="negative">制作者情報の偽造</li>
-            <li class="negative">二次ボイスバンクの作成・配布</li>
-            <li class="negative">商用AIトレーニング</li>
-            <li class="negative">法律・規制に違反するコンテンツ</li>
-            <li class="negative">正式な商用利用（別途許諾が必要）</li>
+            <li class="no">オリジナル音声サンプル（.wav）の配布</li>
+            <li class="no">有料製品へのパッケージング</li>
+            <li class="no">制作者情報の偽造</li>
+            <li class="no">二次ボイスバンクの作成・配布</li>
+            <li class="no">商用AIトレーニング</li>
+            <li class="no">法律・規制に違反するコンテンツ</li>
+            <li class="no">正式な商用利用（別途許諾が必要）</li>
           </ul>
         </div>
         
-        <!-- ASK -->
         <div class="guideline-card">
           <div class="guideline-header">
-            <div class="guideline-icon icon-ask">?</div>
+            <div class="guideline-icon guideline-icon-ask">?</div>
             <div class="guideline-title">作者への連絡が必要</div>
           </div>
           <ul class="guideline-list">
-            <li class="neutral">正式な商用シーンでの使用</li>
-            <li class="neutral">企業主導のPR・広告</li>
-            <li class="neutral">VTuberアイコン使用</li>
-            <li class="neutral">ゲーム内臓音声使用</li>
-            <li class="neutral">商業用プラットフォームへの収録</li>
-            <li class="neutral">不明な状況がある場合</li>
+            <li class="ask">正式な商用シーンでの使用</li>
+            <li class="ask">企業主導のPR・広告</li>
+            <li class="ask">VTuberアイコン使用</li>
+            <li class="ask">ゲーム内臓音声使用</li>
+            <li class="ask">商業用プラットフォームへの収録</li>
+            <li class="ask">不明な状況がある場合</li>
           </ul>
         </div>
       </div>
@@ -269,10 +301,16 @@
   <!-- FAQ Section -->
   <section class="section" id="faq">
     <div class="container">
-      <h2 class="section-title">よくある質問</h2>
+      <div class="section-title">
+        <h2>よくある質問</h2>
+        <p>FAQ</p>
+      </div>
       <div class="faq-list">
         <div class="faq-item">
-          <div class="faq-question">Q: これは商用使用に属しますか？</div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Q: これは商用使用に属しますか？</span>
+            <div class="faq-icon"></div>
+          </div>
           <div class="faq-answer">
             <div class="faq-answer-content">
               <strong>企業主導の使用 = 商用；個人的活動（同人範囲）≠ 商用。</strong><br>
@@ -282,7 +320,10 @@
         </div>
         
         <div class="faq-item">
-          <div class="faq-question">Q: キャラクターをクレジットしなくてもいいですか？</div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Q: キャラクターをクレジットしなくてもいいですか？</span>
+            <div class="faq-icon"></div>
+          </div>
           <div class="faq-answer">
             <div class="faq-answer-content">
               はい。クレジットは<strong>任意</strong>であり、必須ではありません。
@@ -291,7 +332,10 @@
         </div>
         
         <div class="faq-item">
-          <div class="faq-question">Q: 声を一般的な素材として使用できますか？</div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Q: 声を一般的な素材として使用できますか？</span>
+            <div class="faq-icon"></div>
+          </div>
           <div class="faq-answer">
             <div class="faq-answer-content">
               はい。キャラクター名義で使用しない場合、<strong>クレジットは不要</strong>です。
@@ -300,7 +344,10 @@
         </div>
         
         <div class="faq-item">
-          <div class="faq-question">Q: AI学習/合成はできますか？</div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Q: AI学習/合成はできますか？</span>
+            <div class="faq-icon"></div>
+          </div>
           <div class="faq-answer">
             <div class="faq-answer-content">
               個人的な学習・研究目的の音声合成実験は許可されています。ただし、結果は<strong>商用AI製品や二次ボイスバンクに使用できません</strong>。
@@ -309,7 +356,10 @@
         </div>
         
         <div class="faq-item">
-          <div class="faq-question">Q: 同人活動について報告が必要ですか？</div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Q: 同人活動について報告が必要ですか？</span>
+            <div class="faq-icon"></div>
+          </div>
           <div class="faq-answer">
             <div class="faq-answer-content">
               <strong>いいえ。</strong> 同人範囲内の活動は自由に行うことができます。
@@ -318,7 +368,10 @@
         </div>
         
         <div class="faq-item">
-          <div class="faq-question">Q: あることが許可されているかどうか不明な場合は？</div>
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Q: あることが許可されているかどうか不明な場合は？</span>
+            <div class="faq-icon"></div>
+          </div>
           <div class="faq-answer">
             <div class="faq-answer-content">
               判断原則：<strong>作者とキャラクターに面倒をかけなければ、基本問題ありません。</strong><br>
@@ -331,9 +384,12 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="section" id="contact">
+  <section class="section section-alt" id="contact">
     <div class="container">
-      <h2 class="section-title">連絡先</h2>
+      <div class="section-title">
+        <h2>連絡先</h2>
+        <p>Contact</p>
+      </div>
       <div class="contact-grid">
         <a href="mailto:heigao75@qq.com" class="contact-item">
           <div class="contact-icon">✉️</div>
@@ -362,28 +418,28 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-logo">
-        <img src="assets/images/icon.png" alt="Logo">
-      </div>
-      <p class="footer-text">熵尾音 クロ UTAU Voicebank</p>
-      <div class="footer-links">
+    <div class="footer-inner">
+      <div class="footer-sns">
         <a href="https://github.com/Heigao-Clank/kuro-voicebank" target="_blank" title="GitHub">🐱</a>
         <a href="https://twitter.com/heigao_tickle" target="_blank" title="Twitter">𝕏</a>
         <a href="https://space.bilibili.com/黑篙" target="_blank" title="Bilibili">📺</a>
       </div>
+      <p class="footer-text">熵尾音 クロ UTAU Voicebank</p>
       <p class="footer-copyright">© 2026 黒篙 All Rights Reserved.</p>
     </div>
   </footer>
 
-  <!-- FAQ Toggle Script -->
+  <!-- Scripts -->
   <script>
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const item = question.parentElement;
-        item.classList.toggle('active');
-      });
-    });
+    function toggleAccordion(element) {
+      const accordion = element.parentElement;
+      accordion.classList.toggle('active');
+    }
+    
+    function toggleFaq(element) {
+      const faqItem = element.parentElement;
+      faqItem.classList.toggle('active');
+    }
   </script>
 </body>
 </html>
