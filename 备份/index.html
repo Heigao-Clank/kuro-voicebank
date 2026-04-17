@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -18,41 +18,12 @@
   <!-- Jost (英文标题) + Source Code Pro (代码/数字) + Zen Kaku Gothic New (日文) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800;900&family=Source+Code+Pro:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
   
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
-  
-  <style>
-    /* 单独微调中文版上下两行的文字间距，修复较短文本导致的视觉断层 */
-    .scroll-left .bg-deco-text,
-    .scroll-left-slow .bg-deco-text {
-      padding-right: 12vw !important; /* 缩小中文短句块之间的左右留白 */
-    }
-  </style>
 </head>
 <body>
-  <!-- 高级视觉：背景动效装饰 (倾斜错落字幕) -->
-  <div class="bg-deco">
-    <div class="bg-deco-wrapper">
-      <!-- 第一行：中文版专属名称 (已删除空格) -->
-      <div class="bg-deco-row scroll-left">
-        <div class="bg-deco-text">熵尾小黑 熵尾小黑 熵尾小黑 </div>
-        <div class="bg-deco-text">熵尾小黑 熵尾小黑 熵尾小黑 </div>
-      </div>
-      <!-- 第二行：不变 -->
-      <div class="bg-deco-row scroll-right">
-        <div class="bg-deco-text">UTAU • JA VCV UTAU • JA VCV </div>
-        <div class="bg-deco-text">UTAU • JA VCV UTAU • JA VCV </div>
-      </div>
-      <!-- 第三行：中文版感谢 -->
-      <div class="bg-deco-row scroll-left-slow">
-        <div class="bg-deco-text">感谢使用 感谢使用 感谢使用 </div>
-        <div class="bg-deco-text">感谢使用 感谢使用 感谢使用 </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Mobile Sidebar Toggle -->
   <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle navigation">
     <span></span>
@@ -262,7 +233,7 @@
         </div>
         
         <div class="card">
-          <h3 style="margin-bottom: 1rem; color: var(--primary);">角色信息</h3>
+          <h3 style="margin-bottom: 1rem; color: var(--primary);">角色简介</h3>
           <p style="color: var(--text-light); line-height: 1.8;">
             未知天外来物的其中一个独立子体，容易打瞌睡，行动常由无意识驱动。面纹与双尾为天生形成，会随状态变化。
           </p>
@@ -784,5 +755,6 @@
     }
   </script>
   <script src="assets/icons/icons.js"></script>
+</body>
 </body>
 </html>

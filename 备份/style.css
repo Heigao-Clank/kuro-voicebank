@@ -31,9 +31,7 @@
 /* ---------- Base ---------- */
 :root {
   --primary: #6B8AAE;
-  --primary-rgb: 107, 138, 174; /* 用于透明度计算的 RGB 值 */
   --primary-dark: #4A6A8E;
-  --primary-dark-rgb: 74, 106, 142;
   --secondary: #566066;
   --accent-pink: #C4768A;
   --accent-warm: #D3995D;
@@ -64,91 +62,6 @@ body {
   color: var(--text-dark);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
-}
-
-/* ========================================
-   背景动效装饰 (高级排版 - 初始斜角度 3D 版)
-   ======================================== */
-.bg-deco {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0; /* 放置在背景渐变和主要内容之间 */
-  pointer-events: none; /* 防止遮挡点击事件 */
-  overflow: hidden;
-}
-
-.bg-deco-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-12deg); /* 带有倾斜角度的设计感 */
-  width: 200vw; /* 确保旋转后仍然能覆盖整个屏幕宽度 */
-  display: flex;
-  flex-direction: column;
-  gap: 10vh; /* 大幅增加行与行之间的上下间距 */
-}
-
-.bg-deco-row {
-  display: flex;
-  width: max-content; /* 关键：包裹内容避免溢出和折行 */
-}
-
-.bg-deco-text {
-  flex-shrink: 0; /* 阻止文字被压缩 */
-  padding-right: 35vw; /* 大幅拉开同一行文本组之间的距离，增加留白 */
-  font-family: 'Jost', 'Zen Kaku Gothic New', sans-serif;
-  font-size: clamp(3.5rem, 7vw, 10rem); /* 文字适度调大，恢复质感 */
-  font-weight: 900;
-  font-style: italic; /* 倾斜加强速度感 */
-  line-height: 1;
-  letter-spacing: 0.25em; /* 字母间距稍微放宽 */
-  word-spacing: 4rem; /* 词间距稍微放宽 */
-  
-  /* 文本颜色：比背景略深 */
-  color: rgba(var(--primary-rgb), 0.08); 
-  
-  /* 纵深 3D 层叠阴影：通过多层偏移制造浮雕立体效果 */
-  text-shadow:
-    1px 1px 0 rgba(var(--primary-rgb), 0.1),
-    2px 2px 0 rgba(var(--primary-rgb), 0.08),
-    3px 3px 0 rgba(var(--primary-rgb), 0.05),
-    10px 10px 20px rgba(var(--primary-rgb), 0.2);
-}
-
-/* 完美循环动画设置 */
-.scroll-left {
-  animation: marquee-left 70s linear infinite;
-}
-
-.scroll-right {
-  animation: marquee-right 60s linear infinite;
-}
-
-.scroll-left-slow {
-  animation: marquee-left 100s linear infinite;
-}
-
-@keyframes marquee-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* 无缝连接 */
-}
-
-@keyframes marquee-right {
-  0% { transform: translateX(-50%); } /* 起始偏移以匹配内容 */
-  100% { transform: translateX(0); }
-}
-
-/* ========================================
-   Main Content Layout
-   ======================================== */
-.main-content {
-  margin-left: var(--sidebar-width);
-  min-height: 100vh;
-  position: relative; /* 重要：为主要内容设定相对定位 */
-  z-index: 1; /* 重要：使其位于 bg-deco 的上方 */
 }
 
 /* ---------- Left Sidebar Navigation ---------- */
@@ -330,6 +243,12 @@ body {
   backdrop-filter: blur(2px);
 }
 
+/* Main content offset for sidebar */
+.main-content {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+}
+
 a {
   color: var(--primary);
   text-decoration: none;
@@ -340,11 +259,111 @@ a:hover {
   color: var(--accent-pink);
 }
 
+/* ---------- Header ---------- */
+.header {
+  background: var(--primary);
+  padding: 1rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 几何装饰 - Teto 风格 */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 10% 50%, rgba(255,255,255,0.1) 1px, transparent 1px),
+    radial-gradient(circle at 90% 20%, rgba(255,255,255,0.08) 2px, transparent 2px);
+  background-size: 40px 40px, 60px 60px;
+  pointer-events: none;
+}
+
+.header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.header-sns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-sns-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Jost', sans-serif;
+}
+
+.header-sns-list {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.header-sns-link {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.header-sns-link:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-2px);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.header-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.header-logo-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+}
+
 /* ---------- Container ---------- */
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+/* ---------- Header ---------- */
+.header {
+  background: var(--primary);
+  padding: 1rem 0;
+  position: relative;
+  overflow: hidden;
+  display: none; /* Hidden when sidebar is present */
 }
 
 /* ---------- Hero Section ---------- */
@@ -1255,7 +1274,7 @@ a:hover {
   font-size: 1rem;
 }
 
-/* ---------- Footer (已还原为最初清爽的浅色透明渐变) ---------- */
+/* ---------- Footer ---------- */
 .footer {
   background: linear-gradient(180deg, transparent 0%, rgba(126, 157, 190, 0.08) 100%);
   padding: 3rem 0 2rem;
@@ -1277,13 +1296,13 @@ a:hover {
 }
 
 .footer-sns a {
-  color: var(--text-dark); /* 提升图标对比度 */
+  color: var(--text-muted);
   font-size: 1.5rem;
   transition: all 0.2s;
 }
 
 .footer-sns a:hover {
-  color: var(--primary-dark);
+  color: var(--primary);
   transform: translateY(-3px);
 }
 
