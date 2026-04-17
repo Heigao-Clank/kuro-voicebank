@@ -3,6 +3,31 @@
    Design: Teto Style + Your Color Palette
    ======================================== */
 
+/* ---------- Local Fonts (HarmonyOS Sans SC) ---------- */
+@font-face {
+  font-family: 'HarmonyOS Sans SC';
+  src: url('font/subset/HarmonyOS_Sans_SC_Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans SC';
+  src: url('font/subset/HarmonyOS_Sans_SC_Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans SC';
+  src: url('font/subset/HarmonyOS_Sans_SC_Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- Base ---------- */
 :root {
   --primary: #7E9DBE;
@@ -31,7 +56,7 @@ html {
 }
 
 body {
-  font-family: 'HarmonyOS Sans', 'Noto Sans SC', 'Jost', 'Source Code Pro', 'Zen Kaku Gothic New', sans-serif;
+  font-family: 'HarmonyOS Sans SC', 'Jost', 'Source Code Pro', 'Zen Kaku Gothic New', sans-serif;
   background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
   min-height: 100vh;
   color: var(--text-dark);
