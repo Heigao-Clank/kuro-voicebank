@@ -24,6 +24,63 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Mobile Sidebar Toggle -->
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="ナビゲーション切替">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Mobile Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Left Sidebar Navigation -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="index-jp.html" class="sidebar-brand-link">
+        <img src="assets/images/icon.png" alt="熵尾音 クロ">
+        <span class="sidebar-brand-text">熵尾音 クロ<br><small style="font-weight:400;color:var(--text-muted);font-size:0.7rem;">UTAU Voicebank</small></span>
+      </a>
+    </div>
+    <div class="sidebar-nav">
+      <a href="#hero" class="nav-home active">
+        <span class="sidebar-nav-icon">🏠</span>
+        <span class="sidebar-nav-text">ホーム</span>
+      </a>
+      <a href="#profile" class="nav-profile">
+        <span class="sidebar-nav-icon">🐺</span>
+        <span class="sidebar-nav-text">キャラ設定</span>
+      </a>
+      <a href="#voicebank" class="nav-voicebank">
+        <span class="sidebar-nav-icon">🎤</span>
+        <span class="sidebar-nav-text">音源情報</span>
+      </a>
+      <a href="#download" class="nav-download">
+        <span class="sidebar-nav-icon">⬇</span>
+        <span class="sidebar-nav-text">ダウンロード</span>
+      </a>
+      <a href="#guidelines" class="nav-guidelines">
+        <span class="sidebar-nav-icon">📖</span>
+        <span class="sidebar-nav-text">利用規約</span>
+      </a>
+      <a href="#faq" class="nav-faq">
+        <span class="sidebar-nav-icon">❓</span>
+        <span class="sidebar-nav-text">よくある質問</span>
+      </a>
+      <a href="#contact" class="nav-contact">
+        <span class="sidebar-nav-icon">✉️</span>
+        <span class="sidebar-nav-text">連絡先</span>
+      </a>
+    </div>
+    <div class="sidebar-footer">
+      <div class="sidebar-sns">
+        <a href="https://github.com/Heigao-Clank/kuro-voicebank" target="_blank" class="sidebar-sns-link" title="GitHub">🐱</a>
+        <a href="https://twitter.com/heigao_tickle" target="_blank" class="sidebar-sns-link" title="Twitter">𝕏</a>
+        <a href="https://space.bilibili.com/黑篙" target="_blank" class="sidebar-sns-link" title="Bilibili">📺</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- Language Switcher -->
   <div class="lang-switcher">
     <a href="index.html">中文</a>
@@ -31,25 +88,10 @@
     <a href="index-jp.html" class="active">日本語</a>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-inner">
-      <div class="header-sns">
-        <p class="header-sns-text">OFFICIAL</p>
-        <ul class="header-sns-list">
-          <li><a href="https://twitter.com/heigao_tickle" target="_blank" class="header-sns-link" title="Twitter">𝕏</a></li>
-          <li><a href="https://github.com/Heigao-Clank/kuro-voicebank" target="_blank" class="header-sns-link" title="GitHub">🐱</a></li>
-        </ul>
-      </div>
-      <a href="index-jp.html" class="header-logo">
-        <img src="assets/images/icon.png" alt="Logo">
-        <span class="header-logo-text">熵尾音 クロ</span>
-      </a>
-    </div>
-  </header>
-
+  <!-- Main Content -->
+  <div class="main-content">
   <!-- Hero Section -->
-  <section class="hero container">
+  <section class="hero container" id="hero">
     <div class="hero-visual">
       <img src="assets/images/character.png" alt="熵尾音 クロ">
       <p class="hero-visual-text">Illustration by H</p>
@@ -428,9 +470,72 @@
       <p class="footer-copyright">© 2026 黒篙 All Rights Reserved.</p>
     </div>
   </footer>
+  </div><!-- /.main-content -->
 
   <!-- Scripts -->
   <script>
+    // Sidebar Toggle (Mobile)
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    function openSidebar() {
+      sidebar.classList.add('open');
+      sidebarToggle.classList.add('active');
+      sidebarOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      sidebarToggle.classList.remove('active');
+      sidebarOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    sidebarToggle.addEventListener('click', function() {
+      if (sidebar.classList.contains('open')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+
+    sidebarOverlay.addEventListener('click', closeSidebar);
+
+    sidebar.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 900) {
+          closeSidebar();
+        }
+      });
+    });
+
+    // Active nav highlight on scroll
+    const navLinks = sidebar.querySelectorAll('.sidebar-nav a');
+    const sections = document.querySelectorAll('section[id]');
+
+    function highlightNav() {
+      let current = '';
+      sections.forEach(function(section) {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightNav);
+    highlightNav();
+
+    // Accordion Toggle
     function toggleAccordion(element) {
       const accordion = element.parentElement;
       accordion.classList.toggle('active');
