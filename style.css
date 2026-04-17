@@ -1089,6 +1089,102 @@ a:hover {
   }
 }
 
+/* ---------- Protocol Tabs ---------- */
+.protocol-tabs {
+  margin-top: 2.5rem;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(90, 120, 150, 0.12);
+  border: 1px solid var(--border);
+}
+
+.protocol-tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: rgba(126, 157, 190, 0.04);
+}
+
+.protocol-tab {
+  flex: 1;
+  padding: 0.9rem 1rem;
+  border: none;
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.protocol-tab:hover {
+  color: var(--primary);
+  background: rgba(126, 157, 190, 0.06);
+}
+
+.protocol-tab.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: white;
+  font-weight: 600;
+}
+
+.protocol-content {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.protocol-text {
+  padding: 1.5rem 2rem;
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.9;
+}
+
+.protocol-text hr {
+  border: none;
+  border-top: 1px dashed var(--border);
+  margin: 1.2rem 0;
+}
+
+.protocol-text p {
+  margin-bottom: 0.5rem;
+}
+
+.protocol-text h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 1.2rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(126, 157, 190, 0.15);
+}
+
+.protocol-text h3:first-child {
+  margin-top: 0;
+}
+
+.protocol-text strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.protocol-text::-webkit-scrollbar {
+  width: 6px;
+}
+
+.protocol-text::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.protocol-text::-webkit-scrollbar-thumb {
+  background: rgba(126, 157, 190, 0.3);
+  border-radius: 3px;
+}
+
 /* ---------- Utility ---------- */
 .text-center { text-align: center; }
 .text-muted { color: var(--text-muted); }
