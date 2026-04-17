@@ -383,30 +383,32 @@ a:hover {
   transform: translateY(-50%);
   display: flex;
   align-items: center;
-  gap: 8px;
-  height: 120px;
+  gap: 5px;
+  height: 160px;
   pointer-events: none;
 }
 
 .hero-waveform .bar {
-  width: 6px;
-  border-radius: 3px;
+  width: 8px;
+  border-radius: 4px;
   background: linear-gradient(to top, var(--primary), var(--primary-dark));
   animation: arc-pulse 1.2s ease-in-out infinite;
 }
 
 /* Symmetric arc shape: center high, sides low */
-.hero-waveform .bar:nth-child(1)  { height: 25px; animation-delay: 0.5s; }
-.hero-waveform .bar:nth-child(2)  { height: 40px; animation-delay: 0.4s; }
-.hero-waveform .bar:nth-child(3)  { height: 55px; animation-delay: 0.3s; }
-.hero-waveform .bar:nth-child(4)  { height: 70px; animation-delay: 0.2s; }
-.hero-waveform .bar:nth-child(5)  { height: 85px; animation-delay: 0.1s; }
-.hero-waveform .bar:nth-child(6)  { height: 100px; animation-delay: 0s; }
-.hero-waveform .bar:nth-child(7)  { height: 85px; animation-delay: 0.1s; }
-.hero-waveform .bar:nth-child(8)  { height: 70px; animation-delay: 0.2s; }
-.hero-waveform .bar:nth-child(9)  { height: 55px; animation-delay: 0.3s; }
-.hero-waveform .bar:nth-child(10) { height: 40px; animation-delay: 0.4s; }
-.hero-waveform .bar:nth-child(11) { height: 25px; animation-delay: 0.5s; }
+.hero-waveform .bar:nth-child(1)  { height: 30px; animation-delay: 0.6s; }
+.hero-waveform .bar:nth-child(2)  { height: 50px; animation-delay: 0.5s; }
+.hero-waveform .bar:nth-child(3)  { height: 70px; animation-delay: 0.4s; }
+.hero-waveform .bar:nth-child(4)  { height: 90px; animation-delay: 0.3s; }
+.hero-waveform .bar:nth-child(5)  { height: 110px; animation-delay: 0.2s; }
+.hero-waveform .bar:nth-child(6)  { height: 130px; animation-delay: 0.1s; }
+.hero-waveform .bar:nth-child(7)  { height: 150px; animation-delay: 0s; }
+.hero-waveform .bar:nth-child(8)  { height: 130px; animation-delay: 0.1s; }
+.hero-waveform .bar:nth-child(9)  { height: 110px; animation-delay: 0.2s; }
+.hero-waveform .bar:nth-child(10) { height: 90px; animation-delay: 0.3s; }
+.hero-waveform .bar:nth-child(11) { height: 70px; animation-delay: 0.4s; }
+.hero-waveform .bar:nth-child(12) { height: 50px; animation-delay: 0.5s; }
+.hero-waveform .bar:nth-child(13) { height: 30px; animation-delay: 0.6s; }
 
 @keyframes arc-pulse {
   0%, 100% { 
