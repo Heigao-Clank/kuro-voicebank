@@ -1193,3 +1193,16 @@ a:hover {
 .mt-lg { margin-top: 2rem; }
 .mb-sm { margin-bottom: 0.8rem; }
 .mb-md { margin-bottom: 1.2rem; }
+
+/* Bilibili brand color */
+.sidebar-sns-link.bilibili {
+  background: rgba(0, 161, 214, 0.12);
+  color: #00A1D6;
+}
+.sidebar-sns-link.bilibili:hover {
+  background: #00A1D6;
+  color: white;
+}
+.footer-sns a.bilibili {
+  color: #00A1D6;
+}
