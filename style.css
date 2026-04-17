@@ -480,11 +480,11 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
-.hero-subtitle .vb-type {
-  font-family: 'Source Code Pro', 'Jost', monospace;
-  font-weight: 500;
+.vb-type {
+  font-family: 'Source Code Pro', 'Jost', monospace !important;
+  font-weight: 500 !important;
   letter-spacing: 0.02em;
-  color: var(--primary);
+  color: var(--primary) !important;
 }
 
 .hero-description {
