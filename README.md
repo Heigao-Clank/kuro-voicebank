@@ -5,19 +5,19 @@ UTAU 日语音源 · JA VCV 单音阶声库
 [![Version](https://img.shields.io/badge/version-2026.4--beta-blue)](https://img.shields.io/badge/version-2026.4--beta-blue)
 [![UTAU](https://img.shields.io/badge/UTAU-Voicebank-7E9DBE)](https://img.shields.io/badge/UTAU-Voicebank-7E9DBE)
 [![Language](https://img.shields.io/badge/Language-JA%20VCV-orange)](https://img.shields.io/badge/Language-JA%20VCV-orange)
-[![Website](https://img.shields.io/website?url=https://heigao-clank.github.io/kuro-voicebank/)](https://heigao-clank.github.io/kuro-voicebank/)
+[![Website](https://img.shields.io/website?url=https://kuro-voicebank.heigao75.workers.dev)](https://kuro-voicebank.heigao75.workers.dev)
 
 ---
 
 ## 🌐 展示页面
 
-**现已上线！** → [https://heigao-clank.github.io/kuro-voicebank/](https://heigao-clank.github.io/kuro-voicebank/)
+**现已上线！** → [https://kuro-voicebank.heigao75.workers.dev](https://kuro-voicebank.heigao75.workers.dev)
 
 三语版本：
 
-- [中文版](https://heigao-clank.github.io/kuro-voicebank/)
-- [English](https://heigao-clank.github.io/kuro-voicebank/index-en.html)
-- [日本語](https://heigao-clank.github.io/kuro-voicebank/index-jp.html)
+- [中文版](https://kuro-voicebank.heigao75.workers.dev/)
+- [English](https://kuro-voicebank.heigao75.workers.dev/index-en.html)
+- [日本語](https://kuro-voicebank.heigao75.workers.dev/index-jp.html)
 
 ---
 
