@@ -69,9 +69,10 @@ html {
 
 body {
   font-family: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg-blue) 100%);
+  background-color: #F5F0EB;
+  background-image: linear-gradient(180deg, #F5F0EB 0%, #E8EEF4 100%);
   min-height: 100vh;
-  color: var(--text-dark);
+  color: #2D3436;
   line-height: 1.7;
 }
 
