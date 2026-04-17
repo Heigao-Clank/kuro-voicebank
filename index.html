@@ -694,121 +694,91 @@
     var demoTime = document.getElementById('demoTime');
     var playIcon = document.getElementById('playIcon');
     var pauseIcon = document.getElementById('pauseIcon');
-    // Audio Visualizer Setup
+    // Audio Visualizer (Frequency Bars)
     var audioContext = null;
     var analyser = null;
     var dataArray = null;
-    var canvas = null;
-    var canvasCtx = null;
     var animationId = null;
 
     function initAudioVisualizer() {
-      canvas = document.getElementById('demoCanvas');
-      canvasCtx = canvas.getContext('2d');
+      var canvas = document.getElementById('demoCanvas');
       canvas.width = canvas.offsetWidth || 400;
       canvas.height = 80;
-      drawStaticWaveform();
+      drawIdleBars(canvas);
     }
 
-    function setupAudioContext() {
-      if (audioContext) return;
-      
-      try {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        analyser = audioContext.createAnalyser();
-        analyser.fftSize = 256;
-        dataArray = new Uint8Array(analyser.frequencyBinCount);
-        
-        var audioSource = audioContext.createMediaElementSource(demoAudio);
-        audioSource.connect(analyser);
-        analyser.connect(audioContext.destination);
-      } catch (e) {
-        console.log('Audio context error:', e);
-      }
-    }
-
-    function drawStaticWaveform() {
-      if (!canvasCtx) return;
+    function drawIdleBars(canvas) {
+      var ctx = canvas.getContext('2d');
       var width = canvas.width;
       var height = canvas.height;
-      canvasCtx.clearRect(0, 0, width, height);
-      canvasCtx.beginPath();
+      ctx.clearRect(0, 0, width, height);
       
-      var sliceWidth = width / 100;
-      var x = 0;
+      var barCount = 40;
+      var barWidth = (width / barCount) - 2;
       
-      for (var i = 0; i < 100; i++) {
-        var v = 0.3 + Math.random() * 0.1;
-        var y = v * height;
-        
-        if (i === 0) {
-          canvasCtx.moveTo(x, (height - y) / 2);
-        } else {
-          canvasCtx.lineTo(x, (height - y) / 2);
-        }
-        x += sliceWidth;
+      for (var i = 0; i < barCount; i++) {
+        var h = 5 + Math.random() * 15;
+        ctx.fillStyle = 'rgba(126, 157, 190, 0.3)';
+        ctx.fillRect(i * (barWidth + 2), height - h, barWidth, h);
       }
-      
-      canvasCtx.lineWidth = 2;
-      canvasCtx.strokeStyle = 'rgba(126, 157, 190, 0.4)';
-      canvasCtx.stroke();
     }
 
-    function drawWaveform() {
-      if (!analyser || !canvasCtx) return;
+    function drawBars() {
+      if (!analyser) return;
       
-      animationId = requestAnimationFrame(drawWaveform);
-      analyser.getByteTimeDomainData(dataArray);
-      
+      var canvas = document.getElementById('demoCanvas');
+      var ctx = canvas.getContext('2d');
       var width = canvas.width;
       var height = canvas.height;
       
-      canvasCtx.fillStyle = 'rgba(126, 157, 190, 0.1)';
-      canvasCtx.fillRect(0, 0, width, height);
+      animationId = requestAnimationFrame(drawBars);
+      analyser.getByteFrequencyData(dataArray);
       
-      canvasCtx.lineWidth = 2;
-      canvasCtx.strokeStyle = '#7E9DBE';
-      canvasCtx.shadowBlur = 8;
-      canvasCtx.shadowColor = '#7E9DBE';
+      ctx.clearRect(0, 0, width, height);
       
-      canvasCtx.beginPath();
+      var barCount = 40;
+      var barWidth = (width / barCount) - 2;
       
-      var sliceWidth = width / dataArray.length;
-      var x = 0;
-      
-      for (var i = 0; i < dataArray.length; i++) {
-        var v = dataArray[i] / 128.0;
-        var y = v * height / 2;
+      for (var i = 0; i < barCount; i++) {
+        var dataIndex = Math.floor(i * dataArray.length / barCount);
+        var value = dataArray[dataIndex];
+        var h = (value / 255) * height;
         
-        if (i === 0) {
-          canvasCtx.moveTo(x, y);
-        } else {
-          canvasCtx.lineTo(x, y);
-        }
-        x += sliceWidth;
+        ctx.fillStyle = '#7E9DBE';
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = '#7E9DBE';
+        ctx.fillRect(i * (barWidth + 2), height - h, barWidth, h);
       }
-      
-      canvasCtx.lineTo(width, height / 2);
-      canvasCtx.stroke();
-      canvasCtx.shadowBlur = 0;
+      ctx.shadowBlur = 0;
     }
 
     function toggleDemo() {
       if (demoAudio.paused) {
-        setupAudioContext();
-        if (audioContext && audioContext.state === 'suspended') {
+        if (!audioContext) {
+          audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          analyser = audioContext.createAnalyser();
+          analyser.fftSize = 256;
+          analyser.smoothingTimeConstant = 0.8;
+          dataArray = new Uint8Array(analyser.frequencyBinCount);
+          
+          var source = audioContext.createMediaElementSource(demoAudio);
+          source.connect(analyser);
+          analyser.connect(audioContext.destination);
+        }
+        if (audioContext.state === 'suspended') {
           audioContext.resume();
         }
         demoAudio.play();
         playIcon.style.display = 'none';
         pauseIcon.style.display = 'block';
-        drawWaveform();
+        drawBars();
       } else {
         demoAudio.pause();
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
         if (animationId) cancelAnimationFrame(animationId);
-        drawStaticWaveform();
+        var canvas = document.getElementById('demoCanvas');
+        drawIdleBars(canvas);
       }
     }
 
