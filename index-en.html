@@ -138,7 +138,28 @@
       </div>
       <div class="demo-container">
         <div class="demo-player">
-          <canvas id="demoCanvas" class="demo-canvas" width="400" height="80"></canvas>
+          <div class="demo-visualizer">
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+          </div>
           <div class="demo-controls">
             <button class="demo-play-btn" id="demoPlayBtn" onclick="toggleDemo()">
               <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -692,91 +713,19 @@
     var demoTime = document.getElementById('demoTime');
     var playIcon = document.getElementById('playIcon');
     var pauseIcon = document.getElementById('pauseIcon');
-    // Audio Visualizer (Frequency Bars)
-    var audioContext = null;
-    var analyser = null;
-    var dataArray = null;
-    var animationId = null;
-
-    function initAudioVisualizer() {
-      var canvas = document.getElementById('demoCanvas');
-      canvas.width = canvas.offsetWidth || 400;
-      canvas.height = 80;
-      drawIdleBars(canvas);
-    }
-
-    function drawIdleBars(canvas) {
-      var ctx = canvas.getContext('2d');
-      var width = canvas.width;
-      var height = canvas.height;
-      ctx.clearRect(0, 0, width, height);
-      
-      var barCount = 40;
-      var barWidth = (width / barCount) - 2;
-      
-      for (var i = 0; i < barCount; i++) {
-        var h = 5 + Math.random() * 15;
-        ctx.fillStyle = 'rgba(126, 157, 190, 0.3)';
-        ctx.fillRect(i * (barWidth + 2), height - h, barWidth, h);
-      }
-    }
-
-    function drawBars() {
-      if (!analyser) return;
-      
-      var canvas = document.getElementById('demoCanvas');
-      var ctx = canvas.getContext('2d');
-      var width = canvas.width;
-      var height = canvas.height;
-      
-      animationId = requestAnimationFrame(drawBars);
-      analyser.getByteFrequencyData(dataArray);
-      
-      ctx.clearRect(0, 0, width, height);
-      
-      var barCount = 40;
-      var barWidth = (width / barCount) - 2;
-      
-      for (var i = 0; i < barCount; i++) {
-        var dataIndex = Math.floor(i * dataArray.length / barCount);
-        var value = dataArray[dataIndex];
-        var h = (value / 255) * height;
-        
-        ctx.fillStyle = '#7E9DBE';
-        ctx.shadowBlur = 5;
-        ctx.shadowColor = '#7E9DBE';
-        ctx.fillRect(i * (barWidth + 2), height - h, barWidth, h);
-      }
-      ctx.shadowBlur = 0;
-    }
+    var demoBars = document.querySelectorAll('.demo-bar');
 
     function toggleDemo() {
       if (demoAudio.paused) {
-        if (!audioContext) {
-          audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          analyser = audioContext.createAnalyser();
-          analyser.fftSize = 256;
-          analyser.smoothingTimeConstant = 0.8;
-          dataArray = new Uint8Array(analyser.frequencyBinCount);
-          
-          var source = audioContext.createMediaElementSource(demoAudio);
-          source.connect(analyser);
-          analyser.connect(audioContext.destination);
-        }
-        if (audioContext.state === 'suspended') {
-          audioContext.resume();
-        }
         demoAudio.play();
         playIcon.style.display = 'none';
         pauseIcon.style.display = 'block';
-        drawBars();
+        demoBars.forEach(function(bar) { bar.classList.add('active'); });
       } else {
         demoAudio.pause();
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
-        if (animationId) cancelAnimationFrame(animationId);
-        var canvas = document.getElementById('demoCanvas');
-        drawIdleBars(canvas);
+        demoBars.forEach(function(bar) { bar.classList.remove('active'); });
       }
     }
 
@@ -793,8 +742,7 @@
     demoAudio.addEventListener('ended', function() {
       playIcon.style.display = 'block';
       pauseIcon.style.display = 'none';
-      cancelAnimationFrame(animationId);
-      drawStaticWaveform();
+      demoBars.forEach(function(bar) { bar.classList.remove('active'); });
       demoProgressBar.style.width = '0%';
     });
 

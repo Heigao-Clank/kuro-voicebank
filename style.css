@@ -1,4 +1,4 @@
-﻿/* ========================================
+/* ========================================
    熵尾音 クロ - Voicebank Website
    Design: Teto Style + Your Color Palette
    ======================================== */
@@ -517,11 +517,52 @@ a:hover {
   gap: 1.5rem;
 }
 
-.demo-canvas {
-  width: 100%;
+.demo-visualizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   height: 80px;
-  border-radius: 8px;
-  background: rgba(126, 157, 190, 0.05);
+}
+
+.demo-bar {
+  width: 6px;
+  height: 30px;
+  background: linear-gradient(to top, var(--primary), var(--primary-dark));
+  border-radius: 3px;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.demo-bar.active {
+  opacity: 0.7;
+  animation: demo-wave 0.5s ease-in-out infinite;
+}
+
+.demo-bar:nth-child(1)  { animation-delay: 0s; }
+.demo-bar:nth-child(2)  { animation-delay: 0.05s; }
+.demo-bar:nth-child(3)  { animation-delay: 0.1s; }
+.demo-bar:nth-child(4)  { animation-delay: 0.15s; }
+.demo-bar:nth-child(5)  { animation-delay: 0.2s; }
+.demo-bar:nth-child(6)  { animation-delay: 0.25s; }
+.demo-bar:nth-child(7)  { animation-delay: 0.3s; }
+.demo-bar:nth-child(8)  { animation-delay: 0.35s; }
+.demo-bar:nth-child(9)  { animation-delay: 0.4s; }
+.demo-bar:nth-child(10) { animation-delay: 0.45s; }
+.demo-bar:nth-child(11) { animation-delay: 0.5s; }
+.demo-bar:nth-child(12) { animation-delay: 0.45s; }
+.demo-bar:nth-child(13) { animation-delay: 0.4s; }
+.demo-bar:nth-child(14) { animation-delay: 0.35s; }
+.demo-bar:nth-child(15) { animation-delay: 0.3s; }
+.demo-bar:nth-child(16) { animation-delay: 0.25s; }
+.demo-bar:nth-child(17) { animation-delay: 0.2s; }
+.demo-bar:nth-child(18) { animation-delay: 0.15s; }
+.demo-bar:nth-child(19) { animation-delay: 0.1s; }
+.demo-bar:nth-child(20) { animation-delay: 0.05s; }
+
+@keyframes demo-wave {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1); }
 }
 
 .demo-controls {
