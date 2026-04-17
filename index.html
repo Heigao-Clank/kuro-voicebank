@@ -22,9 +22,6 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
-  
-  <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <!-- Mobile Sidebar Toggle -->
@@ -639,8 +636,10 @@
       faqItem.classList.toggle('active');
     }
 
-    // Initialize Lucide Icons
-    lucide.createIcons();
+    // Initialize Local Icons
+    var iconScript = document.createElement('script');
+    iconScript.src = 'assets/icons/icons.js';
+    document.body.appendChild(iconScript);
 
     // Protocol Tabs
     document.querySelectorAll('.protocol-tab').forEach(function(tab) {
@@ -650,7 +649,6 @@
         document.querySelectorAll('.protocol-content').forEach(function(c) { c.style.display = 'none'; });
         this.classList.add('active');
         document.getElementById('protocol-' + lang).style.display = 'block';
-        lucide.createIcons();
       });
     });
   </script>
