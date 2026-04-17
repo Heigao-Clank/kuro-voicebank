@@ -695,44 +695,43 @@
     var playIcon = document.getElementById('playIcon');
     var pauseIcon = document.getElementById('pauseIcon');
     // Audio Visualizer Setup
-    var audioContext;
-    var analyser;
-    var dataArray;
-    var canvas;
-    var canvasCtx;
-    var animationId;
-    var audioSource;
+    var audioContext = null;
+    var analyser = null;
+    var dataArray = null;
+    var canvas = null;
+    var canvasCtx = null;
+    var animationId = null;
 
     function initAudioVisualizer() {
       canvas = document.getElementById('demoCanvas');
       canvasCtx = canvas.getContext('2d');
-      
-      // Set canvas size
-      canvas.width = canvas.offsetWidth;
+      canvas.width = canvas.offsetWidth || 400;
       canvas.height = 80;
-      
-      // Draw initial static waveform
       drawStaticWaveform();
     }
 
     function setupAudioContext() {
-      if (!audioContext) {
+      if (audioContext) return;
+      
+      try {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         analyser = audioContext.createAnalyser();
         analyser.fftSize = 256;
         dataArray = new Uint8Array(analyser.frequencyBinCount);
         
-        audioSource = audioContext.createMediaElementSource(demoAudio);
+        var audioSource = audioContext.createMediaElementSource(demoAudio);
         audioSource.connect(analyser);
         analyser.connect(audioContext.destination);
+      } catch (e) {
+        console.log('Audio context error:', e);
       }
     }
 
     function drawStaticWaveform() {
+      if (!canvasCtx) return;
       var width = canvas.width;
       var height = canvas.height;
       canvasCtx.clearRect(0, 0, width, height);
-      canvasCtx.fillStyle = 'rgba(126, 157, 190, 0.2)';
       canvasCtx.beginPath();
       
       var sliceWidth = width / 100;
@@ -756,8 +755,9 @@
     }
 
     function drawWaveform() {
-      animationId = requestAnimationFrame(drawWaveform);
+      if (!analyser || !canvasCtx) return;
       
+      animationId = requestAnimationFrame(drawWaveform);
       analyser.getByteTimeDomainData(dataArray);
       
       var width = canvas.width;
@@ -767,9 +767,9 @@
       canvasCtx.fillRect(0, 0, width, height);
       
       canvasCtx.lineWidth = 2;
-      canvasCtx.strokeStyle = 'var(--primary)';
+      canvasCtx.strokeStyle = '#7E9DBE';
       canvasCtx.shadowBlur = 8;
-      canvasCtx.shadowColor = 'var(--primary)';
+      canvasCtx.shadowColor = '#7E9DBE';
       
       canvasCtx.beginPath();
       
@@ -796,7 +796,7 @@
     function toggleDemo() {
       if (demoAudio.paused) {
         setupAudioContext();
-        if (audioContext.state === 'suspended') {
+        if (audioContext && audioContext.state === 'suspended') {
           audioContext.resume();
         }
         demoAudio.play();
@@ -807,7 +807,7 @@
         demoAudio.pause();
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
-        cancelAnimationFrame(animationId);
+        if (animationId) cancelAnimationFrame(animationId);
         drawStaticWaveform();
       }
     }
