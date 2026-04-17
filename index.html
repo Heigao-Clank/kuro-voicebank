@@ -585,13 +585,25 @@
 
     function highlightNav() {
       let current = '';
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      
       sections.forEach(function(section) {
         const sectionTop = section.offsetTop - 100;
         const sectionHeight = section.offsetHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           current = section.getAttribute('id');
         }
       });
+      
+      // If at the bottom of the page, highlight the last section (contact)
+      if (!current && sections.length > 0) {
+        const lastSection = sections[sections.length - 1];
+        const lastSectionTop = lastSection.offsetTop - 100;
+        if (window.scrollY >= lastSectionTop) {
+          current = lastSection.getAttribute('id');
+        }
+      }
+      
       navLinks.forEach(function(link) {
         link.classList.remove('active');
         if (link.getAttribute('href') === '#' + current) {
