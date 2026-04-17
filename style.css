@@ -972,6 +972,7 @@ a:hover {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   border: 1px solid var(--border);
+  transition: opacity 0.3s;
 }
 
 .lang-switcher a {
@@ -986,6 +987,12 @@ a:hover {
 .lang-switcher a:hover {
   background: rgba(126, 157, 190, 0.15);
   color: var(--primary);
+}
+
+.lang-switcher.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
 }
 
 .lang-switcher a.active {

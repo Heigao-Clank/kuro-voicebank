@@ -496,11 +496,13 @@
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const langSwitcher = document.querySelector('.lang-switcher');
 
     function openSidebar() {
       sidebar.classList.add('open');
       sidebarToggle.classList.add('active');
       sidebarOverlay.classList.add('active');
+      if (langSwitcher) langSwitcher.classList.add('hidden');
       document.body.style.overflow = 'hidden';
     }
 
@@ -508,6 +510,7 @@
       sidebar.classList.remove('open');
       sidebarToggle.classList.remove('active');
       sidebarOverlay.classList.remove('active');
+      if (langSwitcher) langSwitcher.classList.remove('hidden');
       document.body.style.overflow = '';
     }
 
