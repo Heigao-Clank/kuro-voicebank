@@ -22,6 +22,9 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <!-- Mobile Sidebar Toggle -->
@@ -44,31 +47,31 @@
     </div>
     <div class="sidebar-nav">
       <a href="#hero" class="nav-home active">
-        <span class="sidebar-nav-icon">🏠</span>
+        <i data-lucide="home" class="sidebar-nav-icon"></i>
         <span class="sidebar-nav-text">ホーム</span>
       </a>
       <a href="#profile" class="nav-profile">
-        <span class="sidebar-nav-icon">🐺</span>
+        <i data-lucide="user" class="sidebar-nav-icon"></i>
         <span class="sidebar-nav-text">キャラ設定</span>
       </a>
       <a href="#voicebank" class="nav-voicebank">
-        <span class="sidebar-nav-icon">🎤</span>
+        <i data-lucide="mic" class="sidebar-nav-icon"></i>
         <span class="sidebar-nav-text">音源情報</span>
       </a>
       <a href="#download" class="nav-download">
-        <span class="sidebar-nav-icon">⬇</span>
+        <i data-lucide="download" class="sidebar-nav-icon"></i>
         <span class="sidebar-nav-text">ダウンロード</span>
       </a>
       <a href="#guidelines" class="nav-guidelines">
-        <span class="sidebar-nav-icon">📖</span>
+        <i data-lucide="book-open" class="sidebar-nav-icon"></i>
         <span class="sidebar-nav-text">利用規約</span>
       </a>
       <a href="#faq" class="nav-faq">
-        <span class="sidebar-nav-icon">❓</span>
+        <i data-lucide="help-circle" class="sidebar-nav-icon"></i>
         <span class="sidebar-nav-text">よくある質問</span>
       </a>
       <a href="#contact" class="nav-contact">
-        <span class="sidebar-nav-icon">✉️</span>
+        <i data-lucide="mail" class="sidebar-nav-icon"></i>
         <span class="sidebar-nav-text">連絡先</span>
       </a>
     </div>
@@ -545,6 +548,9 @@
       const faqItem = element.parentElement;
       faqItem.classList.toggle('active');
     }
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
   </script>
 </body>
 </html>

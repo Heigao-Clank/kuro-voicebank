@@ -125,10 +125,11 @@ body {
 }
 
 .sidebar-nav-icon {
-  width: 20px;
-  text-align: center;
-  font-size: 0.9rem;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
+  color: currentColor;
+  stroke-width: 1.8;
 }
 
 .sidebar-nav-text {
