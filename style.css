@@ -16,9 +16,20 @@
   --accent-warm: #E3A96D;    /* 奶茶色 */
   --accent-orange: #DA804C;  /* 焦糖橙 */
   
+  /* Primary Colors */
+  --primary: #7E9DBE;        /* 雾霾蓝 - 主色 */
+  --primary-dark: #5A7A9E;   /* 深雾霾蓝 */
+  --secondary: #66737A;       /* 青灰色 - 辅助 */
+  --secondary-dark: #4A5258;  /* 深青灰 */
+  
+  /* Accent Colors */
+  --accent-pink: #D4869A;    /* 红粉色 - 强调（立绘眼睛色） */
+  --accent-warm: #E3A96D;    /* 奶茶色 */
+  --accent-orange: #DA804C;  /* 焦糖橙 */
+  
   /* Background Colors */
-  --bg-cream: #F5F0EB;       /* 奶油白 */
-  --bg-blue: #E8EEF4;        /* 淡蓝白 */
+  --bg-cream: #D8DEE9;       /* 浅暗蓝灰（主背景） */
+  --bg-blue: #B8C4D0;        /* 暗蓝灰（渐变下方） */
   --bg-card: #FFFFFF;        /* 卡片白 */
   
   /* Text Colors */
@@ -69,8 +80,8 @@ html {
 
 body {
   font-family: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #F5F0EB;
-  background-image: linear-gradient(180deg, #F5F0EB 0%, #E8EEF4 100%);
+  background-color: #C8D0DA;
+  background-image: linear-gradient(180deg, #D8DEE9 0%, #B8C4D0 100%);
   min-height: 100vh;
   color: #2D3436;
   line-height: 1.7;
@@ -669,7 +680,7 @@ h3 { font-size: 1.3rem; }
 
 /* ---------- Footer ---------- */
 .footer {
-  background: linear-gradient(180deg, transparent 0%, rgba(126, 157, 190, 0.1) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(126, 157, 190, 0.15) 100%);
   padding: var(--space-xl) 0;
   margin-top: var(--space-xxl);
   text-align: center;
