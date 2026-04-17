@@ -51,6 +51,10 @@
         <i data-lucide="user" class="sidebar-nav-icon"></i>
         <span class="sidebar-nav-text">キャラ設定</span>
       </a>
+      <a href="#demo" class="nav-demo">
+        <svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span class="sidebar-nav-text">ボイスデモ</span>
+      </a>
       <a href="#voicebank" class="nav-voicebank">
         <i data-lucide="mic" class="sidebar-nav-icon"></i>
         <span class="sidebar-nav-text">音源情報</span>
@@ -122,6 +126,53 @@
       <div class="bar"></div>
       <div class="bar"></div>
       <div class="bar"></div>
+    </div>
+  </section>
+
+  <!-- Demo Audio Section -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="section-title">
+        <h2>ボイスデモ</h2>
+        <p>Voice Demo</p>
+      </div>
+      <div class="demo-container">
+        <div class="demo-player">
+          <div class="demo-visualizer">
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+            <div class="demo-bar"></div>
+          </div>
+          <div class="demo-controls">
+            <button class="demo-play-btn" id="demoPlayBtn" onclick="toggleDemo()">
+              <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </button>
+            <div class="demo-progress">
+              <div class="demo-progress-bar" id="demoProgressBar"></div>
+            </div>
+            <span class="demo-time" id="demoTime">0:00 / 0:00</span>
+          </div>
+        </div>
+        <audio id="demoAudio" src="assets/audio/demo.mp3"></audio>
+      </div>
     </div>
   </section>
 
@@ -634,11 +685,6 @@
       faqItem.classList.toggle('active');
     }
 
-    // Initialize Local Icons
-    var iconScript = document.createElement('script');
-    iconScript.src = 'assets/icons/icons.js';
-    document.body.appendChild(iconScript);
-
     // Protocol Tabs
     document.querySelectorAll('.protocol-tab').forEach(function(tab) {
       tab.addEventListener('click', function() {
@@ -649,6 +695,49 @@
         document.getElementById('protocol-' + lang).style.display = 'block';
       });
     });
+
+    // Demo Audio Player
+    var demoAudio = document.getElementById('demoAudio');
+    var demoPlayBtn = document.getElementById('demoPlayBtn');
+    var demoProgressBar = document.getElementById('demoProgressBar');
+    var demoTime = document.getElementById('demoTime');
+    var playIcon = document.getElementById('playIcon');
+    var pauseIcon = document.getElementById('pauseIcon');
+    var demoBars = document.querySelectorAll('.demo-bar');
+
+    function toggleDemo() {
+      if (demoAudio.paused) {
+        demoAudio.play();
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        demoBars.forEach(function(bar) { bar.classList.add('active'); });
+      } else {
+        demoAudio.pause();
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        demoBars.forEach(function(bar) { bar.classList.remove('active'); });
+      }
+    }
+
+    demoAudio.addEventListener('timeupdate', function() {
+      var percent = (demoAudio.currentTime / demoAudio.duration) * 100;
+      demoProgressBar.style.width = percent + '%';
+      demoTime.textContent = formatTime(demoAudio.currentTime) + ' / ' + formatTime(demoAudio.duration);
+    });
+
+    demoAudio.addEventListener('ended', function() {
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+      demoBars.forEach(function(bar) { bar.classList.remove('active'); });
+      demoProgressBar.style.width = '0%';
+    });
+
+    function formatTime(seconds) {
+      var mins = Math.floor(seconds / 60);
+      var secs = Math.floor(seconds % 60);
+      return mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
   </script>
+  <script src="assets/icons/icons.js"></script>
 </body>
 </html>
