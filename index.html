@@ -138,28 +138,7 @@
       </div>
       <div class="demo-container">
         <div class="demo-player">
-          <div class="demo-visualizer">
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-            <div class="demo-bar"></div>
-          </div>
+          <canvas id="demoCanvas" class="demo-canvas" width="400" height="80"></canvas>
           <div class="demo-controls">
             <button class="demo-play-btn" id="demoPlayBtn" onclick="toggleDemo()">
               <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -717,17 +696,121 @@
     var pauseIcon = document.getElementById('pauseIcon');
     var demoBars = document.querySelectorAll('.demo-bar');
 
+    // Audio Visualizer Setup
+    var audioContext;
+    var analyser;
+    var dataArray;
+    var canvas;
+    var canvasCtx;
+    var animationId;
+    var audioSource;
+
+    function initAudioVisualizer() {
+      canvas = document.getElementById('demoCanvas');
+      canvasCtx = canvas.getContext('2d');
+      
+      // Set canvas size
+      canvas.width = canvas.offsetWidth;
+      canvas.height = 80;
+      
+      // Draw initial static waveform
+      drawStaticWaveform();
+    }
+
+    function setupAudioContext() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+        dataArray = new Uint8Array(analyser.frequencyBinCount);
+        
+        audioSource = audioContext.createMediaElementSource(demoAudio);
+        audioSource.connect(analyser);
+        analyser.connect(audioContext.destination);
+      }
+    }
+
+    function drawStaticWaveform() {
+      var width = canvas.width;
+      var height = canvas.height;
+      canvasCtx.clearRect(0, 0, width, height);
+      canvasCtx.fillStyle = 'rgba(126, 157, 190, 0.2)';
+      canvasCtx.beginPath();
+      
+      var sliceWidth = width / 100;
+      var x = 0;
+      
+      for (var i = 0; i < 100; i++) {
+        var v = 0.3 + Math.random() * 0.1;
+        var y = v * height;
+        
+        if (i === 0) {
+          canvasCtx.moveTo(x, (height - y) / 2);
+        } else {
+          canvasCtx.lineTo(x, (height - y) / 2);
+        }
+        x += sliceWidth;
+      }
+      
+      canvasCtx.lineWidth = 2;
+      canvasCtx.strokeStyle = 'rgba(126, 157, 190, 0.4)';
+      canvasCtx.stroke();
+    }
+
+    function drawWaveform() {
+      animationId = requestAnimationFrame(drawWaveform);
+      
+      analyser.getByteTimeDomainData(dataArray);
+      
+      var width = canvas.width;
+      var height = canvas.height;
+      
+      canvasCtx.fillStyle = 'rgba(126, 157, 190, 0.1)';
+      canvasCtx.fillRect(0, 0, width, height);
+      
+      canvasCtx.lineWidth = 2;
+      canvasCtx.strokeStyle = 'var(--primary)';
+      canvasCtx.shadowBlur = 8;
+      canvasCtx.shadowColor = 'var(--primary)';
+      
+      canvasCtx.beginPath();
+      
+      var sliceWidth = width / dataArray.length;
+      var x = 0;
+      
+      for (var i = 0; i < dataArray.length; i++) {
+        var v = dataArray[i] / 128.0;
+        var y = v * height / 2;
+        
+        if (i === 0) {
+          canvasCtx.moveTo(x, y);
+        } else {
+          canvasCtx.lineTo(x, y);
+        }
+        x += sliceWidth;
+      }
+      
+      canvasCtx.lineTo(width, height / 2);
+      canvasCtx.stroke();
+      canvasCtx.shadowBlur = 0;
+    }
+
     function toggleDemo() {
       if (demoAudio.paused) {
+        setupAudioContext();
+        if (audioContext.state === 'suspended') {
+          audioContext.resume();
+        }
         demoAudio.play();
         playIcon.style.display = 'none';
         pauseIcon.style.display = 'block';
-        demoBars.forEach(function(bar) { bar.classList.add('active'); });
+        drawWaveform();
       } else {
         demoAudio.pause();
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
-        demoBars.forEach(function(bar) { bar.classList.remove('active'); });
+        cancelAnimationFrame(animationId);
+        drawStaticWaveform();
       }
     }
 
@@ -744,7 +827,8 @@
     demoAudio.addEventListener('ended', function() {
       playIcon.style.display = 'block';
       pauseIcon.style.display = 'none';
-      demoBars.forEach(function(bar) { bar.classList.remove('active'); });
+      cancelAnimationFrame(animationId);
+      drawStaticWaveform();
       demoProgressBar.style.width = '0%';
     });
 
