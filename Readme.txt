@@ -26,7 +26,7 @@ For English version, please refer to Readme_EN.
 ---
 
 ■ 音源信息
-形式：VCV
+形式：JA VCV
 音阶：B3（单音阶）
 推荐音域：G2~C5
 声线特点：自信、懵懂

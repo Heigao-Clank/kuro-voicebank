@@ -1,89 +1,75 @@
 # 熵尾音 クロ | Shang Wei Yin Kuro
 
-UTAU Voicebank - 温柔的狼兽人声库 / Gentle Wolf Furry Voice Library
+UTAU 日语音源 · JA VCV 单音阶声库
 
 ![Version](https://img.shields.io/badge/version-2026.4--beta-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+![UTAU](https://img.shields.io/badge/UTAU-Voicebank-7E9DBE)
+![Language](https://img.shields.io/badge/Language-JA%20VCV-orange)
 
-## 🎵 About
+---
 
-熵尾音 クロ (Shang Wei Yin Kuro) is a UTAU voicebank featuring a gentle wolf furry character.
+## 🎤 关于音源
 
-- **Type**: VCV Voicebank
-- **Scale**: B3 (Single Scale)
-- **Recommended Range**: G2~C5
-- **Recommended Engine**: Worldline-R
-- **Voice Character**: Confident, Innocent
+熵尾音 クロ（Shang Wei Yin Kuro）是一个 VCV 日语音源，双尾狼兽人角色。
 
-## 📥 Download
+**声线特点**：自信、懵懂
 
-| Platform | Link |
-|----------|------|
-| GitHub Release | Coming soon |
-| Bowroll | Coming soon |
-| Cloud Storage | Coming soon |
+| 规格 | 参数 |
+|------|------|
+| 类型 | JA VCV |
+| 音阶 | B3 单音阶 |
+| 推荐音域 | G2 ~ C5 |
+| 推荐引擎 | Worldline-R |
 
-## 🌐 Languages
+## 📥 下载
 
-- [中文](./index.html) (Default)
+> 敬请期待
+
+## 🌐 展示页面
+
+三语版本：
+
+- [中文版](./index.html)
 - [English](./index-en.html)
 - [日本語](./index-jp.html)
 
-## 📖 Character Profile
+## 👤 角色档案
 
-| Attribute | Value |
-|-----------|-------|
-| Name | 熵尾音 クロ (Shang Wei Yin Kuro) |
-| Species | Wolf (Furry) |
-| Age | Approximately 17 |
-| Gender | Male |
-| Height | Approximately 168cm |
-| Features | Facial markings, Twin tails |
-| Favorite | Watermelon |
+| 属性 | 内容 |
+|------|------|
+| 名字 | 熵尾音 クロ（熵尾小黑） |
+| 年龄 | 约 17 岁 |
+| 性别 | 男性 |
+| 身高 | 约 168cm |
+| 种族 | 狼（兽人） |
+| 特征 | 面纹、双尾（随状态变化） |
+| 喜好 | 西瓜 |
 
-## 📜 Guidelines
+## 📜 使用协议
 
-This voicebank follows a permissive fan-use policy:
+允许事项（无需联系作者）：
 
-- ✅ Personal and fan creations allowed
-- ✅ No credit required
-- ✅ Can be used without character attribution
-- ✅ AI learning for personal use allowed
-- ❌ Commercial AI training prohibited
-- ❌ Distribution of original audio samples prohibited
+- ✅ 个人非商业使用
+- ✅ 同人创作翻唱、投稿、Remix
+- ✅ 不要求署名
+- ✅ 可不以角色名义使用
+- ✅ AI 辅助编曲/混音（禁止训练 AI 模型）
 
-See the [full guidelines](./Readme.txt) for details.
+禁止事项：
 
-## 📞 Contact
+- ❌ 分发原始 .wav 音频文件
+- ❌ 打包进收费产品
+- ❌ 制作二次声库
+- ❌ 商业 AI 产品训练
 
-- Email: heigao75@qq.com
-- Twitter: [@heigao_tickle](https://twitter.com/heigao_tickle)
-- Bilibili: [黑篙](https://space.bilibili.com/黑篙)
+详见：[使用协议全文](./Readme.txt)
 
-## 📁 Project Structure
+## 📞 联系方式
 
-```
-kuro-voicebank/
-├── index.html          # Chinese version (default)
-├── index-en.html       # English version
-├── index-jp.html       # Japanese version
-├── style.css           # Stylesheet
-├── assets/
-│   └── images/         # Character images and icons
-├── Readme.txt          # Full guidelines (Chinese)
-├── Readme_EN.txt       # Full guidelines (English)
-└── Readme_JP.txt       # Full guidelines (Japanese)
-```
+- Email：heigao75@qq.com
+- Twitter：[@heigao_tickle](https://twitter.com/heigao_tickle)
+- Bilibili：[黑篙](https://space.bilibili.com/695724697)
 
-## 🛠 Tech Stack
+---
 
-- Pure HTML5 + CSS3
-- No frameworks required
-- Google Fonts (Noto Sans)
-- GitHub Pages deployment
-
-## 📄 License
-
-This project is licensed under MIT License.
-
-Copyright © 2026 黑篙 (Heigao) All Rights Reserved.
+© 2026 黑篙 (Heigao) All Rights Reserved.

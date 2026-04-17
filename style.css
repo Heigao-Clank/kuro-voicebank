@@ -30,18 +30,18 @@
 
 /* ---------- Base ---------- */
 :root {
-  --primary: #7E9DBE;
-  --primary-dark: #5A7A9E;
-  --secondary: #66737A;
-  --accent-pink: #D4869A;
-  --accent-warm: #E3A96D;
-  --accent-orange: #DA804C;
-  --bg-top: #E8EDF3;
-  --bg-bottom: #D8E0EA;
-  --text-dark: #4A5A6A;
-  --text-light: #6B7B8B;
-  --text-muted: #8899AA;
-  --border: rgba(126, 157, 190, 0.2);
+  --primary: #6B8AAE;
+  --primary-dark: #4A6A8E;
+  --secondary: #566066;
+  --accent-pink: #C4768A;
+  --accent-warm: #D3995D;
+  --accent-orange: #CA704C;
+  --bg-top: #CBD3DC;
+  --bg-bottom: #BBC4CE;
+  --text-dark: #3A4A5A;
+  --text-light: #5B6B7B;
+  --text-muted: #7A8A9A;
+  --border: rgba(90, 120, 150, 0.25);
   --sidebar-width: 220px;
 }
 
@@ -71,7 +71,7 @@ body {
   left: 0;
   width: var(--sidebar-width);
   height: 100vh;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(220, 228, 235, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-right: 1px solid var(--border);
@@ -134,7 +134,7 @@ body {
 }
 
 .sidebar-nav a:hover {
-  background: rgba(126, 157, 190, 0.12);
+  background: rgba(90, 120, 150, 0.18);
   color: var(--primary);
 }
 
@@ -480,6 +480,13 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
+.hero-subtitle .vb-type {
+  font-family: 'Source Code Pro', 'Jost', monospace;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+}
+
 .hero-description {
   font-size: 1rem;
   color: var(--text-light);
@@ -781,6 +788,12 @@ a:hover {
   justify-content: center;
   flex-shrink: 0;
   font-size: 1.1rem;
+}
+
+.profile-icon svg,
+.profile-icon i {
+  color: rgba(255, 255, 255, 0.95) !important;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
 }
 
 .profile-label {
@@ -1301,11 +1314,11 @@ a:hover {
   right: 1rem;
   display: flex;
   gap: 0.3rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(200, 210, 220, 0.95);
   backdrop-filter: blur(10px);
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
   z-index: 1000;
   border: 1px solid var(--border);
   transition: opacity 0.3s;
@@ -1321,7 +1334,7 @@ a:hover {
 }
 
 .lang-switcher a:hover {
-  background: rgba(126, 157, 190, 0.15);
+  background: rgba(90, 120, 150, 0.2);
   color: var(--primary);
 }
 

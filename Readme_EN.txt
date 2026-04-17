@@ -21,12 +21,12 @@ Thank you for downloading UTAU Voicebank "Shang Wei Yin Kuro (熵尾音 クロ)"
 ※ This voicebank is copyrighted by the author.
 Derivative works created using this voicebank (such as lyrics, compositions, arrangement, tuning, etc.) belong to their respective creators, while the copyright of the voicebank itself and the character IP remains with the original author (黑篙 / Heigao).
 
-This is a single-scale VCV voicebank created from original recordings. As it is a personal production, there may be variations in volume, sound quality, and pronunciation. Please adjust the parameters as needed.
+This is a Japanese single-scale JA VCV voicebank created from original recordings. As it is a personal production, there may be variations in volume, sound quality, and pronunciation. Please adjust the parameters as needed.
 
 ---
 
 ## Voicebank Information
-Type: VCV
+Type: JA VCV
 Scale: B3 (Single Scale)
 Recommended Range: G2~C5
 Voice Character: Confident, Innocent
