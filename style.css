@@ -168,6 +168,15 @@ body {
   transform: translateY(-2px);
 }
 
+/* Bilibili specific hover - brand blue */
+.sidebar-sns-link.bilibili:hover {
+  background: #00A1D6;
+}
+
+.footer-sns a.bilibili:hover {
+  color: #00A1D6;
+}
+
 /* Mobile hamburger button */
 .sidebar-toggle {
   display: none;
