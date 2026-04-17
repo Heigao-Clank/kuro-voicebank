@@ -91,11 +91,10 @@ The following actions may be taken directly without contacting the author:
 ・Fan merchandise creation and sales (within personal activity scope)
 ・Using this voicebank as general voice material (without character attribution)
 
-◆ AI and Technical Support
-・Personal learning and research purposes for voice synthesis experiments
-  (such as singing synthesis, voice conversion, etc.)
-・Using AI tools for auxiliary arrangement and mixing of outputs
-  (Training AI models with this voicebank is prohibited)
+◆ Artificial Intelligence (AI) and Technical Support
+・Output Processing: You may use AI tools to perform assisted pitch correction, mixing, and other post-processing on audio (.wav) generated using this voicebank.
+・Private Training: You may use this voicebank for local, non-public personal voice synthesis experiments (such as private SVC model training), solely for personal vocal tuning assistance.
+・Strictly Prohibited: It is absolutely forbidden to publicly release, share, or sell trained model files (secondary voicebanks) online. It is strictly forbidden to upload this voicebank as a dataset to any public AI model.
 
 ◆ File Modification and Sharing
 ・Modifying and sharing Oto.ini and .frq files
@@ -178,13 +177,13 @@ Q: Can I use the voice as a regular sound resource?
 A: Yes. When not using it under the character name, no attribution is required.
 
 Q: Can I do AI learning/synthesis?
-A: Personal learning and research purposes for voice synthesis experiments are allowed. However, results must not be used for commercial AI products or derivative voicebanks.
+A: Local private model training is allowed, but public distribution or training public AI is strictly prohibited. Please refer to the "Artificial Intelligence (AI) and Technical Support" section above for details.
 
 Q: Do I need to report fan activities?
 A: No. Fan activities within scope may be conducted freely.
 
 Q: Can I use AI for pitch correction/mixing?
-A: Yes. As long as you are not training AI models with this voicebank.
+A: Yes. Please refer to the "Artificial Intelligence (AI) and Technical Support" section above for details.
 
 Q: What if I'm unsure whether something is allowed?
 A: Guiding principle: If it doesn't cause trouble for the author or the character, it's probably fine.
