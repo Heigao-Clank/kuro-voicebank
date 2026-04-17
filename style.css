@@ -50,7 +50,7 @@ body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-right: 1px solid var(--border);
-  z-index: 1001;
+  z-index: 1003;
   display: flex;
   flex-direction: column;
   padding: 1.5rem 0;
@@ -180,7 +180,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  z-index: 1002;
+  z-index: 999;
   cursor: pointer;
   align-items: center;
   justify-content: center;
