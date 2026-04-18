@@ -2,7 +2,7 @@
 
 # 熵尾音 クロ (Shang Wei Yin Kuro)
 
-**自信而懵懂的双尾狼兽人 — JA VCV 单音阶 UTAU 声库**
+**设定为双尾狼兽人的声库 — JA VCV 单音阶 UTAU**
 
 [![UTAU Voicebank](https://img.shields.io/badge/Platform-UTAU-7E9DBE?style=flat-square&logo=windows)](https://kuro-voicebank.pages.dev/)
 [![Version](https://img.shields.io/badge/Version-2026.4_Beta-blue?style=flat-square)](https://github.com/Heigao-Clank/kuro-voicebank/releases)
@@ -19,7 +19,7 @@
 ## 🌐 官方主页
 
 为了获得最佳的试听体验与最新的下载链接，请访问官方发布主页：
-👉 **[https://kuro-voicebank.pages.dev](https://kuro-voicebank.pages.dev)**
+👉 **[https://kuro-utau.heigao.me/](https://kuro-utau.heigao.me/)**
 
 ---
 
@@ -30,14 +30,15 @@
 * **收录语言：** 日语连续音 (`JA VCV`)
 * **收录音阶：** B3（单音阶）
 * **推荐音域：** G2 ~ C5
-* **推荐引擎：** `Worldline-R` (建议配合 `g`, `t` 参数进行音色微调)
+* **推荐引擎：** `Worldline-R`
 * **声线特征：** 自信、懵懂
 
 ### 💡 快速上手指南
 如果您使用的是 OpenUTAU：
-1. 将下载的声库压缩包拖入 OpenUTAU 窗口完成安装。
-2. 在音轨上选择 `熵尾音 クロ`。
-3. 将引擎 (Resampler) 切换为 `Worldline-R` 即可开始编辑。
+1. 将下载的声库压缩包拖入 OpenUTAU 窗口。
+2. 选择文本编码为 `utf-8`，歌手类型为utau，按指示完成安装。
+3. 在音轨上选择 `熵尾音 クロ`。
+4. 将引擎 (Resampler) 切换为 `Worldline-R` 即可开始编辑。
 
 ---
 
@@ -73,7 +74,7 @@
 
 ## ⚖️ 使用协议 (Usage Guidelines)
 
-本摘要仅供参考，详细条款请务必阅读网站上的 [完整协议](https://kuro-voicebank.pages.dev/#guidelines)。**使用本音源即表示您同意以下全部条款。**
+本摘要仅供参考，详细条款请务必阅读网站上的 [完整协议](https://kuro-utau.heigao.me/#guidelines)。**使用本音源即表示您同意以下全部条款。**
 
 <details>
 <summary><b>✅ 允许的事项 (无需授权即可进行)</b></summary>
