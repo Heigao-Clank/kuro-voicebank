@@ -434,6 +434,18 @@ a:hover {
   z-index: 1;
 }
 
+/* Character image - maintain aspect ratio */
+.hero-character {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
 .hero-visual-text {
   text-align: center;
   font-size: 0.7rem;
@@ -1387,13 +1399,21 @@ a:hover {
   .hero {
     flex-direction: column;
     text-align: center;
-    padding: 5rem 0 3rem;
+    padding: 5rem 1.5rem 3rem;
     gap: 2rem;
   }
   
   .hero-visual {
     flex: 0 0 auto;
-    max-width: 280px;
+    max-width: 320px;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .hero-character {
+    max-width: 260px;
+    width: 100%;
   }
   
   .hero-download {
@@ -1425,6 +1445,24 @@ a:hover {
 
   .hero-title {
     font-size: 1.5rem;
+  }
+
+  .hero-character {
+    max-width: 220px;
+    aspect-ratio: 3 / 4;
+    width: 100%;
+  }
+
+  .hero-visual {
+    padding: 0 0.5rem;
+  }
+
+  .hero-visual::before {
+    inset: -6px;
+  }
+
+  .hero-visual::after {
+    inset: -12px;
   }
   
   .section {

@@ -1,7 +1,7 @@
 # Usage Guidelines for "Shang Wei Yin Kuro (熵尾音 クロ)"
 
 日本語版は Readme_JP をご覧ください。
-中文版请参阅 Readme_CH。
+中文版请参阅 Readme.txt。
 
   UTAU Voicebank "Shang Wei Yin Kuro (熵尾音 クロ)"
   Version: 2026.4 beta
