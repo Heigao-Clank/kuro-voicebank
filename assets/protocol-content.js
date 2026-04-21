@@ -82,10 +82,10 @@ en:`<p><strong>Usage Guidelines for "Shang Wei Yin Kuro (熵尾音 クロ)"</str
                 recordings. As it is a personal production, there may be variations in volume, sound quality, and
                 pronunciation. Please adjust the parameters as needed.</p>
               <hr>
-              <h3>## Voicebank Information</h3>
+              <h3>■ Voicebank Information</h3>
               <p>Type: <span class="vb-type">JA VCV</span><br>Scale: B3 (Single Scale)<br>Recommended Range:
                 G2~C5<br>Voice Character: Confident, Innocent</p>
-              <h3>## Character Profile</h3>
+              <h3>■ Character Profile</h3>
               <p><strong>【Basic Information】</strong><br>Name: Shang Wei Yin Kuro (熵尾音 クロ)<br>Age: Approximately 17 /
                 Gender: Male / Height: Approximately 168cm / Species: Wolf</p>
               <p><strong>【Character Description】</strong><br>One of the independent sub-entities of an unknown
@@ -93,12 +93,12 @@ en:`<p><strong>Usage Guidelines for "Shang Wei Yin Kuro (熵尾音 クロ)"</str
                 and twin tails are natural features that change according to their state. Special favorite: Watermelon.
               </p>
               <p>※ Other character details may be freely added or used for fan creation.</p>
-              <h3>## Recommended Settings</h3>
+              <h3>■ Recommended Settings</h3>
               <p>Recommended Engine: Worldline-R (can be fine-tuned with g and t parameters).</p>
-              <h3>## Usage Notes</h3>
+              <h3>■ Usage Notes</h3>
               <p>There may be some variation between different phonemes.<br>It is recommended to use g and t parameters
                 appropriately to unify the timbre based on actual listening results.</p>
-              <h3>## Cautions</h3>
+              <h3>■ Cautions</h3>
               <p>・This voicebank is an amateur production and may have unstable pronunciation or connection
                 issues.<br>・Some sounds may require manual fine-tuning for more natural results.<br>・Please avoid using
                 the unmodified voicebank in extreme ranges or high-intensity songs.</p>
@@ -149,19 +149,19 @@ en:`<p><strong>Usage Guidelines for "Shang Wei Yin Kuro (熵尾音 クロ)"</str
               <p><strong>◆ Other</strong><br>・Commercial authorization requests outside fan activities<br>・Any
                 situations you are uncertain about</p>
               <hr>
-              <h3>Disclaimer</h3>
+              <h3>■ Disclaimer</h3>
               <p>・The author is not responsible for any content created using this voicebank, including but not limited
                 to content legality and copyright compliance.<br>・Using this voicebank means you agree to comply with
                 all terms of this agreement.<br>・The interpretation of this agreement and character-related settings is
                 based on the latest official information published by the author (黑篙 / Heigao).</p>
-              <h3>Agreement Validity and Termination</h3>
+              <h3>■ Agreement Validity and Termination</h3>
               <p>・If a user seriously violates the terms of this agreement, the author has the right to unilaterally
                 terminate the user's voicebank usage authorization.<br>・Even if the author stops publicly distributing
                 this voicebank in the future, users who have already obtained the voicebank must still comply with the
                 agreement version effective at the time of use.<br>・Significant changes to this agreement will not
                 affect actions completed before the changes take effect, and changes will be announced in advance.</p>
               <hr>
-              <h3>Contact Information</h3>
+              <h3>■ Contact Information</h3>
               <p>For questions, suggestions, or business inquiries, please contact the author:<br>Email:
                 heigao75@qq.com<br>Twitter/X: @heigao_tickle<br>Bilibili: 黑篙</p>
               <hr>
@@ -178,19 +178,19 @@ jp:`<p><strong>「熵尾音 クロ」利用ガイドライン</strong></p>
               <p>本音源はオリジナル録音に基づいて制作された日本語単音階<span class="vb-type">JA
                   VCV</span>ボイスバンクです。個人制作のため、音量、音質および発音に若干の差異がある場合があります。使用時に必要に応じてパラメータを調整してください。</p>
               <hr>
-              <h3>## 音源情報</h3>
+              <h3>■ 音源情報</h3>
               <p>形式：<span class="vb-type">JA VCV</span><br>音階：B3（単音階）<br>推奨音域：G2~C5<br>声質の特徴：自信に満ち、ぼんやりしている</p>
-              <h3>## キャラクター設定</h3>
+              <h3>■ キャラクター設定</h3>
               <p><strong>【基本情報】</strong><br>名前：熵尾音 クロ（熵尾小黑）<br>年齢：約17歳 / 性別：男性 / 身長：約168cm / 種族：狼</p>
               <p>
                 <strong>【キャラクター紹介】</strong><br>未知の天外来物の独立したサブエンティティの一つであり、居眠りをしがちで、行動は無意識に動かされることが多い。顔面の紋様と二尾は天生形成であり、状態に応じて変化する。特別な好みはスイカ。
               </p>
               <p>※その他の設定は自由に補足または二次創作に使用できます。</p>
-              <h3>## 推奨使用設定</h3>
+              <h3>■ 推奨使用設定</h3>
               <p>推奨エンジン：Worldline-R（g、tパラメータで音色を微調整可能）</p>
-              <h3>## 使用説明</h3>
+              <h3>■ 使用説明</h3>
               <p>各音素の間に若干の差異がある場合があります。<br>実際の聴感に合わせて、gとtパラメータを適切に用いて音色を統一することをお勧めします。</p>
-              <h3>## 注意事項</h3>
+              <h3>■ 注意事項</h3>
               <p>
                 ・本ボイスバンクは素人制作であり、発音が不安定だったり接続に問題がある場合があります。<br>・一部の音はより自然な結果を得るために手動で微調整が必要な場合があります。<br>・極端な音域や高強度曲目での未調整音源の使用は避けてください。
               </p>
@@ -222,27 +222,24 @@ jp:`<p><strong>「熵尾音 クロ」利用ガイドライン</strong></p>
               <h3>△ 作者に確認が必要な事項</h3>
               <p>以下の場合は事前に作者から許諾を受けてください：</p>
               <p><strong>◆
-                  商用使用</strong><br>・正式な商用シーンでの使用（上記個人的活動範囲内の同人頒布は除く）<br>・企業主導のPR動画、広告、代言人など<br>・商業レコード、ゲーム、音楽プラットフォームに収録された場合<br>・大規模な商用周りの制作と頒布
+                   商用使用</strong><br>・正式な商用シーンでの使用（上記個人的活動範囲内の同人頒布は除く）<br>・企業主導のPR動画、広告、イメージキャラクターなど<br>・商業レコード、ゲーム、音楽プラットフォームに収録された場合<br>・大規模な商用グッズの制作と頒布
               </p>
               <p><strong>◆ 特別な使用</strong><br>・VTuberアイコン使用<br>・ゲーム内臓音声使用<br>・企業/商用プロジェクト協力</p>
               <p><strong>◆ その他</strong><br>・同人以外の商用許諾申請<br>・不明な状況がある場合</p>
               <hr>
-              <h3>## 免責事項</h3>
+              <h3>■ 免責事項</h3>
               <p>
-                ・作者は本ボイスバンクを使用して制作されたコンテンツについて責任を負いません。<br>・本ボイスバンクの使用は、本規約のすべての条項に同意し遵守することを意味します。<br>・本規約およびキャラクター関連設定の説明は、作者（黒篙/Heigao）が公開発行した最新公式説明に基づきます。
+                ・作者は本ボイスバンクを使用して制作されたコンテンツについて責任を負いません。<br>・本ボイスバンクの使用は、本規約のすべての条項に同意し遵守することを意味します。<br>・本規約およびキャラクター関連設定の説明は、作者（黒篙/Heigao）が公表した最新公式説明に基づきます。
               </p>
-              <h3>## 規約の効力と終了</h3>
+              <h3>■ 規約の効力と終了</h3>
               <p>
                 ・ユーザーが本規約の条項に重大な違反があった場合、作者は当該ユーザーの音源使用許諾を一方的に終了する権利を有します。<br>・将来作者が本ボイスバンクの公開配布を停止した場合でも、既に音源を取得したユーザーは、使用時に有効な規約バージョンに従う必要があります。<br>・本規約の重大な変更は、変更前に完了した行為に影響を与えません。変更は事前に公告されます。
               </p>
               <hr>
-              <h3>連絡先</h3>
+              <h3>■ 連絡先</h3>
               <p>
                 ご質問、ご提案、商用お問い合わせがございましたら、作者までご連絡ください：<br>Email：heigao75@qq.com<br>Twitter/X：@heigao_tickle<br>Bilibili：黒篙
               </p>
               <hr>
               <p>© 黒篙 2026 All Rights Reserved.</p>`,
-};['zh','en','jp'].forEach(function(l){
-var el=document.getElementById('protocol-'+l);
-if(el)el.innerHTML='<div class="protocol-text">'+p[l]+'</div>';
-});})();
+};window._protocolData=p;(function(){var lang=document.documentElement.lang;var defaultLang=lang==='ja'?'jp':lang==='en'?'en':'zh';var el=document.getElementById('protocol-'+defaultLang);if(el)el.innerHTML='<div class="protocol-text">'+p[defaultLang]+'</div>';})();

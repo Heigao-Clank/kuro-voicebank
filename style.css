@@ -1190,8 +1190,28 @@ p .vb-type,
 }
 
 .guideline-list li.no::before {
-  content: '×';
-  color: var(--accent-pink);
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 0.4rem;
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+  background: linear-gradient(
+    45deg,
+    transparent 3.5px,
+    var(--accent-pink) 3.5px,
+    var(--accent-pink) 4.5px,
+    transparent 4.5px
+  ),
+  linear-gradient(
+    -45deg,
+    transparent 3.5px,
+    var(--accent-pink) 3.5px,
+    var(--accent-pink) 4.5px,
+    transparent 4.5px
+  );
 }
 
 .guideline-list li.ask::before {

@@ -89,7 +89,11 @@
       document.querySelectorAll('.protocol-tab').forEach(function(t){t.classList.remove('active');});
       document.querySelectorAll('.protocol-content').forEach(function(c){c.style.display='none';});
       this.classList.add('active');
-      document.getElementById('protocol-'+lang).style.display='block';
+      var el=document.getElementById('protocol-'+lang);
+      if(el&&!el.innerHTML.trim()){
+        el.innerHTML='<div class="protocol-text">'+(window._protocolData||{})[lang]+'</div>';
+      }
+      el.style.display='block';
     });
   });
 
@@ -100,9 +104,6 @@
   }
 
   var activePlayerIndex=-1;
-  var animIds={};
-  var barState=new Array(64);
-  for(var k=0;k<64;k++)barState[k]=0.05;
 
   function lerp(a,b,t){return a+(b-a)*t;}
 
@@ -156,28 +157,6 @@
     c.shadowBlur=0;
   }
 
-  function animLoop(canvas,idx,energyTarget){
-    var t=Date.now()/1000;
-    var smooth=[];
-    for(var i=0;i<64;i++){
-      var di=Math.abs(i-31.5)/31.5;
-      var envelope=Math.exp(-di*di*1.8);
-      var n1=smoothNoise(t*1.8+i*0.08,idx*99);
-      var n2=smoothNoise(t*3.6+i*0.15,idx*99+50);
-      var n3=smoothNoise(t*0.6+i*0.04,idx*99+100);
-      var wave=(n1*0.45+n2*0.35+n3*0.2)*envelope;
-      var target=wave*energyTarget;
-      barState[i]=lerp(barState[i],target,0.12);
-      smooth.push(barState[i]);
-    }
-    drawBars(canvas,smooth);
-    animIds[idx]=requestAnimationFrame(function(){animLoop(canvas,idx,energyTarget);});
-  }
-
-  function stopAnim(idx){
-    if(animIds[idx]){cancelAnimationFrame(animIds[idx]);delete animIds[idx];}
-  }
-
   var players=document.querySelectorAll('.demo-card');
   players.forEach(function(player){
     var audio=player.querySelector('audio');
@@ -188,10 +167,13 @@
     var timeEl=player.querySelector('.demo-time');
     var iconPlay=playBtn.querySelector('.icon-play');
     var iconPause=playBtn.querySelector('.icon-pause');
-    var source=audio.querySelector('source');
+    var source=audio?audio.querySelector('source'):null;
     var index=parseInt(player.getAttribute('data-index'));
     var currentEnergy=0.08;
     var seeking=false;
+    var barState=new Array(64);
+    for(var k=0;k<64;k++)barState[k]=0.05;
+    var rafId=null;
 
     function resizeCanvas(){
       var rect=canvas.parentElement.getBoundingClientRect();
@@ -204,6 +186,7 @@
     if(!source||!source.src){
       playBtn.style.opacity='0.3';
       playBtn.style.pointerEvents='none';
+      if(rafId)cancelAnimationFrame(rafId);
       return;
     }
 
@@ -214,12 +197,38 @@
           prev.querySelector('audio').pause();
           prev.querySelector('.icon-play').style.display='block';
           prev.querySelector('.icon-pause').style.display='none';
-          var pi=parseInt(prev.getAttribute('data-index'));
         }
       }
     }
 
-    animLoop(canvas,index,0.08);
+    function tick(){
+      var playing=activePlayerIndex===index&&!audio.paused;
+      var target=playing?0.75:0.08;
+      currentEnergy=lerp(currentEnergy,target,0.045);
+
+      var t=Date.now()/1000;
+      var smooth=[];
+      for(var i=0;i<64;i++){
+        var di=Math.abs(i-31.5)/31.5;
+        var envelope=Math.exp(-di*di*1.8);
+        var n1=smoothNoise(t*1.8+i*0.08,index*99);
+        var n2=smoothNoise(t*3.6+i*0.15,index*99+50);
+        var n3=smoothNoise(t*0.6+i*0.04,index*99+100);
+        var wave=(n1*0.45+n2*0.35+n3*0.2)*envelope;
+        var barTarget=wave*currentEnergy;
+        barState[i]=lerp(barState[i],barTarget,0.12);
+        smooth.push(barState[i]);
+      }
+      drawBars(canvas,smooth);
+
+      var delay=currentEnergy<0.15?80:0;
+      if(delay>0){
+        setTimeout(function(){rafId=requestAnimationFrame(tick);},delay);
+      }else{
+        rafId=requestAnimationFrame(tick);
+      }
+    }
+    rafId=requestAnimationFrame(tick);
 
     playBtn.addEventListener('click',function(){
       if(activePlayerIndex===index&&!audio.paused){
@@ -239,16 +248,6 @@
         iconPause.style.display='none';
       });
     });
-
-    function tick(){
-      var playing=activePlayerIndex===index&&!audio.paused;
-      var target=playing?0.75:0.08;
-      currentEnergy=lerp(currentEnergy,target,0.045);
-      stopAnim(index);
-      animLoop(canvas,index,currentEnergy);
-      requestAnimationFrame(tick);
-    }
-    tick();
 
     audio.addEventListener('timeupdate',function(){
       if(seeking)return;
