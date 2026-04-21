@@ -6,7 +6,8 @@
 /* ---------- Local Fonts (HarmonyOS Sans SC) ---------- */
 @font-face {
   font-family: 'HarmonyOS Sans SC';
-  src: url('font/subset/HarmonyOS_Sans_SC_Regular.woff') format('woff');
+  src: url('font/subset/HarmonyOS_Sans_SC_Regular.woff2') format('woff2'),
+       url('font/subset/HarmonyOS_Sans_SC_Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,7 +15,8 @@
 
 @font-face {
   font-family: 'HarmonyOS Sans SC';
-  src: url('font/subset/HarmonyOS_Sans_SC_Medium.woff') format('woff');
+  src: url('font/subset/HarmonyOS_Sans_SC_Medium.woff2') format('woff2'),
+       url('font/subset/HarmonyOS_Sans_SC_Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -22,7 +24,8 @@
 
 @font-face {
   font-family: 'HarmonyOS Sans SC';
-  src: url('font/subset/HarmonyOS_Sans_SC_Bold.woff') format('woff');
+  src: url('font/subset/HarmonyOS_Sans_SC_Bold.woff2') format('woff2'),
+       url('font/subset/HarmonyOS_Sans_SC_Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -112,10 +115,8 @@ body {
   
   /* 纵深 3D 层叠阴影：通过多层偏移制造浮雕立体效果 */
   text-shadow:
-    1px 1px 0 rgba(var(--primary-rgb), 0.1),
-    2px 2px 0 rgba(var(--primary-rgb), 0.08),
-    3px 3px 0 rgba(var(--primary-rgb), 0.05),
-    10px 10px 20px rgba(var(--primary-rgb), 0.2);
+    2px 2px 0 rgba(var(--primary-rgb), 0.06),
+    8px 8px 16px rgba(var(--primary-rgb), 0.18);
 }
 
 /* 完美循环动画设置 */
@@ -216,23 +217,50 @@ body {
   font-weight: 500;
   color: var(--text-light);
   text-decoration: none;
-  transition: all 0.2s;
   position: relative;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+  overflow: hidden;
+}
+
+.sidebar-nav a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: var(--primary);
+  opacity: 0;
+  transform: scaleX(0.3);
+  transform-origin: left center;
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
 }
 
 .sidebar-nav a:hover {
-  background: rgba(90, 120, 150, 0.18);
   color: var(--primary);
 }
 
+.sidebar-nav a:hover::before {
+  opacity: 0.08;
+  transform: scaleX(1);
+}
+
 .sidebar-nav a.active {
-  background: var(--primary);
   color: white;
   font-weight: 600;
+  padding-left: 1.15rem;
+}
+
+.sidebar-nav a.active::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.sidebar-nav a > * {
+  position: relative;
+  z-index: 1;
 }
 
 .sidebar-nav a.active:hover {
-  background: var(--primary-dark);
   color: white;
 }
 
@@ -278,6 +306,24 @@ body {
   background: var(--primary);
   color: white;
   transform: translateY(-2px);
+}
+
+.sidebar-site {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  margin: 0 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+  border-left: 2px solid rgba(var(--primary-rgb), 0.25);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.sidebar-site:hover {
+  color: var(--primary);
+  border-left-color: var(--primary);
 }
 
 /* Mobile hamburger button */
@@ -473,11 +519,12 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
-.vb-type {
-  font-family: 'Source Code Pro', 'Jost', monospace !important;
-  font-weight: 500 !important;
+p .vb-type,
+.voice-stat-value .vb-type {
+  font-family: 'Source Code Pro', 'Jost', monospace;
+  font-weight: 500;
   letter-spacing: 0.02em;
-  color: var(--primary) !important;
+  color: var(--primary);
 }
 
 .hero-description {
@@ -494,68 +541,65 @@ a:hover {
 }
 
 /* ---------- Demo Audio Section ---------- */
-.demo-container {
-  max-width: 600px;
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  max-width: 900px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  padding: 2rem;
-  border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
 }
 
-.demo-player {
+@media (max-width: 900px) {
+  .demo-grid { grid-template-columns: 1fr; max-width: 500px; }
+}
+
+.demo-card {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.demo-visualizer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  height: 80px;
-}
-
-.demo-bar {
-  width: 6px;
-  height: 30px;
-  background: linear-gradient(to top, var(--primary), var(--primary-dark));
-  border-radius: 3px;
-  opacity: 0.3;
+  gap: 0.8rem;
   transition: opacity 0.3s;
 }
 
-.demo-bar.active {
-  opacity: 0.7;
-  animation: demo-wave 0.5s ease-in-out infinite;
+.demo-card-disabled {
+  opacity: 0.45;
+  pointer-events: none;
 }
 
-.demo-bar:nth-child(1)  { animation-delay: 0s; }
-.demo-bar:nth-child(2)  { animation-delay: 0.05s; }
-.demo-bar:nth-child(3)  { animation-delay: 0.1s; }
-.demo-bar:nth-child(4)  { animation-delay: 0.15s; }
-.demo-bar:nth-child(5)  { animation-delay: 0.2s; }
-.demo-bar:nth-child(6)  { animation-delay: 0.25s; }
-.demo-bar:nth-child(7)  { animation-delay: 0.3s; }
-.demo-bar:nth-child(8)  { animation-delay: 0.35s; }
-.demo-bar:nth-child(9)  { animation-delay: 0.4s; }
-.demo-bar:nth-child(10) { animation-delay: 0.45s; }
-.demo-bar:nth-child(11) { animation-delay: 0.5s; }
-.demo-bar:nth-child(12) { animation-delay: 0.45s; }
-.demo-bar:nth-child(13) { animation-delay: 0.4s; }
-.demo-bar:nth-child(14) { animation-delay: 0.35s; }
-.demo-bar:nth-child(15) { animation-delay: 0.3s; }
-.demo-bar:nth-child(16) { animation-delay: 0.25s; }
-.demo-bar:nth-child(17) { animation-delay: 0.2s; }
-.demo-bar:nth-child(18) { animation-delay: 0.15s; }
-.demo-bar:nth-child(19) { animation-delay: 0.1s; }
-.demo-bar:nth-child(20) { animation-delay: 0.05s; }
+.demo-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
 
-@keyframes demo-wave {
-  0%, 100% { transform: scaleY(0.5); }
-  50% { transform: scaleY(1); }
+.demo-card-title {
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+}
+
+.demo-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.demo-canvas-wrap {
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(126, 157, 190, 0.08);
+}
+
+.demo-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .demo-controls {
@@ -565,8 +609,8 @@ a:hover {
 }
 
 .demo-play-btn {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: none;
   background: var(--primary);
@@ -594,6 +638,13 @@ a:hover {
   background: rgba(126, 157, 190, 0.2);
   border-radius: 3px;
   overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: height 0.2s;
+}
+
+.demo-progress:hover {
+  height: 10px;
 }
 
 .demo-progress-bar {
@@ -830,7 +881,6 @@ a:hover {
 
 .voice-stat {
   background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
   color: var(--text-dark);
   padding: 1.5rem 0.8rem;
   border-radius: 10px;
@@ -1319,7 +1369,6 @@ a:hover {
   display: flex;
   gap: 0.3rem;
   background: rgba(200, 210, 220, 0.95);
-  backdrop-filter: blur(10px);
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
