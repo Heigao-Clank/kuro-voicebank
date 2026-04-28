@@ -186,7 +186,7 @@ body {
 .sidebar-brand-link img {
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: 0;
   flex-shrink: 0;
 }
 
@@ -212,7 +212,7 @@ body {
   align-items: center;
   gap: 0.8rem;
   padding: 0.65rem 1rem;
-  border-radius: 10px;
+  border-radius: 0;
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-light);
@@ -226,7 +226,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 10px;
+  border-radius: 0;
   background: var(--primary);
   opacity: 0;
   transform: scaleX(0.3);
@@ -292,7 +292,7 @@ body {
   width: 34px;
   height: 34px;
   background: rgba(126, 157, 190, 0.1);
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -336,7 +336,7 @@ body {
   height: 44px;
   background: white;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 0;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   z-index: 999;
   cursor: pointer;
@@ -352,7 +352,7 @@ body {
   width: 20px;
   height: 2px;
   background: var(--text-dark);
-  border-radius: 2px;
+  border-radius: 0;
   transition: all 0.3s;
 }
 
@@ -417,7 +417,7 @@ a:hover {
 
 .hero-waveform .bar {
   width: 8px;
-  border-radius: 4px;
+  border-radius: 0;
   background: linear-gradient(to top, var(--primary), var(--primary-dark));
   animation: arc-pulse 1.2s ease-in-out infinite;
 }
@@ -459,7 +459,7 @@ a:hover {
   position: absolute;
   inset: -12px;
   border: 2px solid rgba(126, 157, 190, 0.15);
-  border-radius: 20px;
+  border-radius: 0;
   pointer-events: none;
 }
 
@@ -468,13 +468,13 @@ a:hover {
   position: absolute;
   inset: -24px;
   border: 1px dashed rgba(126, 157, 190, 0.08);
-  border-radius: 24px;
+  border-radius: 0;
   pointer-events: none;
 }
 
 .hero-visual img {
   width: 100%;
-  border-radius: 16px;
+  border-radius: 0;
   box-shadow: 0 15px 50px rgba(90, 120, 150, 0.2);
   position: relative;
   z-index: 1;
@@ -556,7 +556,7 @@ p .vb-type,
 .demo-card {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 1.2rem;
   border: 1px solid var(--border);
   display: flex;
@@ -591,7 +591,7 @@ p .vb-type,
 .demo-canvas-wrap {
   width: 100%;
   height: 80px;
-  border-radius: 10px;
+  border-radius: 0;
   overflow: hidden;
   background: rgba(126, 157, 190, 0.08);
 }
@@ -611,7 +611,7 @@ p .vb-type,
 .demo-play-btn {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 0;
   border: none;
   background: var(--primary);
   color: white;
@@ -636,7 +636,7 @@ p .vb-type,
   flex: 1;
   height: 6px;
   background: rgba(126, 157, 190, 0.2);
-  border-radius: 3px;
+  border-radius: 0;
   overflow: hidden;
   cursor: pointer;
   position: relative;
@@ -651,7 +651,7 @@ p .vb-type,
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-  border-radius: 3px;
+  border-radius: 0;
   transition: width 0.1s;
 }
 
@@ -670,7 +670,7 @@ p .vb-type,
   align-items: center;
   gap: 0.5rem;
   padding: 0.7rem 1.5rem;
-  border-radius: 25px;
+  border-radius: 0;
   font-size: 0.9rem;
   font-weight: 600;
   border: none;
@@ -792,7 +792,7 @@ p .vb-type,
 /* ---------- Cards ---------- */
 .card {
   background: white;
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1.5rem;
   box-shadow: 0 4px 20px rgba(90, 120, 150, 0.1);
   border: 1px solid var(--border);
@@ -826,7 +826,7 @@ p .vb-type,
   width: 36px;
   height: 36px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  border-radius: 8px;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -875,7 +875,7 @@ p .vb-type,
     var(--accent-warm) 50%,
     var(--primary) 100%
   );
-  border-radius: 2px;
+  border-radius: 0;
   opacity: 0.3;
 }
 
@@ -883,7 +883,7 @@ p .vb-type,
   background: rgba(255, 255, 255, 0.6);
   color: var(--text-dark);
   padding: 1.5rem 0.8rem;
-  border-radius: 10px;
+  border-radius: 0;
   border: 1px solid rgba(126, 157, 190, 0.15);
   position: relative;
   text-align: center;
@@ -904,7 +904,7 @@ p .vb-type,
   left: 20%;
   right: 20%;
   height: 2px;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0;
   background: var(--primary);
   opacity: 0.5;
 }
@@ -941,7 +941,7 @@ p .vb-type,
 
 .voice-spectrum-bar {
   width: 4px;
-  border-radius: 2px;
+  border-radius: 0;
   background: var(--primary);
   opacity: 0.4;
   animation: spectrum-pulse 1.5s ease-in-out infinite;
@@ -971,7 +971,7 @@ p .vb-type,
 /* Accordion - Teto Style */
 .accordion {
   background: white;
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(90, 120, 150, 0.1);
   border: 1px solid var(--border);
@@ -1071,7 +1071,7 @@ p .vb-type,
   padding: 0.6rem 1.2rem;
   background: var(--primary);
   color: white;
-  border-radius: 20px;
+  border-radius: 0;
   font-size: 0.85rem;
   font-weight: 600;
   transition: all 0.2s;
@@ -1088,7 +1088,7 @@ p .vb-type,
   padding: 0.6rem 1.2rem;
   background: var(--text-muted);
   color: white;
-  border-radius: 20px;
+  border-radius: 0;
   font-size: 0.85rem;
   font-weight: 500;
   opacity: 0.8;
@@ -1116,7 +1116,7 @@ p .vb-type,
 
 .guideline-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1.5rem;
   box-shadow: 0 4px 20px rgba(90, 120, 150, 0.1);
   border: 1px solid var(--border);
@@ -1134,7 +1134,7 @@ p .vb-type,
 .guideline-icon {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1227,7 +1227,7 @@ p .vb-type,
 
 .faq-item {
   background: white;
-  border-radius: 12px;
+  border-radius: 0;
   margin-bottom: 0.8rem;
   overflow: hidden;
   box-shadow: 0 2px 15px rgba(90, 120, 150, 0.08);
@@ -1314,7 +1314,7 @@ p .vb-type,
   gap: 0.8rem;
   background: white;
   padding: 0.8rem 1.5rem;
-  border-radius: 25px;
+  border-radius: 0;
   box-shadow: 0 3px 15px rgba(90, 120, 150, 0.1);
   border: 1px solid var(--border);
   transition: all 0.2s;
@@ -1329,7 +1329,7 @@ p .vb-type,
   width: 32px;
   height: 32px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent-pink) 100%);
-  border-radius: 8px;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1390,7 +1390,7 @@ p .vb-type,
   gap: 0.3rem;
   background: rgba(200, 210, 220, 0.95);
   padding: 0.4rem 0.8rem;
-  border-radius: 20px;
+  border-radius: 0;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
   z-index: 1000;
   border: 1px solid var(--border);
@@ -1399,7 +1399,7 @@ p .vb-type,
 
 .lang-switcher a {
   padding: 0.3rem 0.8rem;
-  border-radius: 15px;
+  border-radius: 0;
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -1561,7 +1561,7 @@ p .vb-type,
 .protocol-tabs {
   margin-top: 2.5rem;
   background: white;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(90, 120, 150, 0.12);
   border: 1px solid var(--border);
@@ -1650,7 +1650,7 @@ p .vb-type,
 
 .protocol-text::-webkit-scrollbar-thumb {
   background: rgba(126, 157, 190, 0.3);
-  border-radius: 3px;
+  border-radius: 0;
 }
 
 /* ---------- Utility ---------- */
