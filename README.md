@@ -1,6 +1,6 @@
 <div align="center">
 
-# 熵尾音 クロ (Shang Wei Yin Kuro)
+# 熵尾音 咬青 (Shang Wei Yin Kousei)
 
 **双尾狼兽人声库 — JA VCV 单音阶 UTAU**
 
@@ -37,7 +37,7 @@
 
 1. 将下载的声库压缩包拖入 [OpenUTAU](https://github.com/stakira/OpenUtau) 窗口
 2. 文本编码选 `utf-8`，歌手类型选 `utau`，按提示完成安装
-3. 音轨中选择 `熵尾音 クロ`，引擎切换为 `Worldline-R` 即可开始编辑
+3. 音轨中选择 `熵尾音 咬青`，引擎切换为 `Worldline-R` 即可开始编辑
 
 ---
 
@@ -47,7 +47,7 @@
 
 | 属性 | 设定 |
 | :--- | :--- |
-| 姓名 | 熵尾音 クロ（熵尾小黑） |
+| 姓名 | 熵尾音 咬青（熵尾咬青） |
 | 种族 | 狼（兽人） |
 | 性别 | 男性 |
 | 年龄 | 约 17 岁 |

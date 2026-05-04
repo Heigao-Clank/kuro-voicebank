@@ -1,9 +1,9 @@
-# Usage Guidelines for "Shang Wei Yin Kuro (熵尾音 クロ)"
+# Usage Guidelines for "Shang Wei Yin Kousei (熵尾音 咬青)"
 
 日本語版は Readme_JP をご覧ください。
 中文版请参阅 Readme.txt。
 
-  UTAU Voicebank "Shang Wei Yin Kuro (熵尾音 クロ)"
+  UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)"
   Version: 2026.4 beta
   Version Update Date: April 2026
   Copyright: 黑篙 (Heigao)
@@ -17,7 +17,7 @@
 
 🔷🔹 Introduction
 
-Thank you for downloading UTAU Voicebank "Shang Wei Yin Kuro (熵尾音 クロ)" Ver 2026.4 beta.
+Thank you for downloading UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)" Ver 2026.4 beta.
 ※ This voicebank is copyrighted by the author.
 Derivative works created using this voicebank (such as lyrics, compositions, arrangement, tuning, etc.) belong to their respective creators, while the copyright of the voicebank itself and the character IP remains with the original author (黑篙 / Heigao).
 
@@ -34,7 +34,7 @@ Voice Character: Confident, Innocent
 ## Character Profile
 
 【Basic Information】
-Name: Shang Wei Yin Kuro (熵尾音 クロ)
+Name: Shang Wei Yin Kousei (熵尾音 咬青)
 Age: Approximately 17
 Gender: Male
 Height: Approximately 168cm
@@ -63,7 +63,7 @@ It is recommended to use g and t parameters appropriately to unify the timbre ba
 
 ◆ About Character Attribution
 The use of this voicebank is optional in regard to character association. You may choose:
-1. Use it under the character name "Shang Wei Yin Kuro (熵尾音 クロ)"
+1. Use it under the character name "Shang Wei Yin Kousei (熵尾音 咬青)"
 2. Use it as a general voice resource (without revealing character identity)
 Both options are permitted.
 
@@ -102,7 +102,7 @@ The following actions may be taken directly without contacting the author:
 
 ◆ Attribution and Naming
 ・You may choose not to credit the character name or author
-・You may use the voicebank output without the "Shang Wei Yin Kuro (熵尾音 クロ)" name
+・You may use the voicebank output without the "Shang Wei Yin Kousei (熵尾音 咬青)" name
 
 ---
 

@@ -1,9 +1,9 @@
-🔷🔹「熵尾音 クロ」使用指南
+🔷🔹「熵尾音 咬青」使用指南
 
 日本語版は Readme_JP をご覧ください。
 For English version, please refer to Readme_EN.
 
-  UTAU音源「熵尾音 クロ」
+  UTAU音源「熵尾音 咬青」
   版本：2026.4 beta
   版本更新日期：2026年4月
   版权所有：黑篙
@@ -17,7 +17,7 @@ For English version, please refer to Readme_EN.
 
 🔷🔹正文
 
-感谢您下载UTAU音源「熵尾音 クロ」Ver2026.4 beta。
+感谢您下载UTAU音源「熵尾音 咬青」Ver2026.4 beta。
 ※本音源版权归作者所有。
 使用本音源制作的衍生作品，其相应的新增著作权（如词曲、编曲、调校等）归创作者本人所有，但本音源及角色基础IP的版权仍归原作者（黑篙）所有。
 
@@ -34,7 +34,7 @@ For English version, please refer to Readme_EN.
 ■ 角色设定
 
 【基础信息】
-名字：熵尾音 クロ（熵尾小黑）
+名字：熵尾音 咬青（熵尾咬青）
 年龄：约17岁
 性别：男性
 身高：约168cm
@@ -63,7 +63,7 @@ For English version, please refer to Readme_EN.
 
 ◆ 关于角色名义
 本音源的使用与角色形象的绑定是可选的。您可以选择：
-1. 以「熵尾音 クロ」的角色名义使用
+1. 以「熵尾音 咬青」的角色名义使用
 2. 作为通用语音素材使用（不暴露角色身份）
 以上两种方式均被允许。
 
@@ -102,7 +102,7 @@ For English version, please refer to Readme_EN.
 
 ◆ 署名与名义
 ・可以不使用角色名称或作者名作为署名
-・可以不以「熵尾音 クロ」的名义使用本音源的输出结果
+・可以不以「熵尾音 咬青」的名义使用本音源的输出结果
 
 ---
 
