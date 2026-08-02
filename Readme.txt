@@ -4,8 +4,8 @@
 For English version, please refer to Readme_EN.
 
   UTAU音源「熵尾音 咬青」
-  版本：2026.4 beta
-  版本更新日期：2026年4月
+  版本：2026.07
+  
   版权所有：黑篙
   ※本版本为测试版，音源与设定后续可能会有调整。
 
@@ -17,7 +17,7 @@ For English version, please refer to Readme_EN.
 
 🔷🔹正文
 
-感谢您下载UTAU音源「熵尾音 咬青」Ver2026.4 beta。
+感谢您下载UTAU音源「熵尾音 咬青」Ver 2026.07。
 ※本音源版权归作者所有。
 使用本音源制作的衍生作品，其相应的新增著作权（如词曲、编曲、调校等）归创作者本人所有，但本音源及角色基础IP的版权仍归原作者（黑篙）所有。
 
@@ -26,7 +26,7 @@ For English version, please refer to Readme_EN.
 ---
 
 ■ 音源信息
-形式：JA VCV
+形式：JA VCV&CVVC
 音阶：B3（单音阶）
 推荐音域：G2~C5
 声线特点：自信、懵懂
@@ -46,7 +46,7 @@ For English version, please refer to Readme_EN.
 ※ 其余设定可自由补充或进行二次创作。
 
 ■ 推荐使用设置
-推荐引擎：Worldline-R（可配合g、t参数进行音色微调）。
+推荐引擎：HiFi类引擎。
 
 ■ 使用说明
 本音源在不同音素之间可能存在一定差异，

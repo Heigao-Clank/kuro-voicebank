@@ -2,11 +2,11 @@
 
 # 熵尾音 咬青 (Shang Wei Yin Kousei)
 
-**双尾狼兽人声库 — JA VCV 单音阶 UTAU**
+**双尾狼兽人声库 — JA VCV&CVVC 单音阶 UTAU**
 
 [![UTAU Voicebank](https://img.shields.io/badge/Platform-UTAU-7E9DBE?style=flat-square&logo=windows)](https://kuro-voicebank.pages.dev/)
-[![Version](https://img.shields.io/badge/Version-2026.4_Beta-blue?style=flat-square)](https://github.com/Heigao-Clank/kuro-voicebank/releases)
-[![Language](https://img.shields.io/badge/Language-JA_VCV-orange?style=flat-square)](#-音源规格)
+[![Version](https://img.shields.io/badge/Version-2026.07-blue?style=flat-square)](https://github.com/Heigao-Clank/kuro-voicebank/releases)
+[![Language](https://img.shields.io/badge/Language-JA_VCV&CVVC-orange?style=flat-square)](#-音源规格)
 [![License](https://img.shields.io/badge/License-Custom-red?style=flat-square)](#-使用协议-usage-guidelines)
 [![Website](https://img.shields.io/badge/Website-kuro--voicebank.pages.dev-brightgreen?style=flat-square)](https://kuro-voicebank.pages.dev)
 
@@ -23,21 +23,21 @@
 
 ## 🎙️ 音源规格 (Voicebank Specs)
 
-基于原始录音制作的日语连续音（VCV）声库，推荐使用 [OpenUTAU](https://github.com/stakira/OpenUtau) 配合 Worldline-R 引擎。
+基于原始录音制作的日语连续音（VCV）声库，推荐使用 [OpenUTAU](https://github.com/stakira/OpenUtau) 配合 HiFi类引擎 引擎。
 
 | 项目 | 规格 |
 | :--- | :--- |
-| 收录方式 | 日语连续音 `JA VCV` |
+| 收录方式 | 日语连续音 `JA VCV&CVVC` |
 | 收录音阶 | B3（单音阶） |
 | 推荐音域 | G2 ~ C5 |
-| 推荐引擎 | `Worldline-R` |
+| 推荐引擎 | `HiFi类引擎` |
 | 声线特征 | 自信、懵懂 |
 
 ### 💡 快速上手
 
 1. 将下载的声库压缩包拖入 [OpenUTAU](https://github.com/stakira/OpenUtau) 窗口
 2. 文本编码选 `utf-8`，歌手类型选 `utau`，按提示完成安装
-3. 音轨中选择 `熵尾音 咬青`，引擎切换为 `Worldline-R` 即可开始编辑
+3. 音轨中选择 `熵尾音 咬青`，引擎切换为 `HiFi类引擎` 即可开始编辑
 
 ---
 

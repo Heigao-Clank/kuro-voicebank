@@ -4,7 +4,7 @@
 中文版请参阅 Readme.txt。
 
   UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)"
-  Version: 2026.4 beta
+  Version: 2026.07
   Version Update Date: April 2026
   Copyright: 黑篙 (Heigao)
   ※ This is a beta version; voicebank and character details may be adjusted in the future.
@@ -17,16 +17,16 @@
 
 🔷🔹 Introduction
 
-Thank you for downloading UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)" Ver 2026.4 beta.
+Thank you for downloading UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)" Ver 2026.07.
 ※ This voicebank is copyrighted by the author.
 Derivative works created using this voicebank (such as lyrics, compositions, arrangement, tuning, etc.) belong to their respective creators, while the copyright of the voicebank itself and the character IP remains with the original author (黑篙 / Heigao).
 
-This is a Japanese single-scale JA VCV voicebank created from original recordings. As it is a personal production, there may be variations in volume, sound quality, and pronunciation. Please adjust the parameters as needed.
+This is a Japanese single-scale JA VCV&CVVC voicebank created from original recordings. As it is a personal production, there may be variations in volume, sound quality, and pronunciation. Please adjust the parameters as needed.
 
 ---
 
 ## Voicebank Information
-Type: JA VCV
+Type: JA VCV&CVVC
 Scale: B3 (Single Scale)
 Recommended Range: G2~C5
 Voice Character: Confident, Innocent
@@ -46,7 +46,7 @@ One of the independent sub-entities of an unknown extraterrestrial being. Prone 
 ※ Other character details may be freely added or used for fan creation.
 
 ## Recommended Settings
-Recommended Engine: Worldline-R (can be fine-tuned with g and t parameters).
+Recommended Engine: HiFi-class engine.
 
 ## Usage Notes
 There may be some variation between different phonemes.

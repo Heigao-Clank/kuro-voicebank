@@ -33,20 +33,20 @@
 
 /* ---------- Base ---------- */
 :root {
-  --primary: #6B8AAE;
-  --primary-rgb: 107, 138, 174; /* 用于透明度计算的 RGB 值 */
-  --primary-dark: #4A6A8E;
-  --primary-dark-rgb: 74, 106, 142;
-  --secondary: #566066;
-  --accent-pink: #C4768A;
-  --accent-warm: #D3995D;
-  --accent-orange: #CA704C;
-  --bg-top: #CBD3DC;
-  --bg-bottom: #BBC4CE;
-  --text-dark: #3A4A5A;
-  --text-light: #5B6B7B;
-  --text-muted: #7A8A9A;
-  --border: rgba(90, 120, 150, 0.25);
+  --primary: #6A70AC;
+  --primary-rgb: 106, 112, 172; /* 用于透明度计算的 RGB 值 */
+  --primary-dark: #4F5386;
+  --primary-dark-rgb: 79, 83, 134;
+  --secondary: #785D7A;
+  --accent-pink: #A85672;
+  --accent-warm: #A85672;
+  --accent-orange: #8A4258;
+  --bg-top: #D6D8E6;
+  --bg-bottom: #C9CBDD;
+  --text-dark: #3D3F5C;
+  --text-light: #5A5C78;
+  --text-muted: #6E7086;
+  --border: rgba(100, 96, 167, 0.25);
   --sidebar-width: 220px;
 }
 
@@ -159,7 +159,7 @@ body {
   left: 0;
   width: var(--sidebar-width);
   height: 100vh;
-  background: rgba(220, 228, 235, 0.92);
+  background: rgba(228, 228, 240, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-right: 1px solid var(--border);
@@ -291,7 +291,7 @@ body {
 .sidebar-sns-link {
   width: 34px;
   height: 34px;
-  background: rgba(126, 157, 190, 0.1);
+  background: rgba(106, 112, 172, 0.1);
   border-radius: 0;
   display: flex;
   align-items: center;
@@ -458,7 +458,7 @@ a:hover {
   content: '';
   position: absolute;
   inset: -12px;
-  border: 2px solid rgba(126, 157, 190, 0.15);
+  border: 2px solid rgba(106, 112, 172, 0.15);
   border-radius: 0;
   pointer-events: none;
 }
@@ -467,7 +467,7 @@ a:hover {
   content: '';
   position: absolute;
   inset: -24px;
-  border: 1px dashed rgba(126, 157, 190, 0.08);
+  border: 1px dashed rgba(106, 112, 172, 0.08);
   border-radius: 0;
   pointer-events: none;
 }
@@ -475,7 +475,7 @@ a:hover {
 .hero-visual img {
   width: 100%;
   border-radius: 0;
-  box-shadow: 0 15px 50px rgba(90, 120, 150, 0.2);
+  box-shadow: 0 15px 50px rgba(79, 83, 134, 0.2);
   position: relative;
   z-index: 1;
 }
@@ -593,7 +593,7 @@ p .vb-type,
   height: 80px;
   border-radius: 0;
   overflow: hidden;
-  background: rgba(126, 157, 190, 0.08);
+  background: rgba(106, 112, 172, 0.08);
 }
 
 .demo-canvas {
@@ -635,7 +635,7 @@ p .vb-type,
 .demo-progress {
   flex: 1;
   height: 6px;
-  background: rgba(126, 157, 190, 0.2);
+  background: rgba(106, 112, 172, 0.2);
   border-radius: 0;
   overflow: hidden;
   cursor: pointer;
@@ -794,64 +794,140 @@ p .vb-type,
   background: white;
   border-radius: 0;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(90, 120, 150, 0.1);
+  box-shadow: 0 4px 20px rgba(79, 83, 134, 0.1);
   border: 1px solid var(--border);
   transition: all 0.3s;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(90, 120, 150, 0.15);
+  box-shadow: 0 8px 30px rgba(79, 83, 134, 0.15);
 }
 
-/* ---------- Profile Grid ---------- */
-.profile-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+/* ---------- Profile Sheet (Character Card) ---------- */
+.profile-sheet {
+  max-width: 680px;
+  margin: 0 auto;
+  background: white;
+  padding: 2.4rem 2.8rem;
+  box-shadow: 0 4px 24px rgba(79, 83, 134, 0.1);
+  border: 1px solid var(--border);
 }
 
-.profile-item {
+.profile-name {
+  font-family: 'Jost', 'Zen Kaku Gothic New', 'HarmonyOS Sans SC', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 2px;
+  margin-bottom: 0.3rem;
+}
+
+.profile-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+}
+
+.profile-sub .sep {
+  color: var(--primary);
+  margin: 0 0.35rem;
+  font-weight: 500;
+}
+
+.profile-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--primary) 30%,
+    var(--primary) 70%,
+    transparent 100%
+  );
+  opacity: 0.35;
+  margin: 0 0 1.6rem;
+}
+
+.profile-flavor {
+  margin: 0 0 1.4rem;
+  padding: 0.9rem 0 0.9rem 1rem;
+  border-left: 3px solid var(--primary);
+  background: rgba(106, 112, 172, 0.04);
+  font-size: 0.92rem;
+  color: var(--text-light);
+  line-height: 2;
+}
+
+.profile-flavor p {
+  margin: 0;
+}
+
+.profile-detail {
   display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
   margin-bottom: 1rem;
 }
 
-.profile-item:last-child {
-  margin-bottom: 0;
-}
-
-.profile-icon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  border-radius: 0;
+.profile-detail-row {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.profile-detail-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary-dark);
   flex-shrink: 0;
-  font-size: 1.1rem;
 }
 
-.profile-icon svg,
-.profile-icon i {
-  color: rgba(255, 255, 255, 0.95) !important;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
+.profile-detail-label::after {
+  content: ':';
 }
 
+.profile-detail-value {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.profile-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
+  padding-top: 0.8rem;
+  border-top: 1px dotted var(--border);
+}
+
+/* Contact section detail labels (reuses profile- naming from old layout) */
 .profile-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .profile-value {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-dark);
   font-weight: 500;
 }
+
+@media (max-width: 600px) {
+  .profile-sheet {
+    padding: 1.8rem 1.4rem;
+  }
+  .profile-name {
+    font-size: 1.5rem;
+  }
+  .profile-detail {
+    gap: 0.4rem 1.2rem;
+  }
+}
+
 
 /* ---------- Voice Stats (DAW/Spectrum Style) ---------- */
 .voice-grid {
@@ -884,16 +960,16 @@ p .vb-type,
   color: var(--text-dark);
   padding: 1.5rem 0.8rem;
   border-radius: 0;
-  border: 1px solid rgba(126, 157, 190, 0.15);
+  border: 1px solid rgba(106, 112, 172, 0.15);
   position: relative;
   text-align: center;
   transition: all 0.25s;
 }
 
 .voice-stat:hover {
-  background: rgba(126, 157, 190, 0.12);
+  background: rgba(106, 112, 172, 0.12);
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(126, 157, 190, 0.15);
+  box-shadow: 0 8px 24px rgba(106, 112, 172, 0.15);
 }
 
 /* Top accent line per stat card */
@@ -973,7 +1049,7 @@ p .vb-type,
   background: white;
   border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(90, 120, 150, 0.1);
+  box-shadow: 0 4px 20px rgba(79, 83, 134, 0.1);
   border: 1px solid var(--border);
 }
 
@@ -987,7 +1063,7 @@ p .vb-type,
 }
 
 .accordion-title:hover {
-  background: rgba(126, 157, 190, 0.05);
+  background: rgba(106, 112, 172, 0.05);
 }
 
 .accordion-title-inner {
@@ -1118,7 +1194,7 @@ p .vb-type,
   background: white;
   border-radius: 0;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(90, 120, 150, 0.1);
+  box-shadow: 0 4px 20px rgba(79, 83, 134, 0.1);
   border: 1px solid var(--border);
 }
 
@@ -1143,17 +1219,17 @@ p .vb-type,
 }
 
 .guideline-icon-ok {
-  background: linear-gradient(135deg, #A8D8B9 0%, #7EC88B 100%);
+  background: linear-gradient(135deg, #8FB8BA 0%, #6C9EA1 100%);
   color: white;
 }
 
 .guideline-icon-no {
-  background: linear-gradient(135deg, #E8B4B8 0%, #D4869A 100%);
+  background: linear-gradient(135deg, #C98A99 0%, #A85672 100%);
   color: white;
 }
 
 .guideline-icon-ask {
-  background: linear-gradient(135deg, #E8D8B0 0%, #D4A86C 100%);
+  background: linear-gradient(135deg, #9A829A 0%, #785D7A 100%);
   color: white;
 }
 
@@ -1216,7 +1292,7 @@ p .vb-type,
 
 .guideline-list li.ask::before {
   content: '?';
-  color: var(--accent-warm);
+  color: var(--secondary);
 }
 
 /* ---------- FAQ Section ---------- */
@@ -1230,7 +1306,7 @@ p .vb-type,
   border-radius: 0;
   margin-bottom: 0.8rem;
   overflow: hidden;
-  box-shadow: 0 2px 15px rgba(90, 120, 150, 0.08);
+  box-shadow: 0 2px 15px rgba(79, 83, 134, 0.08);
   border: 1px solid var(--border);
 }
 
@@ -1246,7 +1322,7 @@ p .vb-type,
 }
 
 .faq-question:hover {
-  background: rgba(126, 157, 190, 0.05);
+  background: rgba(106, 112, 172, 0.05);
 }
 
 .faq-icon {
@@ -1315,14 +1391,14 @@ p .vb-type,
   background: white;
   padding: 0.8rem 1.5rem;
   border-radius: 0;
-  box-shadow: 0 3px 15px rgba(90, 120, 150, 0.1);
+  box-shadow: 0 3px 15px rgba(79, 83, 134, 0.1);
   border: 1px solid var(--border);
   transition: all 0.2s;
 }
 
 .contact-item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 25px rgba(90, 120, 150, 0.15);
+  box-shadow: 0 6px 25px rgba(79, 83, 134, 0.15);
 }
 
 .contact-icon {
@@ -1339,7 +1415,7 @@ p .vb-type,
 
 /* ---------- Footer (已还原为最初清爽的浅色透明渐变) ---------- */
 .footer {
-  background: linear-gradient(180deg, transparent 0%, rgba(126, 157, 190, 0.08) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(106, 112, 172, 0.08) 100%);
   padding: 3rem 0 2rem;
   margin-top: 4rem;
 }
@@ -1388,7 +1464,7 @@ p .vb-type,
   right: 1rem;
   display: flex;
   gap: 0.3rem;
-  background: rgba(200, 210, 220, 0.95);
+  background: rgba(216, 216, 232, 0.95);
   padding: 0.4rem 0.8rem;
   border-radius: 0;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
@@ -1407,7 +1483,7 @@ p .vb-type,
 }
 
 .lang-switcher a:hover {
-  background: rgba(90, 120, 150, 0.2);
+  background: rgba(79, 83, 134, 0.2);
   color: var(--primary);
 }
 
@@ -1563,14 +1639,14 @@ p .vb-type,
   background: white;
   border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(90, 120, 150, 0.12);
+  box-shadow: 0 4px 24px rgba(79, 83, 134, 0.12);
   border: 1px solid var(--border);
 }
 
 .protocol-tab-bar {
   display: flex;
   border-bottom: 1px solid var(--border);
-  background: rgba(126, 157, 190, 0.04);
+  background: rgba(106, 112, 172, 0.04);
 }
 
 .protocol-tab {
@@ -1590,7 +1666,7 @@ p .vb-type,
 
 .protocol-tab:hover {
   color: var(--primary);
-  background: rgba(126, 157, 190, 0.06);
+  background: rgba(106, 112, 172, 0.06);
 }
 
 .protocol-tab.active {
@@ -1628,7 +1704,7 @@ p .vb-type,
   color: var(--primary);
   margin: 1.2rem 0 0.5rem;
   padding-bottom: 0.3rem;
-  border-bottom: 1px solid rgba(126, 157, 190, 0.15);
+  border-bottom: 1px solid rgba(106, 112, 172, 0.15);
 }
 
 .protocol-text h3:first-child {
@@ -1649,7 +1725,7 @@ p .vb-type,
 }
 
 .protocol-text::-webkit-scrollbar-thumb {
-  background: rgba(126, 157, 190, 0.3);
+  background: rgba(106, 112, 172, 0.3);
   border-radius: 0;
 }
 

@@ -133,13 +133,13 @@
       var y=(h-barH)/2;
       var r=barW/2;
 
-      c.shadowColor='rgba(100,150,200,'+(v*0.25)+')';
+      c.shadowColor='rgba(120,126,200,'+(v*0.25)+')';
       c.shadowBlur=v*6;
 
       var grad=c.createLinearGradient(0,y,0,y+barH);
-      grad.addColorStop(0,'rgba(130,170,220,'+(0.15+v*0.55)+')');
-      grad.addColorStop(0.5,'rgba(110,155,210,'+(0.1+v*0.65)+')');
-      grad.addColorStop(1,'rgba(90,135,195,'+(0.15+v*0.55)+')');
+      grad.addColorStop(0,'rgba(146,152,212,'+(0.15+v*0.55)+')');
+      grad.addColorStop(0.5,'rgba(126,132,198,'+(0.1+v*0.65)+')');
+      grad.addColorStop(1,'rgba(106,112,180,'+(0.15+v*0.55)+')');
       c.fillStyle=grad;
 
       c.beginPath();

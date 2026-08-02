@@ -1,22 +1,22 @@
 (function(){var p={
 zh:`<p><strong>「熵尾音 咬青」使用指南</strong></p>
               <hr>
-              <p><strong>UTAU音源「熵尾音 咬青」</strong><br>版本：2026.4 beta<br>版权所有：黑篙<br></p>
+              <p><strong>UTAU音源「熵尾音 咬青」</strong><br>版本：2026.07<br>版权所有：黑篙<br></p>
               <p>全流程制作者/负责人：黑篙<br>※ 本协议可能会在不通知的情况下更新。请定期查看最新版本。</p>
               <hr>
               <h3>正文</h3>
-              <p>感谢您下载UTAU音源「熵尾音 咬青」Ver2026.4 beta。<br>※
+              <p>感谢您下载UTAU音源「熵尾音 咬青」Ver 2026.07。<br>※
                 本音源版权归作者所有。<br>使用本音源制作的衍生作品，其相应的新增著作权（如词曲、编曲、调校等）归创作者本人所有，但本音源及角色基础IP的版权仍归原作者（黑篙）所有。</p>
-              <p>本音源为基于原始录音制作的日语音阶<span class="vb-type">JA VCV</span>音源。由于为个人制作，音量、音质及发声可能存在一定差异，请在使用时根据需要自行调整参数。</p>
+              <p>本音源为基于原始录音制作的日语音阶<span class="vb-type">JA VCV&CVVC</span>音源。由于为个人制作，音量、音质及发声可能存在一定差异，请在使用时根据需要自行调整参数。</p>
               <hr>
               <h3>■ 音源信息</h3>
-              <p>形式：<span class="vb-type">JA VCV</span><br>音阶：B3（单音阶）<br>推荐音域：G2~C5<br>声线特点：自信、懵懂</p>
+              <p>形式：<span class="vb-type">JA VCV&CVVC</span><br>音阶：B3（单音阶）<br>推荐音域：G2~C5<br>声线特点：自信、懵懂</p>
               <h3>■ 角色设定</h3>
               <p><strong>【基础信息】</strong><br>名字：熵尾音 咬青（熵尾咬青）<br>年龄：约17岁 / 性别：男性 / 身高：约168cm / 种族：狼</p>
               <p><strong>【角色简介】</strong><br>未知天外来物的其中一个独立子体，容易打瞌睡，行动常由无意识驱动。面纹与双尾为天生形成，会随状态变化。特殊喜好是西瓜。</p>
               <p>※ 其余设定可自由补充或进行二次创作。</p>
               <h3>■ 推荐使用设置</h3>
-              <p>推荐引擎：Worldline-R（可配合g、t参数进行音色微调）。</p>
+              <p>推荐引擎：HiFi类引擎。</p>
               <h3>■ 使用说明</h3>
               <p>本音源在不同音素之间可能存在一定差异，建议根据实际听感适当使用g与t参数统一音色。</p>
               <h3>■ 注意事项</h3>
@@ -67,23 +67,23 @@ zh:`<p><strong>「熵尾音 咬青」使用指南</strong></p>
               <p>© 黑篙 2026 All Rights Reserved.</p>`,
 en:`<p><strong>Usage Guidelines for "Shang Wei Yin Kousei (熵尾音 咬青)"</strong></p>
               <hr>
-              <p><strong>UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)"</strong><br>Version: 2026.4 beta<br>Copyright: 黑篙
+              <p><strong>UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)"</strong><br>Version: 2026.07<br>Copyright: 黑篙
                 (Heigao)<br>※ This is a beta version; voicebank and character details may be adjusted in the future.</p>
               <p>Creator/Producer: 黑篙 (Heigao)<br>※ This agreement may be updated without prior notice. Please check for
                 the latest version regularly.</p>
               <hr>
               <h3>Introduction</h3>
-              <p>Thank you for downloading UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)" Ver 2026.4 beta.<br>※ This
+              <p>Thank you for downloading UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)" Ver 2026.07.<br>※ This
                 voicebank is copyrighted by the author.<br>Derivative works created using this voicebank (such as
                 lyrics, compositions, arrangement, tuning, etc.) belong to their respective creators, while the
                 copyright of the voicebank itself and the character IP remains with the original author (黑篙 / Heigao).
               </p>
-              <p>This is a Japanese single-scale <span class="vb-type">JA VCV</span> voicebank created from original
+              <p>This is a Japanese single-scale <span class="vb-type">JA VCV&CVVC</span> voicebank created from original
                 recordings. As it is a personal production, there may be variations in volume, sound quality, and
                 pronunciation. Please adjust the parameters as needed.</p>
               <hr>
               <h3>■ Voicebank Information</h3>
-              <p>Type: <span class="vb-type">JA VCV</span><br>Scale: B3 (Single Scale)<br>Recommended Range:
+              <p>Type: <span class="vb-type">JA VCV&CVVC</span><br>Scale: B3 (Single Scale)<br>Recommended Range:
                 G2~C5<br>Voice Character: Confident, Innocent</p>
               <h3>■ Character Profile</h3>
               <p><strong>【Basic Information】</strong><br>Name: Shang Wei Yin Kousei (熵尾音 咬青)<br>Age: Approximately 17 /
@@ -94,7 +94,7 @@ en:`<p><strong>Usage Guidelines for "Shang Wei Yin Kousei (熵尾音 咬青)"</s
               </p>
               <p>※ Other character details may be freely added or used for fan creation.</p>
               <h3>■ Recommended Settings</h3>
-              <p>Recommended Engine: Worldline-R (can be fine-tuned with g and t parameters).</p>
+              <p>Recommended Engine: HiFi-class engine.</p>
               <h3>■ Usage Notes</h3>
               <p>There may be some variation between different phonemes.<br>It is recommended to use g and t parameters
                 appropriately to unify the timbre based on actual listening results.</p>
@@ -168,18 +168,17 @@ en:`<p><strong>Usage Guidelines for "Shang Wei Yin Kousei (熵尾音 咬青)"</s
               <p>© 黑篙 2026 All Rights Reserved.</p>`,
 jp:`<p><strong>「熵尾音 咬青」利用ガイドライン</strong></p>
               <hr>
-              <p><strong>UTAUボイスバンク「熵尾音 咬青」</strong><br>バージョン：2026.4 beta<br>Copyright：黒篙（Heigao）<br></p>
+              <p><strong>UTAUボイスバンク「熵尾音 咬青」</strong><br>バージョン：2026.07<br>Copyright：黒篙（Heigao）<br></p>
               <p>全工程制作者/責任者：黒篙（Heigao）<br>※本規約は予告なしに変更される場合があります。最新版を定期的にご確認ください。</p>
               <hr>
               <h3>はじめに</h3>
-              <p>UTAUボイスバンク「熵尾音 咬青」Ver2026.4
+              <p>UTAUボイスバンク「熵尾音 咬青」Ver 2026.07
                 betaをダウンロードしていただきありがとうございます。<br>※本ボイスバンクの著作権は作者に帰属します。<br>本ボイスバンクを使用して制作された二次創作作品の新設著作権（作詞、作曲、編曲、歌い調整など）は制作者に帰属しますが、本ボイスバンクおよびキャラクター基本IPの著作権は原作者（黒篙/Heigao）に帰属します。
               </p>
-              <p>本音源はオリジナル録音に基づいて制作された日本語単音階<span class="vb-type">JA
-                  VCV</span>ボイスバンクです。個人制作のため、音量、音質および発音に若干の差異がある場合があります。使用時に必要に応じてパラメータを調整してください。</p>
+              <p>本音源はオリジナル録音に基づいて制作された日本語単音階<span class="vb-type">JA VCV&amp;CVVC</span>ボイスバンクです。個人制作のため、音量、音質および発音に若干の差異がある場合があります。使用時に必要に応じてパラメータを調整してください。</p>
               <hr>
               <h3>■ 音源情報</h3>
-              <p>形式：<span class="vb-type">JA VCV</span><br>音階：B3（単音階）<br>推奨音域：G2~C5<br>声質の特徴：自信に満ち、ぼんやりしている</p>
+              <p>形式：<span class="vb-type">JA VCV&CVVC</span><br>音階：B3（単音階）<br>推奨音域：G2~C5<br>声質の特徴：自信に満ち、ぼんやりしている</p>
               <h3>■ キャラクター設定</h3>
               <p><strong>【基本情報】</strong><br>名前：熵尾音 咬青（熵尾咬青）<br>年齢：約17歳 / 性別：男性 / 身長：約168cm / 種族：狼</p>
               <p>
@@ -187,7 +186,7 @@ jp:`<p><strong>「熵尾音 咬青」利用ガイドライン</strong></p>
               </p>
               <p>※その他の設定は自由に補足または二次創作に使用できます。</p>
               <h3>■ 推奨使用設定</h3>
-              <p>推奨エンジン：Worldline-R（g、tパラメータで音色を微調整可能）</p>
+              <p>推奨エンジン：HiFiクラスエンジン</p>
               <h3>■ 使用説明</h3>
               <p>各音素の間に若干の差異がある場合があります。<br>実際の聴感に合わせて、gとtパラメータを適切に用いて音色を統一することをお勧めします。</p>
               <h3>■ 注意事項</h3>
