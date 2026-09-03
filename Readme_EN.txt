@@ -1,13 +1,13 @@
-# Usage Guidelines for "Shang Wei Yin Kousei (熵尾音 咬青)"
+# Usage Guidelines for "熵尾音 こうせい (Kousei)"
 
 日本語版は Readme_JP をご覧ください。
 中文版请参阅 Readme.txt。
 
-  UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)"
-  Version: 2026.07
-  Version Update Date: April 2026
+  UTAU Voicebank "熵尾音 こうせい (Kousei)"
+  Version: V1
+  Version Update Date: September 2026
   Copyright: 黑篙 (Heigao)
-  ※ This is a beta version; voicebank and character details may be adjusted in the future.
+  ※ This is a test version; the voicebank and character details may be adjusted in the future.
 
   Creator/Producer: 黑篙 (Heigao)
   ※ This agreement may be updated without prior notice. Please check for the latest version regularly.
@@ -17,40 +17,50 @@
 
 🔷🔹 Introduction
 
-Thank you for downloading UTAU Voicebank "Shang Wei Yin Kousei (熵尾音 咬青)" Ver 2026.07.
+Thank you for downloading UTAU Voicebank "熵尾音 こうせい (Kousei)" V1.
 ※ This voicebank is copyrighted by the author.
 Derivative works created using this voicebank (such as lyrics, compositions, arrangement, tuning, etc.) belong to their respective creators, while the copyright of the voicebank itself and the character IP remains with the original author (黑篙 / Heigao).
 
-This is a Japanese single-scale JA VCV&CVVC voicebank created from original recordings. As it is a personal production, there may be variations in volume, sound quality, and pronunciation. Please adjust the parameters as needed.
+This is a single-scale CVVC & VCV voicebank with three voice types, created from original recordings. As it is a personal production, there may be variations in volume, sound quality, and pronunciation. Please adjust the parameters as needed.
 
 ---
 
 ## Voicebank Information
-Type: JA VCV&CVVC
+Type: JA CVVC & VCV
 Scale: B3 (Single Scale)
-Recommended Range: G2~C5
-Voice Character: Confident, Innocent
+Recommended Range: D2~C5
+Voice Character: Confident, Innocent, Dreamy
+
+## Usage Instructions
+Recommended Engine: HifiUtau (for the best voicebank experience).
+Engine GitHub: https://github.com/xiaobaijunya/HiFiUTAU-engine
+
+The three voice types — Real Voice, Falsetto, and Soft Voice — are distributed across the following voicebanks (all pitched at B3):
+  Main (combined main voicebank): Real Voice for A#4 and below; Falsetto for B4 and above
+  Original: Real Voice
+  Falsetto: Falsetto
+  Soft: A soft, gentle voice, as if murmuring to oneself.
 
 ## Character Profile
 
 【Basic Information】
-Name: Shang Wei Yin Kousei (熵尾音 咬青)
+Name: 熵尾音 こうせい (Kousei)（熵尾音 咬青）
 Age: Approximately 17
+Birthday: August 14
 Gender: Male
 Height: Approximately 168cm
-Species: Wolf
+Species: Wolf beastman
 
 【Character Description】
-One of the independent sub-entities of an unknown extraterrestrial being. Prone to drowsiness, actions often driven by unconsciousness. Facial markings and twin tails are natural features that change according to their state. Special favorite: Watermelon.
+Kousei is prone to drowsiness, with actions often driven by subconscious impulse. The facial markings and two tails are naturally formed features that change according to his state. He especially likes watermelon.
 
-※ Other character details may be freely added or used for fan creation.
+Innate Two Tails:
+As an innate physiological structure, his two fluffy tails give him an excellent advantage in keeping balance. They are extremely soft and retain heat well, and Kousei often instinctively wraps them around his body while sleeping.
 
-## Recommended Settings
-Recommended Engine: HiFi-class engine.
+Collar Microphone:
+Using hundreds of millions of nano-sensors, it directionally captures vocal movements and vocal cord vibrations. It performs real-time acoustic modeling of Kousei and, using only physical data in digital space, accurately reconstructs and records any sound he produces.
 
-## Usage Notes
-There may be some variation between different phonemes.
-It is recommended to use g and t parameters appropriately to unify the timbre based on actual listening results.
+---
 
 ## Cautions
 ・This voicebank is an amateur production and may have unstable pronunciation or connection issues.
@@ -63,7 +73,7 @@ It is recommended to use g and t parameters appropriately to unify the timbre ba
 
 ◆ About Character Attribution
 The use of this voicebank is optional in regard to character association. You may choose:
-1. Use it under the character name "Shang Wei Yin Kousei (熵尾音 咬青)"
+1. Use it under the character name "熵尾音 こうせい (Kousei)"
 2. Use it as a general voice resource (without revealing character identity)
 Both options are permitted.
 
@@ -93,16 +103,18 @@ The following actions may be taken directly without contacting the author:
 
 ◆ Artificial Intelligence (AI) and Technical Support
 ・Output Processing: You may use AI tools to perform assisted pitch correction, mixing, and other post-processing on audio (.wav) generated using this voicebank.
-・Private Training: You may use this voicebank for local, non-public personal voice synthesis experiments (such as private SVC model training), solely for personal vocal tuning assistance.
-・Strictly Prohibited: It is absolutely forbidden to publicly release, share, or sell trained model files (secondary voicebanks) online. It is strictly forbidden to upload this voicebank as a dataset to any public AI model.
+・Private Training: You may use this voicebank for local, non-public personal voice synthesis experiments, solely for personal vocal tuning assistance (including but not limited to SVC, RVC, voice conversion, singing voice synthesis, voice cloning, TTS, LoRA fine-tuning, and model merging).
+・No Redistribution: It is absolutely forbidden to provide model files, LoRA/fine-tuned weights, merged models, embeddings, or features obtained from training (collectively "derivative voicebanks") to any third party by any means — including but not limited to open-sourcing, sharing, or selling online, peer-to-peer transfer, private groups or private cloud links, model exchange, gifting, or bundling with paid tuning services.
+・No Public Deployment: It is forbidden to upload, deploy, or connect this voicebank, or any models, weights, or features trained from it, to any publicly accessible AI service, online inference API, open-source repository, or model community; it is strictly forbidden to upload this voicebank as a dataset to any public AI model.
+・AI-Generated Content: Content generated using models trained or processed from this voicebank is likewise considered "content created using this voicebank" and is subject to all terms of this agreement (including attribution, commercial use, and prohibitions).
 
 ◆ File Modification and Sharing
-・Modifying and sharing Oto.ini and .frq files
+・Modifying and sharing oto.ini files
 ・Creating derivative works and arrangements
 
 ◆ Attribution and Naming
 ・You may choose not to credit the character name or author
-・You may use the voicebank output without the "Shang Wei Yin Kousei (熵尾音 咬青)" name
+・You may use the voicebank output without the "熵尾音 こうせい (Kousei)" name
 
 ---
 
@@ -122,9 +134,9 @@ The following actions are strictly prohibited:
 ・Creating malicious content that seriously damages the character's image
 
 ◆ Commercial and AI Prohibitions
-・Using this voicebank for commercial AI product development or training
+・Using this voicebank for commercial AI product development or training (any AI development or training that involves fees, sponsorship, donations, or that forms part of a commercial product or service is deemed commercial use)
 ・Distributing results as a "derivative voicebank"
-・Using the character's original design, visual appearance for corporate projects, mass-produced merchandise, or Vtuber avatar use in official commercial contexts
+・Using the character's original design or visual appearance for corporate projects, mass-produced merchandise, or VTuber avatar use in official commercial contexts
 ・Modifying core character elements for commercial purposes
 
 ---
@@ -140,7 +152,7 @@ Please contact the author for authorization in the following cases:
 ・Large-scale commercial merchandise production and sales
 
 ◆ Special Use
-・Vtuber avatar use
+・VTuber avatar use
 ・In-game voice use
 ・Corporate/commercial project collaboration
 
@@ -168,7 +180,7 @@ Please contact the author for authorization in the following cases:
 
 Q: Does this count as commercial use?
 A: Corporate-led use = Commercial; Personal activities (fan scope) ≠ Commercial.
-   Personal activities such as earning revenue from Bilibili or selling fan merchandise on BOOTH are considered personal activities.
+   Personal activities such as earning creator incentives on Bilibili or selling fan merchandise on BOOTH are considered personal activities.
 
 Q: Can I not credit the character?
 A: Yes. Attribution is optional, not mandatory.
@@ -177,7 +189,8 @@ Q: Can I use the voice as a regular sound resource?
 A: Yes. When not using it under the character name, no attribution is required.
 
 Q: Can I do AI learning/synthesis?
-A: Local private model training is allowed, but public distribution or training public AI is strictly prohibited. Please refer to the "Artificial Intelligence (AI) and Technical Support" section above for details.
+A: Local, non-public private training is allowed, solely for personal voice-tuning assistance.
+   However, any redistribution of models/LoRA/weights, public deployment, or uploading to public AI is strictly prohibited, and AI-generated content is likewise bound by this agreement. Please refer to the "Artificial Intelligence (AI) and Technical Support" section above for details.
 
 Q: Do I need to report fan activities?
 A: No. Fan activities within scope may be conducted freely.
@@ -197,7 +210,7 @@ For questions, suggestions, or business inquiries, please contact the author:
 
 Email: heigao75@qq.com
 Twitter/X: @heigao_tickle
-Bilibili: 黑篙
+Bilibili: 黑篙 UID: 695724697
 
 ---
 
