@@ -63,10 +63,10 @@
 
 | 平台 | 链接 |
 | :--- | :--- |
-| **GitHub Releases** | [前往下载](https://github.com/Heigao-Clank/kuro-voicebank/releases) |
+| **GitHub Releases (V1)** | [前往下载](https://github.com/Heigao-Clank/kuro-voicebank/releases#release-V1) |
 | **Bowlroll** | 即将发布 |
-| **Google Drive** | [前往下载](https://drive.google.com/drive/folders/1V7nqKdp56m6Vr-oxsLUwFhqNaysIDFGP?usp=sharing) |
-| **蓝奏云** (密码 `star`) | [前往下载](https://wwavg.lanzouu.com/idU3u3ns2dch) |
+| **Google Drive** | [前往下载](https://drive.google.com/file/d/1WB_3wNww9CAy_1M7UDJVFeQKciWdL78O/view?usp=drive_link) |
+| **123云盘** | [前往下载](https://1820313552.share.123pan.cn/123pan/TUtojv-ViaY) |
 
 ---
 

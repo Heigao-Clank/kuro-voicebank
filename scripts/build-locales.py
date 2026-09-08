@@ -287,9 +287,9 @@ def apply(src: str, L: dict) -> str:
 
     # Download accordion 1 (GitHub)
     gh_old = '''                <p class="accordion-desc">官方发布页面，获取最新版本</p>
-                <a href="https://github.com/Heigao-Clank/kuro-voicebank/releases" target="_blank" class="accordion-link">前往 GitHub Releases</a>'''
+                <a href="https://github.com/Heigao-Clank/kuro-voicebank/releases#release-V1" target="_blank" class="accordion-link">前往 GitHub V1 Release</a>'''
     gh_new = f'''                <p class="accordion-desc">{L["download_steps"][0][3]}</p>
-                <a href="https://github.com/Heigao-Clank/kuro-voicebank/releases" target="_blank" class="accordion-link">{L["download_steps"][0][4]}</a>'''
+                <a href="https://github.com/Heigao-Clank/kuro-voicebank/releases#release-V1" target="_blank" class="accordion-link">{L["download_steps"][0][4]}</a>'''
     out = out.replace(gh_old, gh_new, 1)
     cp_old = '''<button type="button" class="install-copy" aria-label="复制命令" title="复制命令">'''
     cp_new = f'''<button type="button" class="install-copy" aria-label="{L["install_label"]}" title="{L["install_title"]}">'''
@@ -307,7 +307,7 @@ def apply(src: str, L: dict) -> str:
     cs_old2 = '''                <p class="accordion-desc">备用下载方式</p>'''
     cs_new2 = f'''                <p class="accordion-desc">{L["download_steps"][2][3]}</p>'''
     out = out.replace(cs_old2, cs_new2, 1)
-    out = out.replace('class="accordion-link">蓝奏云</a>', f'class="accordion-link">{L["download_steps"][2][4]}</a>', 1)
+    out = out.replace('class="accordion-link">123云盘</a>', f'class="accordion-link">{L["download_steps"][2][4]}</a>', 1)
     out = out.replace('密码：<code', f'{L["pass_label"]}<code', 1)
     out = out.replace('this.title=\'已复制\'', f'this.title=\'{L["install_copied"]}\'', 1)
     out = out.replace('title="点击复制"', f'title="{L["copy_tooltip"]}"', 1)
@@ -609,9 +609,9 @@ def locale_en():
         'download_title': 'Download',
         'download_sub': 'Get the latest version',
         'download_steps': [
-            ('primary', '01', 'GitHub', 'Official page for the latest updates.', 'Go to GitHub Releases'),
+            ('primary', '01', 'GitHub', 'Official page for the latest updates.', 'Go to GitHub V1 Release'),
             ('warm', '02', 'Bowlroll', 'Alternative mirror (Japan).', 'Coming in April 2026'),
-            ('secondary', '03', 'Cloud Storage', 'Alternative download.', 'Google Drive', 'Lanzou Cloud', 'star'),
+            ('secondary', '03', 'Cloud Storage', 'Alternative download.', 'Google Drive', '123 Cloud', 'star'),
         ],
         'install_label': 'Copy command',
         'install_title': 'Copy command',
@@ -712,9 +712,9 @@ def locale_jp():
         'download_title': 'ダウンロード',
         'download_sub': '最新版を取得',
         'download_steps': [
-            ('primary', '01', 'GitHub', '公式リリースページです。', 'GitHub Releases へ'),
+            ('primary', '01', 'GitHub', '公式リリースページです。', 'GitHub V1 Release へ'),
             ('warm', '02', 'Bowlroll', '日本の配布サービス。', '2026年4月中に公開予定'),
-            ('secondary', '03', 'クラウド', '代替ダウンロード。', 'Google Drive', '藍奏雲', 'star'),
+            ('secondary', '03', 'クラウド', '代替ダウンロード。', 'Google Drive', '123クラウド', 'star'),
         ],
         'install_label': 'コマンドをコピー',
         'install_title': 'コマンドをコピー',
