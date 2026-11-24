@@ -6,8 +6,8 @@
 /* ---------- Local Fonts (HarmonyOS Sans SC) ---------- */
 @font-face {
   font-family: 'HarmonyOS Sans SC';
-  src: url('font/subset/HarmonyOS_Sans_SC_Regular.woff2') format('woff2'),
-       url('font/subset/HarmonyOS_Sans_SC_Regular.woff') format('woff');
+  src: url('font/subset/HarmonyOS_Sans_SC_Regular.woff2?v=00ca3fc76390') format('woff2'),
+       url('font/subset/HarmonyOS_Sans_SC_Regular.woff?v=acb324d2c863') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -15,8 +15,8 @@
 
 @font-face {
   font-family: 'HarmonyOS Sans SC';
-  src: url('font/subset/HarmonyOS_Sans_SC_Medium.woff2') format('woff2'),
-       url('font/subset/HarmonyOS_Sans_SC_Medium.woff') format('woff');
+  src: url('font/subset/HarmonyOS_Sans_SC_Medium.woff2?v=05d4737b8edd') format('woff2'),
+       url('font/subset/HarmonyOS_Sans_SC_Medium.woff?v=cd61118cfcc9') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -24,8 +24,8 @@
 
 @font-face {
   font-family: 'HarmonyOS Sans SC';
-  src: url('font/subset/HarmonyOS_Sans_SC_Bold.woff2') format('woff2'),
-       url('font/subset/HarmonyOS_Sans_SC_Bold.woff') format('woff');
+  src: url('font/subset/HarmonyOS_Sans_SC_Bold.woff2?v=98375fcd1c94') format('woff2'),
+       url('font/subset/HarmonyOS_Sans_SC_Bold.woff?v=76281ac2c95e') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
