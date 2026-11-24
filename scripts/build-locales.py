@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Build the three static pages from the Chinese page layout and the bundled voicebank guides."""
 import argparse
+import hashlib
+import re
 from pathlib import Path
 from site_content import render_pages
 
 ROOT = Path(__file__).resolve().parent.parent
-src = (ROOT / 'index.html').read_text()
 
 
 def apply(src: str, L: dict) -> str:
@@ -288,6 +289,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='Report stale pages without writing files.')
     args = parser.parse_args()
+    src = (ROOT / 'index.html').read_text()
+    for asset in ('style.css', 'assets/mobile-cover.css', 'assets/main.js'):
+        digest = hashlib.sha256((ROOT / asset).read_bytes()).hexdigest()[:12]
+        pattern = '"' + re.escape(asset) + r'(?:\?v=[0-9a-f]+)?"'
+        src, count = re.subn(pattern, f'"{asset}?v={digest}"', src)
+        if count != 1:
+            raise ValueError(f'Expected one reference to {asset}, found {count}')
     shells = {'zh': src, 'en': apply(src, locale_en()), 'jp': apply(src, locale_jp())}
     stale = []
     for name, text in render_pages(ROOT, shells).items():
