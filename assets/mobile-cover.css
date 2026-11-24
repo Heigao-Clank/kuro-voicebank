@@ -1,0 +1,78 @@
+/* The first three rows share one stable screen below the two-row navigation. */
+.hero { --cover-height: calc(100vh - 5.75rem); }
+@supports (height: 100svh) {
+  .hero { --cover-height: calc(100svh - 5.75rem); }
+}
+.hero .container { padding-top: 0; }
+.hero .hero-stage { grid-template-columns: minmax(0, 1fr); margin-inline: 0; }
+.hero .hero-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 1fr auto auto;
+  gap: 0;
+  text-align: center;
+}
+.hero-main::before {
+  content: "";
+  grid-area: 1 / 1 / 4 / 2;
+  height: var(--cover-height);
+  pointer-events: none;
+}
+.hero .hero-text { display: contents; }
+.hero .hero-visual {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 100vw;
+  max-width: none;
+  padding: 0;
+}
+.hero .hero-visual::before, .hero .hero-visual::after { content: none; }
+.hero .hero-visual picture {
+  /* Reserve room for the existing heading and credit, even on a short screen. */
+  width: min(100%, calc(min(42rem, var(--cover-height) - 7.5rem) * .7245));
+  display: block;
+  margin-inline: auto;
+}
+.hero .hero-visual picture::after {
+  background-image: image-set(url("images/character-640w.webp") 1x, url("images/character.webp") 2x);
+}
+.hero .hero-visual img.hero-character {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  aspect-ratio: auto;
+  box-shadow: none;
+}
+.hero .hero-visual-text { margin: .5rem 0 0; }
+.hero .hero-eyebrow { grid-area: 2 / 1; margin: 0; font-size: .7rem; line-height: 1.4; letter-spacing: .14em; }
+html .hero .hero-title {
+  grid-area: 3 / 1;
+  margin: .35rem 0 1.25rem;
+  font-size: clamp(1.6rem, 7.5vw, 2.55rem);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+.hero .hero-subtitle { margin-top: 1rem; }
+.hero .hero-download { justify-content: center; }
+.hero .hero-waveform { display: none; }
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero .hero-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 1fr 1fr;
+    column-gap: clamp(1rem, 4vw, 3rem);
+  }
+  .hero-main::before { grid-area: 1 / 1 / 3 / 3; }
+  .hero .hero-visual { grid-area: 1 / 1 / 3 / 2; justify-self: end; width: auto; }
+  .hero .hero-visual picture {
+    width: min(40vw, calc((var(--cover-height) - 2.25rem) * .7245));
+  }
+  .hero .hero-eyebrow { grid-area: 1 / 2; align-self: end; text-align: start; }
+  html .hero .hero-title { grid-area: 2 / 2; align-self: start; text-align: start; margin-bottom: 0; }
+  .hero .hero-subtitle, .hero .hero-description, .hero .hero-download { grid-column: 1 / -1; }
+}

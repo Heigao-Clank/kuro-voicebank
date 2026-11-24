@@ -1,311 +1,225 @@
-(function(){
-  var sidebarToggle=document.getElementById('sidebarToggle');
-  var sidebar=document.getElementById('sidebar');
-  var sidebarOverlay=document.getElementById('sidebarOverlay');
-  var langSwitcher=document.querySelector('.lang-switcher');
+(function () {
+  const pageLanguage = document.documentElement.lang;
+  const ui = {
+    'zh-CN': {play: '播放', failed: '试听加载失败，请点播放按钮重试。', retry: '重试播放', pause: '暂停', seek: '播放进度', copied: '已复制', manual: '请选择并复制命令'},
+    en: {play: 'Play', failed: 'Audio could not be loaded. Press play to try again.', retry: 'Retry playback', pause: 'Pause', seek: 'Playback position', copied: 'Copied', manual: 'Select and copy the command'},
+    ja: {play: '再生', failed: '試聴音声を読み込めませんでした。再生ボタンを押して、もう一度お試しください。', retry: '再生を再試行', pause: '一時停止', seek: '再生位置', copied: 'コピーしました', manual: 'コマンドを選択してコピーしてください'}
+  }[pageLanguage];
 
-  function openSidebar(){
-    sidebar.classList.add('open');
-    sidebarToggle.classList.add('active');
-    sidebarOverlay.classList.add('active');
-    if(langSwitcher)langSwitcher.classList.add('hidden');
-    document.body.style.overflow='hidden';
-  }
-  function closeSidebar(){
-    sidebar.classList.remove('open');
-    sidebarToggle.classList.remove('active');
-    sidebarOverlay.classList.remove('active');
-    if(langSwitcher)langSwitcher.classList.remove('hidden');
-    document.body.style.overflow='';
-  }
+  const header = document.querySelector('.topnav');
+  const navigation = header.querySelector('.topnav-nav');
+  const navLinks = navigation.querySelectorAll('.topnav-link');
+  const languages = header.querySelectorAll('.topnav-lang a');
+  const sections = Array.from(document.querySelectorAll('section[id]'));
 
-  if(sidebarToggle&&sidebar&&sidebarOverlay){
-    sidebarToggle.addEventListener('click',function(){
-      if(sidebar.classList.contains('open')){closeSidebar();}else{openSidebar();}
-    });
-    sidebarOverlay.addEventListener('click',closeSidebar);
-
-    sidebar.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click',function(){
-        if(window.innerWidth<=900)closeSidebar();
-      });
-    });
+  function revealActiveLink() {
+    const link = navigation.querySelector('[aria-current="location"]');
+    if (!link || navigation.scrollWidth <= navigation.clientWidth) return;
+    const menu = navigation.getBoundingClientRect();
+    const item = link.getBoundingClientRect();
+    if (item.left < menu.left) navigation.scrollLeft += item.left - menu.left - 4;
+    else if (item.right > menu.right) navigation.scrollLeft += item.right - menu.right + 4;
   }
 
-  var navLinks=sidebar?sidebar.querySelectorAll('.sidebar-nav a'):[];
-  var sections=document.querySelectorAll('section[id]');
-
-  function highlightNav(){
-    var current='';
-    var scrollPosition=window.scrollY+window.innerHeight/2;
-    sections.forEach(function(section){
-      var rect=section.getBoundingClientRect();
-      var sectionTop=rect.top+window.scrollY;
-      var sectionBottom=sectionTop+rect.height;
-      if(scrollPosition>=sectionTop&&scrollPosition<sectionBottom){
-        current=section.getAttribute('id');
-      }
-    });
-    if(window.scrollY<100)current='hero';
-    if(!current&&sections.length>0){
-      var lastSection=sections[sections.length-1];
-      var lastRect=lastSection.getBoundingClientRect();
-      var lastSectionTop=lastRect.top+window.scrollY;
-      if(window.scrollY>=lastSectionTop)current=lastSection.getAttribute('id');
+  let highlightedSection;
+  function highlightNav() {
+    const anchor = header.getBoundingClientRect().height + 16;
+    let current = sections[0].id;
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top > anchor) break;
+      current = section.id;
     }
-    navLinks.forEach(function(link){
-      link.classList.remove('active');
-      if(link.getAttribute('href')==='#'+current)link.classList.add('active');
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+      current = sections[sections.length - 1].id;
+    }
+    navLinks.forEach(link => {
+      const active = link.hash === '#' + current;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
     });
+    languages.forEach(link => { link.hash = current === 'hero' ? '' : current; });
+    if (current !== highlightedSection) {
+      highlightedSection = current;
+      revealActiveLink();
+    }
   }
-
-  var _scrollT;
-  window.addEventListener('scroll',function(){
-    if(_scrollT)return;
-    _scrollT=requestAnimationFrame(function(){_scrollT=null;highlightNav();});
+  let pending = false;
+  function scheduleHighlight() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => { pending = false; highlightNav(); });
+  }
+  window.addEventListener('scroll', scheduleHighlight, {passive: true});
+  window.addEventListener('resize', () => {
+    scheduleHighlight();
+    revealActiveLink();
   });
+  document.fonts.ready.then(revealActiveLink);
+  window.addEventListener('pageshow', scheduleHighlight);
   highlightNav();
 
-  navLinks.forEach(function(link){
-    link.addEventListener('click',function(){
-      navLinks.forEach(function(l){l.classList.remove('active');});
-      this.classList.add('active');
-    });
-  });
-
-  window.toggleAccordion=function(element){
-    var accordion=element.parentElement;
-    var isActive=accordion.classList.toggle('active');
-    element.setAttribute('aria-expanded',isActive);
-  };
-
-  window.toggleFaq=function(element){
-    var faqItem=element.parentElement;
-    var isActive=faqItem.classList.toggle('active');
-    element.setAttribute('aria-expanded',isActive);
-  };
-
-  document.querySelectorAll('.protocol-tab').forEach(function(tab){
-    tab.addEventListener('click',function(){
-      var lang=this.getAttribute('data-lang');
-      document.querySelectorAll('.protocol-tab').forEach(function(t){t.classList.remove('active');});
-      document.querySelectorAll('.protocol-content').forEach(function(c){c.style.display='none';});
-      this.classList.add('active');
-      var el=document.getElementById('protocol-'+lang);
-      if(el&&!el.innerHTML.trim()){
-        el.innerHTML='<div class="protocol-text">'+(window._protocolData||{})[lang]+'</div>';
-      }
-      el.style.display='block';
-    });
-  });
-
-  function formatTime(seconds){
-    var mins=Math.floor(seconds/60);
-    var secs=Math.floor(seconds%60);
-    return mins+':'+(secs<10?'0':'')+secs;
-  }
-
-  var activePlayerIndex=-1;
-
-  function lerp(a,b,t){return a+(b-a)*t;}
-
-  function smoothNoise(t,seed){
-    var i=Math.floor(t);
-    var f=t-i;
-    f=f*f*(3-2*f);
-    return lerp(hash(i+seed),hash(i+1+seed),f);
-  }
-  function hash(n){
-    var s=Math.sin(n*127.1+n*311.7)*43758.5453;
-    return s-Math.floor(s);
-  }
-
-  function drawBars(canvas,smooth){
-    var c=canvas.getContext('2d');
-    var w=canvas.width;
-    var h=canvas.height;
-    c.clearRect(0,0,w,h);
-    var barCount=64;
-    var barW=Math.max(1,(w/barCount)*0.55);
-    var gap=(w-barW*barCount)/(barCount+1);
-    for(var i=0;i<barCount;i++){
-      var x=gap+(barW+gap)*i;
-      var v=smooth[i];
-      var barH=Math.max(2,v*h*0.78);
-      var y=(h-barH)/2;
-      var r=barW/2;
-
-      c.shadowColor='rgba(120,126,200,'+(v*0.25)+')';
-      c.shadowBlur=v*6;
-
-      var grad=c.createLinearGradient(0,y,0,y+barH);
-      grad.addColorStop(0,'rgba(146,152,212,'+(0.15+v*0.55)+')');
-      grad.addColorStop(0.5,'rgba(126,132,198,'+(0.1+v*0.65)+')');
-      grad.addColorStop(1,'rgba(106,112,180,'+(0.15+v*0.55)+')');
-      c.fillStyle=grad;
-
-      c.beginPath();
-      c.moveTo(x+r,y);
-      c.lineTo(x+barW-r,y);
-      c.quadraticCurveTo(x+barW,y,x+barW,y+r);
-      c.lineTo(x+barW,y+barH-r);
-      c.quadraticCurveTo(x+barW,y+barH,x+barW-r,y+barH);
-      c.lineTo(x+r,y+barH);
-      c.quadraticCurveTo(x,y+barH,x,y+barH-r);
-      c.lineTo(x,y+r);
-      c.quadraticCurveTo(x,y,x+r,y);
-      c.fill();
-    }
-    c.shadowBlur=0;
-  }
-
-  var players=document.querySelectorAll('.demo-card');
-  players.forEach(function(player){
-    var audio=player.querySelector('audio');
-    var canvas=player.querySelector('.demo-canvas');
-    var playBtn=player.querySelector('.demo-play-btn');
-    var progressEl=player.querySelector('.demo-progress');
-    var progressBar=player.querySelector('.demo-progress-bar');
-    var timeEl=player.querySelector('.demo-time');
-    var iconPlay=playBtn.querySelector('.icon-play');
-    var iconPause=playBtn.querySelector('.icon-pause');
-    var source=audio?audio.querySelector('source'):null;
-    var index=parseInt(player.getAttribute('data-index'));
-    var currentEnergy=0.08;
-    var seeking=false;
-    var barState=new Array(64);
-    for(var k=0;k<64;k++)barState[k]=0.05;
-    var rafId=null;
-
-    function resizeCanvas(){
-      var rect=canvas.parentElement.getBoundingClientRect();
-      canvas.width=rect.width*window.devicePixelRatio;
-      canvas.height=rect.height*window.devicePixelRatio;
-    }
-    resizeCanvas();
-    window.addEventListener('resize',resizeCanvas);
-
-    if(!source||!source.src){
-      playBtn.style.opacity='0.3';
-      playBtn.style.pointerEvents='none';
-      if(rafId)cancelAnimationFrame(rafId);
-      return;
-    }
-
-    function pauseOthers(){
-      if(activePlayerIndex>=0&&activePlayerIndex!==index){
-        var prev=players[activePlayerIndex];
-        if(prev){
-          prev.querySelector('audio').pause();
-          prev.querySelector('.icon-play').style.display='block';
-          prev.querySelector('.icon-pause').style.display='none';
-        }
-      }
-    }
-
-    function tick(){
-      var playing=activePlayerIndex===index&&!audio.paused;
-      var target=playing?0.75:0.08;
-      currentEnergy=lerp(currentEnergy,target,0.045);
-
-      var t=Date.now()/1000;
-      var smooth=[];
-      for(var i=0;i<64;i++){
-        var di=Math.abs(i-31.5)/31.5;
-        var envelope=Math.exp(-di*di*1.8);
-        var n1=smoothNoise(t*1.8+i*0.08,index*99);
-        var n2=smoothNoise(t*3.6+i*0.15,index*99+50);
-        var n3=smoothNoise(t*0.6+i*0.04,index*99+100);
-        var wave=(n1*0.45+n2*0.35+n3*0.2)*envelope;
-        var barTarget=wave*currentEnergy;
-        barState[i]=lerp(barState[i],barTarget,0.12);
-        smooth.push(barState[i]);
-      }
-      drawBars(canvas,smooth);
-
-      var delay=currentEnergy<0.15?80:0;
-      if(delay>0){
-        setTimeout(function(){rafId=requestAnimationFrame(tick);},delay);
-      }else{
-        rafId=requestAnimationFrame(tick);
-      }
-    }
-    rafId=requestAnimationFrame(tick);
-
-    playBtn.addEventListener('click',function(){
-      if(activePlayerIndex===index&&!audio.paused){
-        audio.pause();
-        iconPlay.style.display='block';
-        iconPause.style.display='none';
-        activePlayerIndex=-1;
-        return;
-      }
-      pauseOthers();
-      activePlayerIndex=index;
-      audio.play().then(function(){
-        iconPlay.style.display='none';
-        iconPause.style.display='block';
-      }).catch(function(){
-        iconPlay.style.display='block';
-        iconPause.style.display='none';
+  const tabs = document.querySelectorAll('.protocol-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(button => {
+        const selected = button === tab;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+        document.getElementById(button.getAttribute('aria-controls')).hidden = !selected;
       });
     });
+  });
 
-    audio.addEventListener('timeupdate',function(){
-      if(seeking)return;
-      var pct=(audio.currentTime/audio.duration)*100;
-      progressBar.style.width=pct+'%';
-      timeEl.textContent=formatTime(audio.currentTime)+' / '+formatTime(audio.duration);
-    });
+  const copy = document.querySelector('.install-copy');
+  const command = document.querySelector('.install-command code');
+  const status = document.querySelector('.copy-status');
+  copy.hidden = false;
+  const copyLabel = copy.title;
+  let feedbackTimer;
+  copy.addEventListener('click', async () => {
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(command.textContent);
+      copied = true;
+    } catch {
+      const range = document.createRange();
+      range.selectNodeContents(command);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      try { copied = document.execCommand('copy'); } catch { /* Keep the command selected for manual copying. */ }
+      if (copied) selection.removeAllRanges();
+    }
+    clearTimeout(feedbackTimer);
+    status.textContent = copied ? ui.copied : ui.manual;
+    copy.classList.toggle('copied', copied);
+    copy.title = status.textContent;
+    feedbackTimer = setTimeout(() => {
+      copy.classList.remove('copied');
+      copy.title = copyLabel;
+      status.textContent = '';
+    }, 2500);
+  });
 
-    function seekFromEvent(e){
-      var rect=progressEl.getBoundingClientRect();
-      var x=Math.max(0,Math.min(e.clientX-rect.left,rect.width));
-      var pct=x/rect.width;
-      if(audio.duration){
-        audio.currentTime=pct*audio.duration;
-        progressBar.style.width=(pct*100)+'%';
-        timeEl.textContent=formatTime(audio.currentTime)+' / '+formatTime(audio.duration);
-      }
+  function formatTime(seconds) {
+    return Math.floor(seconds / 60) + ':' + String(Math.floor(seconds % 60)).padStart(2, '0');
+  }
+
+  var players = document.querySelectorAll('.demo-card');
+  players.forEach(function (card) {
+    var audio = card.querySelector('audio');
+    var playButton = card.querySelector('.demo-play-btn');
+    var slider = card.querySelector('.demo-progress');
+    var progressBar = slider.querySelector('.demo-progress-bar');
+    var timeLabel = card.querySelector('.demo-time');
+    var playIcon = playButton.querySelector('.icon-play');
+    var pauseIcon = playButton.querySelector('.icon-pause');
+    var title = card.querySelector('.demo-card-desc').textContent.trim();
+    const message = card.querySelector('.demo-status');
+    let failed = false;
+    let playRequest = 0;
+    slider.setAttribute('role', 'slider');
+    slider.tabIndex = 0;
+    slider.setAttribute('aria-label', ui.seek + ' · ' + title);
+    slider.setAttribute('aria-valuemin', '0');
+
+    function duration() {
+      // A locally opened Ogg file can report Infinity until its last page is read.
+      return Number.isFinite(audio.duration) && audio.duration > 0
+        ? audio.duration : Number(audio.dataset.duration);
     }
 
-    progressEl.addEventListener('mousedown',function(e){
-      seeking=true;
-      seekFromEvent(e);
-      function onMove(ev){seekFromEvent(ev);}
-      function onUp(){
-        seeking=false;
-        document.removeEventListener('mousemove',onMove);
-        document.removeEventListener('mouseup',onUp);
+    function renderProgress() {
+      var length = duration();
+      var position = audio.ended ? length : Math.min(audio.currentTime, length);
+      var percent = Math.min(100, position / length * 100) + '%';
+      card.style.setProperty('--played', percent);
+      progressBar.style.width = percent;
+      timeLabel.textContent = formatTime(position) + ' / ' + formatTime(length);
+      slider.setAttribute('aria-valuemax', String(Math.floor(length)));
+      slider.setAttribute('aria-valuenow', String(Math.floor(position)));
+      slider.setAttribute('aria-valuetext', timeLabel.textContent);
+    }
+
+    function renderButton() {
+      const playing = !failed && !audio.paused && !audio.ended;
+      playIcon.style.display = playing ? 'none' : 'block';
+      pauseIcon.style.display = playing ? 'block' : 'none';
+      const label = failed ? ui.retry : (playing ? ui.pause : ui.play);
+      playButton.setAttribute('aria-label', label + ' · ' + title);
+    }
+
+    function showFailure() {
+      if (failed) return;
+      failed = true;
+      playRequest++;
+      audio.pause();
+      message.textContent = ui.failed;
+      renderButton();
+    }
+
+    // Source errors do not bubble. Let the browser try MP3 if Opus fails.
+    audio.querySelector('source:last-of-type').addEventListener('error', showFailure);
+    audio.addEventListener('error', showFailure);
+    playButton.addEventListener('click', function () {
+      if (failed) {
+        failed = false;
+        message.textContent = '';
+        audio.load();
+      } else if (audio.ended) {
+        audio.currentTime = 0;
+      } else if (!audio.paused) {
+        audio.pause();
+        return;
       }
-      document.addEventListener('mousemove',onMove);
-      document.addEventListener('mouseup',onUp);
+      const request = ++playRequest;
+      audio.play().catch(error => {
+        if (request === playRequest && error.name !== 'AbortError') showFailure();
+      });
+    });
+    audio.addEventListener('play', function () {
+      players.forEach(function (other) {
+        if (other !== card) other.querySelector('audio').pause();
+      });
+      renderButton();
+    });
+    audio.addEventListener('pause', renderButton);
+    audio.addEventListener('ended', renderButton);
+    ['loadedmetadata', 'durationchange', 'timeupdate', 'seeked', 'ended'].forEach(function (event) {
+      audio.addEventListener(event, renderProgress);
     });
 
-    progressEl.addEventListener('touchstart',function(e){
-      seeking=true;
-      seekFromEvent(e.touches[0]);
-    },{passive:true});
-
-    document.addEventListener('touchmove',function(e){
-      if(!seeking)return;
-      seekFromEvent(e.touches[0]);
-    },{passive:true});
-
-    document.addEventListener('touchend',function(){
-      seeking=false;
+    function seek(event) {
+      var bounds = slider.getBoundingClientRect();
+      var fraction = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+      audio.currentTime = fraction * duration();
+      renderProgress();
+    }
+    slider.addEventListener('pointerdown', function (event) {
+      if (!event.isPrimary || event.button !== 0) return;
+      slider.setPointerCapture(event.pointerId);
+      seek(event);
     });
-
-    audio.addEventListener('loadedmetadata',function(){
-      timeEl.textContent='0:00 / '+formatTime(audio.duration);
+    slider.addEventListener('pointermove', function (event) {
+      if (slider.hasPointerCapture(event.pointerId)) seek(event);
     });
-
-    audio.addEventListener('ended',function(){
-      iconPlay.style.display='block';
-      iconPause.style.display='none';
-      progressBar.style.width='0%';
-      activePlayerIndex=-1;
+    slider.addEventListener('keydown', function (event) {
+      var target;
+      switch (event.key) {
+        case 'ArrowRight': case 'ArrowUp': target = audio.currentTime + 5; break;
+        case 'ArrowLeft': case 'ArrowDown': target = audio.currentTime - 5; break;
+        case 'Home': target = 0; break;
+        case 'End': target = duration(); break;
+        default: return;
+      }
+      event.preventDefault();
+      audio.currentTime = Math.max(0, Math.min(duration(), target));
+      renderProgress();
     });
+    if (audio.error || audio.networkState === audio.NETWORK_NO_SOURCE) showFailure();
+    renderButton();
+    renderProgress();
   });
 
   if('IntersectionObserver' in window){
