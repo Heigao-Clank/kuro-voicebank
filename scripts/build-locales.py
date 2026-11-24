@@ -285,20 +285,28 @@ def locale_jp():
     }
 
 
+def version_asset(html, directory, asset):
+    digest = hashlib.sha256((directory / asset).read_bytes()).hexdigest()[:12]
+    pattern = '"' + re.escape(asset) + r'(?:\?v=[0-9a-f]+)?"'
+    updated, count = re.subn(pattern, f'"{asset}?v={digest}"', html)
+    if count != 1:
+        raise ValueError(f'Expected one reference to {asset}, found {count}')
+    return updated
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='Report stale pages without writing files.')
     args = parser.parse_args()
     src = (ROOT / 'index.html').read_text()
     for asset in ('style.css', 'assets/mobile-cover.css', 'assets/main.js'):
-        digest = hashlib.sha256((ROOT / asset).read_bytes()).hexdigest()[:12]
-        pattern = '"' + re.escape(asset) + r'(?:\?v=[0-9a-f]+)?"'
-        src, count = re.subn(pattern, f'"{asset}?v={digest}"', src)
-        if count != 1:
-            raise ValueError(f'Expected one reference to {asset}, found {count}')
+        src = version_asset(src, ROOT, asset)
     shells = {'zh': src, 'en': apply(src, locale_en()), 'jp': apply(src, locale_jp())}
+    pages = render_pages(ROOT, shells)
+    archive = ROOT / 'assets/terms-v1.html'
+    pages['assets/terms-v1.html'] = version_asset(archive.read_text(), archive.parent, '../style.css')
     stale = []
-    for name, text in render_pages(ROOT, shells).items():
+    for name, text in pages.items():
         page = ROOT / name
         content = text.encode('utf-8')
         if not page.exists() or page.read_bytes() != content:

@@ -81,7 +81,7 @@
 
 ## 官网构建与验收
 
-夜蓝样式在项目根目录的 `style.css`，手机首屏样式在 `assets/mobile-cover.css`。更新中文首页模板、三语文案或指南后，在项目根目录运行：
+夜蓝是官网的正式样式。三语首页和历史协议页共用根目录的 `style.css`，手机首屏布局在 `assets/mobile-cover.css`。更新中文首页模板、三语文案或指南后，在项目根目录运行：
 
 ```sh
 python3 scripts/build-locales.py
