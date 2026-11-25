@@ -17,7 +17,7 @@
 ## 🌐 官方主页
 
 试听音轨、在线下载、完整协议等内容请访问官方网站：
-👉 **[kuro-utau.heigao.me](https://kuro-utau.heigao.me/)**
+[声库目录](https://kuro-utau.heigao.me/) · [进入熵尾音 咬青声库页](https://kuro-utau.heigao.me/kousei.html)
 
 ---
 
@@ -75,20 +75,20 @@
 
 ## ⚖️ 使用协议 (Usage Guidelines)
 
-本地 V1.1 的完整协议、角色资料与常见问题见[中文](Readme.txt)、[English](Readme_EN.txt) 和 [日本語](Readme_JP.txt)。每版使用条件以[声库官网公布的对应版本](https://kuro-utau.heigao.me/#guidelines)为准。
+本地 V1.1 的完整协议、角色资料与常见问题见[中文](Readme.txt)、[English](Readme_EN.txt) 和 [日本語](Readme_JP.txt)。每版使用条件以[声库官网公布的对应版本](https://kuro-utau.heigao.me/kousei.html#guidelines)为准。
 
 ---
 
 ## 官网构建与验收
 
-夜蓝是官网的正式样式。三语首页和历史协议页共用根目录的 `style.css`，手机首屏布局在 `assets/mobile-cover.css`。更新中文首页模板、三语文案或指南后，在项目根目录运行：
+总首页 `index.html` 使用唱片架样式 `assets/catalog.css`。咬青的夜蓝专页使用 `kousei.html`（中文）、`index-en.html`（英语）和 `index-jp.html`（日语）。专页与历史协议页共用 `style.css`，专页的手机首屏布局在 `assets/mobile-cover.css`。更新 `kousei.html`、三语文案或指南后，在项目根目录运行：
 
 ```sh
 python3 scripts/build-locales.py
 python3 scripts/build-locales.py --check
 ```
 
-第一条命令生成三语静态页面，第二条核对生成结果。项目根目录的三个首页、样式、`assets/`、`font/` 和 `favicon.ico` 可直接用于静态托管。
+第一条命令生成三语静态页面，第二条核对生成结果。项目根目录的总首页、三语专页、样式、`assets/`、`font/` 和 `favicon.ico` 可直接用于静态托管。
 
 浏览器回归检查覆盖手机导航、协议打印、无 JavaScript 下载和试听失败后的重试。开发环境安装 Playwright 及 Chromium 后运行 `node scripts/check-site.cjs`。也可传入以斜杠结尾的本地预览网址；使用已安装的 Chrome 时可通过 `CHROME_PATH` 指定可执行文件。
 

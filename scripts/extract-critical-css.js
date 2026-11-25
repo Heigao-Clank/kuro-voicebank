@@ -3,7 +3,7 @@ var path = require('path');
 
 var ROOT = path.resolve(__dirname, '..');
 var CSS_PATH = path.join(ROOT, 'style.css');
-var HTML_FILES = ['index.html', 'index-en.html', 'index-jp.html'];
+var HTML_FILES = ['kousei.html', 'index-en.html', 'index-jp.html'];
 
 var css = fs.readFileSync(CSS_PATH, 'utf8');
 

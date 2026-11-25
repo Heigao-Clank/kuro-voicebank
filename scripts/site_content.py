@@ -4,7 +4,7 @@ import re
 
 
 FILES = {'zh': 'Readme.txt', 'en': 'Readme_EN.txt', 'jp': 'Readme_JP.txt'}
-PAGE = {'zh': 'index.html', 'en': 'index-en.html', 'jp': 'index-jp.html'}
+PAGE = {'zh': 'kousei.html', 'en': 'index-en.html', 'jp': 'index-jp.html'}
 LANG = {'zh': 'zh-CN', 'en': 'en', 'jp': 'ja'}
 COPY = {
     'zh': {
@@ -250,12 +250,14 @@ def update_page(page, lang, guides):
         page = section(page,'demo',lambda s: elements(s,'span','demo-card-desc',['エリート','レテノール','初音ミクの消失']))
         site_label={'en':'Personal website','jp':'個人サイト'}[lang]
         page=page.replace('个人网站',site_label)
+        catalog_label = {'en': 'Back to the voicebank catalog', 'jp': '音源一覧に戻る'}[lang]
+        page = page.replace('href="index.html">返回声库目录</a>',
+                            f'href="index.html#{LANG[lang]}">{catalog_label}</a>')
     page=once(r'(<dl class="hero-tally" aria-label=")[^"]*(">)', lambda m:m[1]+{'zh':'音源规格','en':'Voicebank specifications','jp':'音源仕様'}[lang]+m[2],page)
 
     for key in ('name="description"', 'property="og:description"'):
         page=once(rf'(<meta {key} content=")[^"]*(">)',lambda m:m[1]+e(c['description'])+m[2],page)
     page=page.replace('https://kuro-voicebank.pages.dev/','https://kuro-utau.heigao.me/')
-    page=re.sub(r'(hreflang="x-default" href="https://kuro-utau\.heigao\.me/)[^"]*',r'\1',page)
     return page
 
 

@@ -38,7 +38,7 @@ class PageStrings(HTMLParser):
 
 
 def build_messages(pages):
-    files = ('index.html', 'index-en.html', 'index-jp.html')
+    files = ('kousei.html', 'index-en.html', 'index-jp.html')
     codes = ('zh-CN', 'en', 'ja')
     parsed = [PageStrings(pages[f]).nodes for f in files]
     inserts = [[] for _ in files]

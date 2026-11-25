@@ -1,0 +1,260 @@
+* { box-sizing: border-box; }
+
+html {
+  color-scheme: dark;
+  background: #24272c;
+  color: #f3eee3;
+  font: 15px/1.45 "Helvetica Neue", "PingFang SC", sans-serif;
+}
+
+body, h1, h2, p { margin: 0; }
+
+.shelf {
+  padding-block: clamp(16px, 3vw, 36px);
+  padding-inline: clamp(16px, calc(25vw - 125px), 17vw);
+  container-type: inline-size;
+}
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.topline h1, .masthead {
+  font: italic 500 clamp(27px, 5.5cqw, 49px)/1.2 Georgia, serif;
+  letter-spacing: -.055em;
+}
+
+.topline > span { font-size: 13px; }
+
+.catalog-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 12px;
+  margin-top: 8px;
+  border-bottom: 1px solid #888983;
+}
+
+.catalog-sections:not([hidden]), .catalog-languages:not([hidden]) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.catalog-languages { margin-left: auto; gap: 3px; }
+.catalog-sections { gap: clamp(10px, 2.4cqw, 25px); }
+
+.catalog-sections button {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #d0cdc6;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.catalog-sections button[aria-pressed="true"] {
+  color: #f8f3e9;
+  border-bottom-color: #cabedc;
+}
+
+.catalog-panel { padding: 30px 0; }
+.catalog-panel h3 { margin: 16px 0 6px; }
+.catalog-panel p { margin: 12px 0; color: #d8d6d1; }
+[hidden] { display: none !important; }
+
+.catalog-languages a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 7px;
+  font-size: 13px;
+  color: #c9c6c1;
+  text-decoration: none;
+}
+
+.catalog-languages a:last-child { padding-right: 0; }
+
+.catalog-languages a:is([aria-current="true"], :hover) {
+  color: #f3eee3;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.catalog-languages a:focus-visible { outline: 2px solid #d3cae8; }
+
+@media (pointer: coarse) {
+  .catalog-languages a { min-width: 44px; min-height: 44px; }
+}
+
+.release {
+  display: grid;
+  grid-template-columns: 42% minmax(0, 1fr);
+  align-items: center;
+  gap: 12%;
+  padding: 30px 0 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.release:focus-visible {
+  outline: 3px solid #db754e;
+  outline-offset: 3px;
+}
+
+.jacket {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+}
+
+.disc {
+  position: absolute;
+  right: 0;
+  top: 2%;
+  height: 96%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #24272c 0 6%, #a2a6aa 6.4% 8%, transparent 8.5% 17%, #62616d 17.4% 17.8%, transparent 18%),
+    repeating-radial-gradient(circle, #ffffff24 0 1px, transparent 1px 4px),
+    conic-gradient(from 30deg, #7e8397, #e2e3de, #b2add2, #dae8d7, #939ba7, #d4d2c6, #7e8397);
+}
+
+.cover {
+  position: relative;
+  overflow: hidden;
+  width: 79%;
+  container-type: inline-size;
+  aspect-ratio: 1;
+  background: linear-gradient(155deg, #dedce9 35%, #b4b5d1);
+  color: #28283a;
+  box-shadow: 3px 3px 10px #1114;
+}
+
+.cover b {
+  position: absolute;
+  top: 3%;
+  left: 4%;
+  font: italic 500 19cqw/1 Georgia, serif;
+  letter-spacing: -.07em;
+}
+
+.cover-name {
+  position: absolute;
+  top: 25%;
+  left: 6%;
+  font: 600 12.3cqw/1.05 "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+  letter-spacing: .035em;
+  transform: skewX(-9deg);
+}
+
+.cover img {
+  position: absolute;
+  right: -18%;
+  top: 19%;
+  width: 125%;
+  height: auto;
+}
+
+.detail h2, .detail h1 { font: 500 clamp(28px, 4.7cqw, 50px)/1.16 "Songti SC", Georgia, serif; }
+
+.detail p {
+  margin: 10px 0 23px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d8d6d1;
+}
+
+.jump {
+  display: inline-block;
+  border-bottom: 1px solid #aaa99e;
+  padding-bottom: 5px;
+}
+
+.release:hover .jump, .release:focus-visible .jump {
+  border-bottom-color: currentColor;
+}
+
+.shortcuts a { color: inherit; }
+
+@container (max-width: 500px) {
+  .release { grid-template-columns: 1fr; gap: 12px; padding: 14px 0; }
+  .jacket { width: min(80%, 270px); margin: auto; }
+  .detail { padding-top: 12px; border-top: 1px solid #777876; }
+  .detail p { margin: 5px 0 12px; }
+}
+
+.release + .release {
+  margin-top: clamp(18px, 3vw, 44px);
+  border-top: 1px solid #686966;
+}
+
+.stellar-art {
+  background:
+    radial-gradient(circle at 73% 67%, #f4f8ff 0 6%, #aecbf7 6.3% 8%, transparent 8.4%),
+    repeating-radial-gradient(circle at 73% 67%, transparent 0 14px, #afc9f233 15px, transparent 16px 24px),
+    linear-gradient(135deg, #171d2f 20%, #354864 75%, #242c43);
+  color: #e1eafb;
+}
+
+.release-status { color: #e6d2ae; font-weight: 500; }
+.back-link, .catalog-panel a { color: inherit; text-underline-offset: 4px; }
+.back-link { padding-block: 12px; }
+
+.bank-panel {
+  border-top: 1px solid #626460;
+  margin-top: 18px;
+  padding-block: 15px 6px;
+}
+
+.bank-picker button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.thumb { width: 42px; aspect-ratio: 1; flex: none; }
+.kousei-art {
+  background: url("images/character-320w.webp") right 8% / 115% auto no-repeat, linear-gradient(155deg,#dedce9,#b4b5d1);
+}
+
+.file-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 18px;
+  align-items: baseline;
+}
+
+.file-row small, .bank-panel time { color: #c7c1b7; }
+.bank-picker { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-block: 18px; }
+.bank-picker button {
+  min-height: 44px;
+  padding: 6px 8px 6px 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #cbc8c2;
+  font: inherit;
+  cursor: pointer;
+}
+
+.bank-picker button[aria-pressed="true"] { color: #f3eee3; border-bottom-color: #cabedc; }
+.bank-panel h3 { margin: 6px 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .release.arriving { animation: arrive 420ms ease-out; }
+  @keyframes arrive {
+    from { opacity: .25; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

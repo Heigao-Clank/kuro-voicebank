@@ -68,12 +68,12 @@ def apply(src: str, L: dict) -> str:
 
     # Lang switcher
     lang_old = '''    <div class="lang-switcher topnav-lang">
-      <a href="index.html" class="active">中文</a>
+      <a href="kousei.html" class="active">中文</a>
       <a href="index-en.html">EN</a>
       <a href="index-jp.html">日本語</a>
     </div>'''
     lang_new = f'''    <div class="lang-switcher topnav-lang">
-      <a href="index.html"{' class="active"' if L['lang'] == 'zh' else ''}>中文</a>
+      <a href="kousei.html"{' class="active"' if L['lang'] == 'zh' else ''}>中文</a>
       <a href="index-en.html"{' class="active"' if L['lang'] == 'en' else ''}>EN</a>
       <a href="index-jp.html"{' class="active"' if L['lang'] == 'ja' else ''}>日本語</a>
     </div>'''
@@ -299,7 +299,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true', help='Report stale pages without writing files.')
     args = parser.parse_args()
-    src = (ROOT / 'index.html').read_text()
+    src = (ROOT / 'kousei.html').read_text()
     src = re.sub(r' data-msg(?:-version)?="[^"]*"', "", src)
     for asset in ('style.css', 'assets/mobile-cover.css', 'assets/main.js'):
         src = version_asset(src, ROOT, asset)

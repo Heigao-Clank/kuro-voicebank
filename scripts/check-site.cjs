@@ -5,7 +5,73 @@ const { pathToFileURL } = require('node:url');
 const { chromium } = require('playwright');
 
 const root = process.argv[2] || pathToFileURL(path.resolve(__dirname, '..') + path.sep).href;
-const locales = [['index.html', 'zh'], ['index-en.html', 'en'], ['index-jp.html', 'jp']];
+const locales = [['kousei.html', 'zh'], ['index-en.html', 'en'], ['index-jp.html', 'jp']];
+
+async function checkCatalog(browser) {
+  const page = await browser.newPage({reducedMotion: 'reduce'});
+  try {
+    for (const width of [320, 390, 768, 1440]) {
+      await page.setViewportSize({width, height: 844});
+      await page.goto(new URL('index.html', root).href);
+      const release = page.getByRole('link', {name: '熵尾音 咬青 进入声库'});
+      await release.locator('img').evaluate(img => img.decode());
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      await release.click();
+      assert.equal(new URL(page.url()).pathname.split('/').pop(), 'kousei.html');
+      await page.locator('.footer-catalog').click();
+      assert.ok(await release.isVisible());
+      const menu = page.locator('.catalog-languages');
+      for (const [code, target] of [['en', 'index-en.html'], ['ja', 'index-jp.html'], ['zh-CN', 'kousei.html']]) {
+        const requests = [];
+        const onRequest = request => requests.push(request.url());
+        page.on('request', onRequest);
+        await menu.locator('a[lang="' + code + '"]').click();
+        await page.waitForFunction(lang => document.documentElement.lang === lang, code);
+        page.off('request', onRequest);
+        assert.deepEqual(requests, []);
+        assert.equal(await menu.locator('[aria-current="true"]').getAttribute('lang'), code);
+        assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        assert.equal(await page.locator('[data-local-link="page"]').getAttribute('href'), target);
+      }
+    }
+    for (const [lang, guideFile] of [['zh-CN', 'Readme.txt'], ['en', 'Readme_EN.txt'], ['ja', 'Readme_JP.txt']]) {
+      await page.locator('.catalog-languages a[lang="' + lang + '"]').click();
+      await page.waitForFunction(lang => document.documentElement.lang === lang, lang);
+      await page.locator('[data-section="assets"]').click();
+      const assets = page.locator('#assets');
+      await assets.locator('[aria-controls="stellar-assets"]').click();
+      assert.ok(await page.locator('#stellar-assets').isVisible());
+      assert.ok(await page.locator('#kousei-assets').isHidden());
+      await assets.locator('[aria-controls="kousei-assets"]').click();
+      assert.ok(await assets.locator('[download]').isVisible());
+      assert.equal(await page.locator('[download]').getAttribute('href'), guideFile);
+      await page.locator('[data-section="journal"]').click();
+      await page.locator('[aria-controls="stellar-journal"]').click();
+      assert.ok(await page.locator('#stellar-journal').isVisible());
+      assert.ok(await page.locator('#kousei-journal').isHidden());
+      await page.locator('[data-section="shelf"]').click();
+      await page.locator('[data-local-link="stellar"]').click();
+      assert.ok(await page.locator('.release-status').isVisible());
+      assert.equal(await page.locator('html').getAttribute('lang'), lang);
+      await page.locator('.back-link').click();
+      assert.equal(await page.locator('html').getAttribute('lang'), lang);
+    }
+    await page.locator('.catalog-languages [lang="en"]').click();
+    await page.locator('.release[href="index-en.html"]').click();
+    await page.locator('.topnav-lang a[lang="ja"]').click();
+    await page.locator('.footer-catalog[href="index.html#ja"]').click();
+    await page.waitForFunction(() => document.documentElement.lang === 'ja');
+    await page.reload();
+    assert.equal(await page.locator('#kousei-name').innerText(), '熵尾音 こうせい');
+    for (const hash of ['#guidelines', '#demo', '#faq-answer-3']) {
+      await page.goto(new URL('index.html' + hash, root).href);
+      await page.waitForURL('**/kousei.html' + hash);
+      assert.equal(await page.locator(hash).count(), 1);
+    }
+  } finally {
+    await page.close();
+  }
+}
 
 async function checkLocale(browser, file, lang) {
   const page = await browser.newPage({ viewport: {width: 390, height: 844}, reducedMotion: 'reduce' });
@@ -97,7 +163,7 @@ async function checkAudio(browser, file) {
 async function checkPendingLanguage(browser) {
   const page = await browser.newPage({viewport: {width: 390, height: 844}, reducedMotion: 'reduce'});
   try {
-    await page.goto(new URL('index.html#faq', root).href);
+    await page.goto(new URL('kousei.html#faq', root).href);
     const english = page.locator('.topnav-lang a[lang="en"]');
     const japanese = page.locator('.topnav-lang a[lang="ja"]');
     await page.route(/\/locales\/en\.js\?/, route => route.abort());
@@ -194,6 +260,7 @@ async function checkLanguageSwitch(browser) {
 (async () => {
   const browser = await chromium.launch({executablePath:process.env.CHROME_PATH});
   try {
+    await checkCatalog(browser);
     if (!root.startsWith('file:')) await checkPendingLanguage(browser);
     await checkLanguageSwitch(browser);
     for (const [file, lang] of locales) {

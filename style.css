@@ -1425,6 +1425,15 @@ p .vb-type {
   transform: translateY(-3px);
 }
 
+.footer-catalog {
+  display: inline-block;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
 .footer-text {
   font-size: 0.9rem;
   color: var(--text-muted);

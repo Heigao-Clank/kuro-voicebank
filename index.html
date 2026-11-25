@@ -1,839 +1,114 @@
-<!DOCTYPE html>
-
-<html data-msg-version="4ba8099826ff" lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-msg="0">熵尾音 咬青 | UTAU Voicebank</title>
-  <meta data-msg="content" name="description" content="熵尾音 咬青是来自宇宙的双尾狼兽人。日语 UTAU 声库收录软声、真声和假声，采用 CVVC 与 VCV 格式。提供试听、声库下载及分版本使用协议。">
-  <meta name="author" content="黑篙">
-
-  <link rel="alternate" hreflang="zh-CN" href="https://kuro-utau.heigao.me/">
-  <link rel="alternate" hreflang="ja" href="https://kuro-utau.heigao.me/index-jp.html">
-  <link rel="alternate" hreflang="en" href="https://kuro-utau.heigao.me/index-en.html">
-  <link rel="alternate" hreflang="x-default" href="https://kuro-utau.heigao.me/">
-
-  <!-- Open Graph -->
-  <meta data-msg="content" property="og:title" content="熵尾音 咬青 | UTAU Voicebank">
-  <meta data-msg="content" property="og:description" content="熵尾音 咬青是来自宇宙的双尾狼兽人。日语 UTAU 声库收录软声、真声和假声，采用 CVVC 与 VCV 格式。提供试听、声库下载及分版本使用协议。">
-  <meta property="og:type" content="website">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/webp" sizes="48x48" href="assets/images/icon-48.webp">
-
-
-  <!-- Styles -->
-    
-  
-
-  <style>
-    /* 单独微调中文版上下两行的文字间距，修复较短文本导致的视觉断层 */
-    .scroll-left .bg-deco-text,
-    .scroll-left-slow .bg-deco-text {
-      padding-right: 12vw !important;
-      /* 缩小中文短句块之间的左右留白 */
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24272c">
+  <title>黑篙的声库 | Heigao’s Voicebanks</title>
+  <meta name="description" content="黑篙的声库目录，收录熵尾音 咬青与开发中的熵尾音 恒星，可查看声库资料、配布素材与更新日志。">
+  <link rel="canonical" href="https://kuro-utau.heigao.me/">
+  <link rel="icon" href="favicon.ico">
+  <script>
+    // Bookmarks from before the catalog opened point to sections of Kousei's page.
+    const kouseiSection = /^#(?:hero|demo|profile|voicebank|download(?:-github|-bowlroll|-mirrors)?|guidelines|protocol-(?:zh|en|jp)|faq(?:-answer-[1-7])?|contact)$/;
+    function openBookmarkedSection() {
+      if (kouseiSection.test(location.hash)) {
+        location.replace('kousei.html' + location.search + location.hash);
+      }
     }
-  </style>
-  <link rel="stylesheet" href="style.css?v=b412bab29151">
-  <link rel="stylesheet" href="assets/mobile-cover.css?v=bda45de9db9d" media="(max-width: 600px), (max-width: 960px) and (max-height: 500px) and (orientation: landscape)">
+    window.addEventListener('hashchange', openBookmarkedSection);
+    openBookmarkedSection();
+  </script>
+  <link rel="stylesheet" href="assets/catalog.css">
+  <script defer src="assets/catalog.js"></script>
 </head>
-
 <body>
-  <!-- 高级视觉：背景动效装饰 (倾斜错落字幕) -->
-  <div class="bg-deco" aria-hidden="true">
-    <div class="bg-deco-wrapper">
-      <!-- 第一行：中文版专属名称 (已删除空格) -->
-      <div class="bg-deco-row scroll-left">
-        <div data-msg="0" class="bg-deco-text">熵尾音 咬青 熵尾音 咬青 熵尾音 咬青 </div>
-        <div data-msg="0" class="bg-deco-text">熵尾音 咬青 熵尾音 咬青 熵尾音 咬青 </div>
-      </div>
-      <!-- 第二行：不变 -->
-      <div class="bg-deco-row scroll-right">
-        <div class="bg-deco-text">UTAU • JA VCV&amp;CVVC UTAU • JA VCV&amp;CVVC </div>
-        <div class="bg-deco-text">UTAU • JA VCV&amp;CVVC UTAU • JA VCV&amp;CVVC </div>
-      </div>
-      <!-- 第三行：中文版感谢 -->
-      <div class="bg-deco-row scroll-left-slow">
-        <div data-msg="0" class="bg-deco-text">感谢使用 感谢使用 感谢使用 </div>
-        <div data-msg="0" class="bg-deco-text">感谢使用 感谢使用 感谢使用 </div>
-      </div>
+  <main class="shelf">
+    <header class="topline">
+      <h1 lang="en">Heigao’s Voicebanks</h1>
+      <span data-copy="catalog">黑篙的声库</span>
+    </header>
+    <div class="catalog-bar">
+      <nav class="catalog-sections" aria-label="栏目" hidden>
+        <button data-section="shelf" data-copy="shelf" aria-controls="shelf" aria-pressed="true">声库目录</button>
+        <button data-section="assets" data-copy="assets" aria-controls="assets" aria-pressed="false">素材下载</button>
+        <button data-section="journal" data-copy="journal" aria-controls="journal" aria-pressed="false">声库日志</button>
+      </nav>
+      <nav class="catalog-languages" aria-label="选择语言" hidden>
+        <a href="#zh" lang="zh-CN" hreflang="zh-CN">中文</a>
+        <a href="#en" lang="en" hreflang="en">English</a>
+        <a href="#ja" lang="ja" hreflang="ja">日本語</a>
+      </nav>
     </div>
-  </div>
-
-  <!-- 顶部胶囊导航 (桌面端) -->
-  <header class="topnav" id="topnav">
-    <a href="#hero" class="topnav-brand">
-      <img src="assets/images/icon-72.webp" alt="Kousei" style="width:30px;height:30px;">
-      <span data-msg="0" class="topnav-brand-text">熵尾音 咬青<small>UTAU Voicebank</small></span>
-    </a>
-    <nav data-msg="aria-label" class="topnav-nav" aria-label="主要导航">
-      <a data-msg="0" href="#demo" class="topnav-link">试听</a>
-      <a data-msg="0" href="#profile" class="topnav-link">档案</a>
-      <a data-msg="0" href="#download" class="topnav-link">下载</a>
-      <a data-msg="0" href="#guidelines" class="topnav-link">协议</a>
-      <a href="#faq" class="topnav-link">FAQ</a>
-      <a data-msg="0" href="#contact" class="topnav-link">联系</a>
-    </nav>
-    <div class="lang-switcher topnav-lang">
-      <a href="index.html" class="active">中文</a>
-      <a href="index-en.html">EN</a>
-      <a href="index-jp.html">日本語</a>
-    </div>
-  </header>
-
-  <!-- Left Sidebar Navigation -->
-  <nav class="sidebar" id="sidebar" hidden inert>
-    <div class="sidebar-brand">
-      <a href="#hero" class="sidebar-brand-link">
-        <img src="assets/images/icon-72.webp" alt="Kousei" style="width:36px;height:36px;border-radius:0;">
-        <span data-msg="0" class="sidebar-brand-text">熵尾音 咬青<br><small style="font-weight:400;color:var(--text-muted);font-size:0.7rem;">UTAU Voicebank</small></span>
+    <div id="shelf">
+      <a data-local-link="page" class="release" href="kousei.html" aria-labelledby="kousei-name kousei-enter">
+        <div class="jacket" aria-hidden="true">
+          <div class="disc"></div>
+          <div class="cover">
+            <b lang="en">Kousei</b>
+            <span class="cover-name" lang="zh-CN">咬青</span>
+            <img src="assets/images/character-640w.webp"
+                 srcset="assets/images/character-320w.webp 320w, assets/images/character-640w.webp 640w, assets/images/character.webp 1265w"
+                 sizes="(max-width: 532px) min(75vw, 267px), (min-width: 1563px) 28vw, calc(21vw + 104px)" width="640" height="883" alt="">
+          </div>
+        </div>
+        <div class="detail">
+          <h2 id="kousei-name" data-copy="name">熵尾音 咬青</h2>
+          <p><span data-copy="format">日语 UTAU 声库</span><br><span data-copy="voices">软声、真声、假声</span></p>
+          <span class="jump" id="kousei-enter"><span data-copy="enter">进入声库</span> <span aria-hidden="true">↗</span></span>
+        </div>
       </a>
-    </div>
-    <div class="sidebar-nav">
-      <a href="#hero" class="nav-home active">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-        <span data-msg="0" class="sidebar-nav-text">首页</span>
-      </a>
-      <a href="#demo" class="nav-demo">
-        <svg class="sidebar-nav-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-        </svg>
-        <span data-msg="0" class="sidebar-nav-text">试听演示</span>
-      </a>
-      <a href="#profile" class="nav-profile">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        <span data-msg="0" class="sidebar-nav-text">角色档案</span>
-      </a>
-      <a href="#download" class="nav-download">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
-        <span data-msg="0" class="sidebar-nav-text">下载音源</span>
-      </a>
-      <a href="#guidelines" class="nav-guidelines">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-        <span data-msg="0" class="sidebar-nav-text">使用协议</span>
-      </a>
-      <a href="#faq" class="nav-faq">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
-        <span data-msg="0" class="sidebar-nav-text">常见问题</span>
-      </a>
-      <a href="#contact" class="nav-contact">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-        <span data-msg="0" class="sidebar-nav-text">联系方式</span>
+      <a class="release" data-local-link="stellar" href="hengxing.html" aria-labelledby="stellar-name stellar-status">
+        <div class="jacket" aria-hidden="true">
+          <div class="disc"></div>
+          <div class="cover stellar-art">
+            <b lang="en">Kousei</b>
+            <span class="cover-name" lang="zh-CN">恒星</span>
+          </div>
+        </div>
+        <div class="detail">
+          <h2 id="stellar-name" data-copy="starName">熵尾音 恒星</h2>
+          <p><span data-copy="ai">AI 声库</span><br><span id="stellar-status" data-copy="unreleased">暂未发布</span></p>
+          <span class="jump"><span data-copy="enter">进入声库</span> <span aria-hidden="true">↗</span></span>
+        </div>
       </a>
     </div>
-    <a href="https://heigao.me/" target="_blank" class="sidebar-site">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
-      <span data-msg="0">作者个人网站</span>
-    </a>
-    <div class="sidebar-footer">
-      <div class="sidebar-sns">
-        <a href="https://space.bilibili.com/695724697" target="_blank" class="sidebar-sns-link bilibili" title="Bilibili"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg></a>
-        <a href="https://twitter.com/heigao_tickle" target="_blank" class="sidebar-sns-link" title="Twitter/X"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
-          <a href="https://github.com/Heigao-Clank/kuro-voicebank" target="_blank" class="sidebar-sns-link" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
-          </svg></a>
-        <a data-msg="title" href="https://heigao.me/" target="_blank" class="sidebar-sns-link" title="个人网站"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></a>
+    <section id="assets" class="catalog-panel" hidden>
+      <h2 id="assets-title" data-copy="assets">素材下载</h2>
+      <div class="bank-picker" role="group" aria-labelledby="assets-title">
+        <button type="button" aria-pressed="true" aria-controls="kousei-assets"><span class="thumb kousei-art" aria-hidden="true"></span><span data-copy="name">熵尾音 咬青</span></button>
+        <button type="button" aria-pressed="false" aria-controls="stellar-assets"><span class="thumb stellar-art" aria-hidden="true"></span><span data-copy="starName">熵尾音 恒星</span></button>
       </div>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <div class="main-content">
-    <!-- Hero Section - 1024Store Style -->
-    <section class="hero" id="hero">
-      <div class="container">
-        <div class="hero-stage">
-          <div class="hero-main">
-            <div class="hero-visual">
-              <picture>
-                <source media="(max-width: 600px), (max-width: 960px) and (max-height: 500px) and (orientation: landscape)" srcset="assets/images/character-640w.webp 1x, assets/images/character.webp 2x">
-                <source media="(max-width: 900px)" srcset="assets/images/character-640w.webp">
-                <img data-msg="alt" src="assets/images/character.webp" alt="熵尾音 咬青" class="hero-character" onerror="this.style.display='none'">
-              </picture>
-              <p data-msg="0" class="hero-visual-text">插图 · 黑篙</p>
-            </div>
-            <div class="hero-text">
-              <p class="hero-eyebrow">UTAU VOICEBANK · V1.1</p>
-              <h1 data-msg="0" class="hero-title">熵尾音 咬青</h1>
-              <p data-msg="0" class="hero-subtitle">UTAU 日语音源 · <span class="vb-type">JA CVVC &amp; VCV</span></p>
-              <p data-msg="0" class="hero-description">双尾狼兽人 · 面纹<br><span data-msg="0" class="text-muted">来自宇宙，是某个未知存在的独立子体之一。</span></p>
-              <div class="hero-download">
-                <a data-msg="0" href="#download" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg> 下载音源</a>
-                <a data-msg="0" href="#guidelines" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg> 使用协议</a>
-              </div>
-            </div>
-          </div>
-          <dl data-msg="aria-label" class="hero-tally" aria-label="音源规格">
-            <div class="hero-tally-item">
-              <dt data-msg="0" class="hero-tally-label">语言·形式</dt>
-              <dd class="hero-tally-value"><span class="vb-type">JA CVVC &amp; VCV</span></dd>
-            </div>
-            <div class="hero-tally-item">
-              <dt data-msg="0" class="hero-tally-label">录制音高</dt>
-              <dd class="hero-tally-value">B2 / B3 / B4</dd>
-            </div>
-            <div class="hero-tally-item">
-              <dt data-msg="0" class="hero-tally-label">舒适音域</dt>
-              <dd class="hero-tally-value">D2–D6</dd>
-            </div>
-            <div class="hero-tally-item">
-              <dt data-msg="0" class="hero-tally-label">推荐引擎</dt>
-              <dd class="hero-tally-value">HiFiUTAU</dd>
-            </div>
-          </dl>
+      <section id="kousei-assets" class="bank-panel">
+        <div class="file-row">
+          <span data-copy="guide">V1.1 使用指南</span><small>TXT</small>
+          <a href="Readme.txt" data-local-link="guideFile" download data-copy="download">下载</a>
         </div>
-      </div>
-      <div class="hero-waveform">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
+      </section>
+      <section id="stellar-assets" class="bank-panel" hidden>
+        <p data-copy="noAssets">暂无公开下载的素材。</p>
+      </section>
     </section>
-
-    <!-- Demo Audio Section -->
-    <section class="section anim-paused" id="demo">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-msg="0">试听演示</h2>
-          <p data-msg="0">Voice Demo</p>
-        </div>
-        <div class="demo-grid">
-          <div class="demo-card" data-index="0">
-            <div class="demo-card-header">
-              <span class="demo-card-title">Track 1</span>
-              <span data-msg="0" class="demo-card-desc">精英（エリート）</span>
-            </div>
-            <div class="demo-canvas-wrap">
-              <img src="assets/audio/demo-01-waveform.svg" alt=""><img class="waveform-played" src="assets/audio/demo-01-waveform.svg" alt="">
-            </div>
-            <div class="demo-controls">
-              <button class="demo-play-btn">
-                <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
-              </button>
-              <div class="demo-progress">
-                <div class="demo-progress-bar"></div>
-              </div>
-              <span class="demo-time">0:00 / 1:48</span>
-            </div>
-            <p class="demo-status" role="status"></p>
-            <audio data-duration="108.484" preload="metadata"><source src="assets/audio/demo-01.opus" type="audio/ogg; codecs=opus"><source src="assets/audio/demo-01.mp3" type="audio/mpeg"></audio>
-          </div>
-          <div class="demo-card" data-index="1">
-            <div class="demo-card-header">
-              <span class="demo-card-title">Track 2</span>
-              <span data-msg="0" class="demo-card-desc">蓝闪蝶（レテノール）</span>
-            </div>
-            <div class="demo-canvas-wrap">
-              <img src="assets/audio/demo-02-waveform.svg" alt=""><img class="waveform-played" src="assets/audio/demo-02-waveform.svg" alt="">
-            </div>
-            <div class="demo-controls">
-              <button class="demo-play-btn">
-                <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
-              </button>
-              <div class="demo-progress">
-                <div class="demo-progress-bar"></div>
-              </div>
-              <span class="demo-time">0:00 / 1:23</span>
-            </div>
-            <p class="demo-status" role="status"></p>
-            <audio data-duration="83.285" preload="metadata"><source src="assets/audio/demo-02.opus" type="audio/ogg; codecs=opus"><source src="assets/audio/demo-02.mp3" type="audio/mpeg"></audio>
-          </div>
-          <div class="demo-card" data-index="2">
-            <div class="demo-card-header">
-              <span class="demo-card-title">Track 3</span>
-              <span data-msg="0" class="demo-card-desc">初音未来的消失（初音ミクの消失）</span>
-            </div>
-            <div class="demo-canvas-wrap">
-              <img src="assets/audio/demo-03-waveform.svg" alt=""><img class="waveform-played" src="assets/audio/demo-03-waveform.svg" alt="">
-            </div>
-            <div class="demo-controls">
-              <button class="demo-play-btn">
-                <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
-              </button>
-              <div class="demo-progress">
-                <div class="demo-progress-bar"></div>
-              </div>
-              <span class="demo-time">0:00 / 0:37</span>
-            </div>
-            <p class="demo-status" role="status"></p>
-            <audio data-duration="36.864" preload="metadata"><source src="assets/audio/demo-03.opus" type="audio/ogg; codecs=opus"><source src="assets/audio/demo-03.mp3" type="audio/mpeg"></audio>
-          </div>
-        </div>
+    <section id="journal" class="catalog-panel" hidden>
+      <h2 id="journal-title" data-copy="journal">声库日志</h2>
+      <div class="bank-picker" role="group" aria-labelledby="journal-title">
+        <button type="button" aria-pressed="true" aria-controls="kousei-journal"><span class="thumb kousei-art" aria-hidden="true"></span><span data-copy="name">熵尾音 咬青</span></button>
+        <button type="button" aria-pressed="false" aria-controls="stellar-journal"><span class="thumb stellar-art" aria-hidden="true"></span><span data-copy="starName">熵尾音 恒星</span></button>
       </div>
+      <section id="kousei-journal" class="bank-panel">
+        <time datetime="2026-11">2026.11</time>
+        <h3 data-copy="guide">V1.1 使用指南</h3>
+        <p data-copy="guideNote">本版指南列出了三种声线的录制音高、角色资料与使用条款。</p>
+        <a href="kousei.html#guidelines" data-local-link="guidePage" data-copy="readGuide">阅读指南</a>
+      </section>
+      <section id="stellar-journal" class="bank-panel" hidden>
+        <p data-copy="noEntries">暂无日志。</p>
+      </section>
     </section>
-
-    <!-- Profile Section -->
-    <section class="section anim-paused" id="profile">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-msg="0">角色档案</h2>
-          <p data-msg="0">Character Profile</p>
-        </div>
-                <div class="profile-sheet">
-          <h3 data-msg="0" class="profile-name">熵尾音 こうせい（熵尾音 咬青）</h3>
-          <p data-msg="0 1 2 3 4" class="profile-sub">狼兽人 <span class="sep">·</span> 男性 <span class="sep">·</span> 约17岁 <span class="sep">·</span> 生日8月14日 <span class="sep">·</span> 约168cm</p>
-          <div class="profile-divider"></div>
-          <blockquote class="profile-flavor"><p data-msg="0">熵尾音来自宇宙，是某个未知存在的独立子体之一。容易打瞌睡，行动常由无意识驱动。面纹与双尾都是天生的，会随状态变化。特殊喜好是西瓜。</p></blockquote>
-          <div class="profile-detail">
-            <div class="profile-detail-row">
-              <span data-msg="0" class="profile-detail-label">声线</span>
-              <span data-msg="0" class="profile-detail-value">声音有力，唱起来透着一股自信。</span>
-            </div>
-            <div class="profile-detail-row">
-              <span data-msg="0" class="profile-detail-label">特征</span>
-              <span data-msg="0" class="profile-detail-value">面纹、双尾（随状态变化）</span>
-            </div>
-            <div class="profile-detail-row">
-              <span data-msg="0" class="profile-detail-label">喜好</span>
-              <span data-msg="0" class="profile-detail-value">西瓜</span>
-            </div>
-          </div>
-          <div class="profile-detail">
-            <div class="profile-detail-row">
-              <span data-msg="0" class="profile-detail-label">先天双尾</span>
-              <span data-msg="0" class="profile-detail-value">作为先天生理结构，双尾让熵尾音在保持平衡时有着天然的优势。两条尾巴蓬松柔软，保温性极佳。熵尾音常在睡眠时本能地用双尾环抱住身体。</span>
-            </div>
-            <div class="profile-detail-row">
-              <span data-msg="0" class="profile-detail-label">颈环式麦克风</span>
-              <span data-msg="0" class="profile-detail-value">颈环依靠上亿个纳米传感器，定向捕捉发声动作与声带振动。它对熵尾音进行实时声学建模，仅凭这些物理数据，就能在数字空间中精准重构并录制他发出的任何声音。</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Download Section - Teto Accordion Style -->
-    <section class="section anim-paused" id="download">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-msg="0">下载音源</h2>
-          <p data-msg="0">公开下载：V1 · <a data-msg="0 href" href="assets/terms-v1.html#zh">查看 V1 使用协议</a></p>
-        </div>
-        <div class="download-list">
-          <div class="voice-notes" id="voicebank">
-            <h3 data-msg="0" class="voice-notes-title">V1.1 声线说明</h3>
-            <p data-msg="0 1" class="voice-usage">软声（_S）录于 B2，真声（_O）录于 B3，假声（_F）录于 B4。<br>默认声线（Main）在 A#4 及以下使用真声，从 B4 起切换为假声。</p>
-          </div>
-          <details class="accordion" data-type="primary">
-            <summary class="accordion-title" aria-controls="download-github">
-              <span class="accordion-title-inner">
-                <span class="accordion-number">01</span>
-                <span class="accordion-name">GitHub</span>
-              </span>
-              <span class="accordion-icon"></span>
-            </summary>
-            <div class="accordion-content" id="download-github">
-              <div class="accordion-content-inner">
-                <p data-msg="0" class="accordion-desc">公开下载：V1</p>
-                <a data-msg="0" href="https://github.com/Heigao-Clank/kuro-voicebank/releases/tag/V1" target="_blank" class="accordion-link">前往 GitHub 下载 V1</a>
-                <div class="install-command" data-copy="gh release download V1 --repo Heigao-Clank/kuro-voicebank">
-                  <span class="install-prompt" aria-hidden="true">$</span>
-                  <code>gh release download V1 --repo Heigao-Clank/kuro-voicebank</code>
-                  <button data-msg="aria-label title" type="button" class="install-copy" aria-label="复制命令" title="复制命令" hidden>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                  </button>
-                  <span class="copy-status" role="status"></span>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <details class="accordion" data-type="warm">
-            <summary class="accordion-title" aria-controls="download-bowlroll">
-              <span class="accordion-title-inner">
-                <span class="accordion-number">02</span>
-                <span class="accordion-name">Bowlroll</span>
-              </span>
-              <span class="accordion-icon"></span>
-            </summary>
-            <div class="accordion-content" id="download-bowlroll">
-              <div class="accordion-content-inner">
-                <p data-msg="0" class="accordion-desc">日本文件分享服务</p>
-                <span data-msg="0" class="accordion-soon">暂无下载链接</span>
-              </div>
-            </div>
-          </details>
-
-          <details class="accordion" data-type="secondary">
-            <summary class="accordion-title" aria-controls="download-mirrors">
-              <span class="accordion-title-inner">
-                <span class="accordion-number">03</span>
-                <span data-msg="0" class="accordion-name">网盘下载</span>
-              </span>
-              <span class="accordion-icon"></span>
-            </summary>
-            <div class="accordion-content" id="download-mirrors">
-              <div class="accordion-content-inner">
-                <p data-msg="0" class="accordion-desc">V1 备用下载</p>
-                <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
-                  <a href="https://drive.google.com/file/d/1WB_3wNww9CAy_1M7UDJVFeQKciWdL78O/view?usp=drive_link" target="_blank" class="accordion-link">Google Drive</a>
-                  <a data-msg="0" href="https://1820313552.share.123pan.cn/123pan/TUtojv-ViaY" target="_blank" class="accordion-link">123云盘</a>
-                </div>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Guidelines Section -->
-    <section class="section section-alt anim-paused" id="guidelines">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-msg="0">使用协议</h2>
-          <p data-msg="0">V1.1 使用协议 · <a data-msg="0 href" href="assets/terms-v1.html#zh">查看 V1 使用协议</a></p>
-        </div>
-        <div class="guidelines-grid">
-          <div class="guideline-card">
-            <div class="guideline-header">
-              <div class="guideline-icon guideline-icon-ok"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              <div data-msg="0" class="guideline-title">允许的事项</div>
-            </div>
-            <ul class="guideline-list">
-              <li data-msg="0">个人可自行投稿、领取平台创作激励及比赛奖金；角色名和作者名均可选择是否署名。</li>
-              <li data-msg="0">可承接指定本音源的商业歌曲委托。交付的咬青人声须直接用本 UTAU 音源调声、渲染。</li>
-              <li data-msg="0">个人创作可用已渲染的人声作 AI 参考，本地或在线生成歌声、语音。在线处理或生成须明确排除用提交的音频训练模型；用原始录音或渲染人声训练模型，仅限本人在本地进行非公开的调声实验。</li>
-              <li data-msg="0">上述个人音频可单独或随作品上传，供非商业分享。可修改并单独分享 oto.ini 和 .frq，分享时不得附带声库录音样本。</li>
-              <li data-msg="0">个人可以制作和销售同人周边，包括使用自绘图案的商品。</li>
-              <li data-msg="0">官方立绘可用于使用本音源的作品封面或视频；用于专辑封面时仅限非付费专辑，裁切或改色亦同。</li>
-            </ul>
-          </div>
-
-          <div class="guideline-card">
-            <div class="guideline-header">
-              <div class="guideline-icon guideline-icon-no"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></div>
-              <div data-msg="0" class="guideline-title">禁止的事项</div>
-            </div>
-            <ul class="guideline-list">
-              <li data-msg="0" class="no">分发原始录音或转码副本，或将本音源打包进收费产品。</li>
-              <li data-msg="0" class="no">向他人提供二次声库、模型权重或可复现咬青音色的特征数据；将本音源或二次声库接入公开 AI 服务。</li>
-              <li data-msg="0" class="no">使用本音源开发或训练商业 AI 产品，或交付模型生成、转换的咬青委托人声。</li>
-              <li data-msg="0" class="no">冒认制作者，或制作、传播协议所禁止的违法、仇恨、歧视等内容。</li>
-            </ul>
-          </div>
-
-          <div class="guideline-card">
-            <div class="guideline-header">
-              <div class="guideline-icon guideline-icon-ask"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg></div>
-              <div data-msg="0" class="guideline-title">需事先取得授权</div>
-            </div>
-            <ul class="guideline-list">
-              <li data-msg="0" class="ask">通过发行商发行音乐、收录于商业唱片或付费专辑、商业游戏用曲及游戏内置语音。</li>
-              <li data-msg="0" class="ask">将角色设定或形象用于企业宣传、量产商品或虚拟主播的出镜形象。</li>
-              <li data-msg="0" class="ask">专辑封面以外的商品直接使用官方立绘或其裁切、改色版本。</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Full Protocol Tabs -->
-        <div class="protocol-tabs">
-          <div class="protocol-tab-bar">
-            <button class="protocol-tab active" data-lang="zh" type="button" aria-controls="protocol-zh" aria-pressed="true">中文</button>
-            <button class="protocol-tab" data-lang="en" type="button" aria-controls="protocol-en" aria-pressed="false">English</button>
-            <button class="protocol-tab" data-lang="jp" type="button" aria-controls="protocol-jp" aria-pressed="false">日本語</button>
-          </div>
-          <div class="protocol-content" id="protocol-zh" lang="zh-CN">
-            <div class="protocol-text"><h3>🔷🔹「熵尾音 こうせい」使用指南</h3>
-<p>日本語版は Readme_JP をご覧ください。<br>For English version, please refer to Readme_EN.</p>
-<p>UTAU音源「熵尾音 こうせい」<br>版本：V1.1<br>版本更新日期：2026年11月<br>版权所有：黑篙<br>※音源与角色设定在后续版本中可能会有所调整。</p>
-<p>全流程制作者/负责人：黑篙<br>※每版协议自对应的声库版本更新之日起生效。使用条款以声库官网（<a href="https://kuro-utau.heigao.me/">https://kuro-utau.heigao.me/</a>）公布的对应版本为准。涉及使用权限的重大变更，作者会提前公告。旧作品的展示、收益及新用途，详见「协议效力与终止」。</p>
-<hr>
-<h3>🔷🔹正文</h3>
-<p>感谢您下载UTAU音源「熵尾音 こうせい」V1.1。<br>本音源的原始录音、官方角色立绘及设定文本，其相关权利归黑篙所有。<br>使用本音源制作歌曲或其他作品时，创作者对自己原创的词、曲、编曲、调校等部分，依法享有相应权利。<br>翻唱、混音或改编他人作品时，请另行确认原曲、歌词、伴奏等素材的使用许可。</p>
-<p>本音源为基于原始录音制作的三声线 CVVC &amp; VCV 音源，每种声线均为单音阶录制。由于为个人制作，音量、音质及发声可能存在一定差异，请在使用时根据需要自行调整参数。</p>
-<hr>
-<h3>■ 音源信息</h3>
-<p>形式：JA CVVC &amp; VCV<br>各声线录制音高：软声 B2、真声 B3、假声 B4<br>舒适音域：D2–D6<br>声线特点：声音有力，唱起来透着一股自信。</p>
-<h3>■ 使用说明：</h3>
-<p>推荐使用引擎：HiFiUTAU，以此获得声库最佳体验<br>引擎GitHub链接：<a href="https://github.com/xiaobaijunya/HiFiUTAU-engine">https://github.com/xiaobaijunya/HiFiUTAU-engine</a></p>
-<p>三种声线分别为真声（_O）、假声（_F）和软声（_S）。</p>
-<p>Main：A#4及以下为真声，B4及以上为假声<br>Original：真声<br>Falsetto：假声<br>Soft：轻柔的声线，宛如喃喃自语一般。</p>
-<h3>■ 角色设定</h3>
-<h3>【基础信息】</h3>
-<p>名字：熵尾音 こうせい（熵尾音 咬青）<br>年龄：约17岁<br>生日：8月14日<br>性别：男性<br>身高：约168cm<br>种族：狼兽人</p>
-<h3>【角色简介】</h3>
-<p>熵尾音来自宇宙，是某个未知存在的独立子体之一。容易打瞌睡，行动常由无意识驱动。面纹与双尾都是天生的，会随状态变化。特殊喜好是西瓜。</p>
-<p>先天双尾：<br>作为先天生理结构，双尾让熵尾音在保持平衡时有着天然的优势。两条尾巴蓬松柔软，保温性极佳。熵尾音常在睡眠时本能地用双尾环抱住身体。</p>
-<p>颈环式麦克风：<br>颈环依靠上亿个纳米传感器，定向捕捉发声动作与声带振动。它对熵尾音进行实时声学建模，仅凭这些物理数据，就能在数字空间中精准重构并录制他发出的任何声音。</p>
-<hr>
-<h3>■ 注意事项</h3>
-<p>・本音源为业余制作，可能存在发音不稳定或衔接问题。<br>・部分音可能需要手动微调以获得更自然的效果。<br>・请避免在极端音域或高强度曲目中直接使用未调校音源。</p>
-<hr>
-<h3>🔷🔹 角色使用说明</h3>
-<h3>◆ 角色名义与署名</h3>
-<p>您可以让「熵尾音 こうせい」以角色身份演唱或配音，也可以只使用本音源生成的歌声或语音。两种情况下，是否标注角色名「熵尾音 こうせい」或声库作者名「黑篙」，均由您自行决定。<br>如需注明声库制作者，请如实填写。禁止冒称自己或其他人为本音源的制作者。</p>
-<h3>◆ 关于同人创作</h3>
-<p>同人创作时，允许对角色的外观进行适度调整和再创作，包括但不限于：<br>・服装、发型、姿势等非核心设定的变化<br>・根据作品风格进行适当调整</p>
-<h3>◆ 作品分级与内容提示</h3>
-<p>发布作品时，请按实际内容和发布平台的要求标明年龄分级。涉及敏感题材时，请在观众接触相关内容前给出提示，并按要求设置访问限制。<br>使用角色形象时，还须遵守适用法律及发布平台对未成年角色描写的规定。</p>
-<hr>
-<h3>⚪ 允许的事项（无需联系作者）</h3>
-<p>以下行为无需联系作者，可直接进行：</p>
-<h3>◆ 创作与发布</h3>
-<p>・个人非商业使用、学习、研究目的的创作。也可以只使用本音源生成的歌声或语音，无需使用角色名义。<br>・可以使用本音源制作作品参赛，并领取比赛奖金，无需另行申请。<br>・视频投稿、直播、收益化（在同人/个人活动范围内）<br>・个人可以自行向音乐平台投稿，按本协议的个人创作规则发布作品。<br>・二次创作（翻唱、投稿、Remix等）。可在使用本音源的作品封面或视频中展示官方立绘。用于专辑封面时，本项许可限于非付费专辑，裁切、改色版本亦同。<br>・在个人活动范围内，可以制作、销售同人周边，包括使用自绘图案的商品。商品使用官方立绘须按下文取得授权，专辑封面按前项规定执行。<br>・可以承接有偿调声或歌曲制作委托，委托人也可以指定使用本音源制作商业歌曲。接单、收费、制作和交付成品均无需另行取得作者授权。交付成品中的咬青人声须直接使用本 UTAU 音源调声、渲染；可按下文规定进行修音、混音等后期处理，但不得以 AI 歌声合成、语音克隆或变声模型生成或替换交付的咬青人声。成品的发行、宣传、游戏内使用等，按实际用途适用本协议的相应条款及其他适用协议。</p>
-<h3>◆ 人工智能（AI）与技术支持</h3>
-<p>・音频后期处理：可以用 AI 工具对本音源渲染的人声进行修音、混音等后期处理。在线修音、混音或使用下述参考音频生成功能时，服务条款或当前设置须明确排除将提交的音频用于模型训练。<br>・个人声音实验：个人创作时，可以将本音源渲染的人声作为参考音频，在本地或在线生成新的歌声或语音。使用本声库的原始录音或由本声库渲染的人声训练模型，均仅限本人在本地进行非公开的调声实验。这类实验可以涉及 SVC、RVC、语音转换、歌声合成、语音克隆、TTS、LoRA 微调及模型合并等。黑篙今后如发布官方 AI 声音模型，其使用以该模型发布时的说明为准。<br>・严禁外传：不得向第三方提供基于本音源或其渲染人声训练所得的模型文件、LoRA 或其他微调权重、合并模型，也不得提供从这些音频中直接提取、可供他人复现咬青音色的嵌入向量（embedding）或其他特征数据（以下统称「二次声库」）。仅记录音高、时值的普通调声参数不属于上述音色数据。禁止的提供方式包括公开发布、售卖、私下传输、群组或网盘链接分享、交换及赠送等。<br>・严禁公开部署：禁止将本声库（含原始录音样本）或上述二次声库上传、部署或接入公开 AI 服务、在线推理接口、开源仓库或模型社区，也不得将本声库作为训练数据集上传至公共 AI 模型。前述在线处理和生成许可仅适用于已渲染的人声。<br>・成品发布与收益：个人创作中按上述条件渲染或生成的人声，可以单独上传，也可以随作品一同上传，供非商业分享。个人作品的发布与收益按本协议相应条款执行，个人同人作品可以参加平台创作激励。模型生成或转换的人声不得作为咬青的委托成品交付。成品适用本协议的署名、商用及内容限制等条款，且不得随附模型、权重或可复现咬青音色的特征数据。</p>
-<h3>◆ 文件修改与分享</h3>
-<p>・可以修改并单独分享原音设定文件（oto.ini）和频率表文件（.frq）。分享时请勿附带声库中的录音样本。<br>・对作品进行二次创作和改编</p>
-<hr>
-<h3>× 禁止的事项</h3>
-<p>以下行为严格禁止：</p>
-<h3>◆ 核心禁止</h3>
-<p>・禁止向他人分发声库自带的原始录音样本，包括转换为其他音频格式后的副本。使用本音源渲染完成的歌曲或语音作品，可以按本协议相应条款发布。<br>・禁止将本音源以任何形式打包进收费产品<br>・禁止将修改、处理后的本音源样本文件用于制作并发布二次声库</p>
-<h3>◆ 内容禁止</h3>
-<p>・禁止使用本音源或角色制作、传播违反适用法律法规的内容。<br>・禁止使用本音源或角色传播仇恨或歧视性内容，或宣扬极端政治立场或极端宗教立场。<br>・禁止恶意制作严重损害角色形象的内容，例如冒充官方发布侮辱性声明，或捏造作者、声源提供者的言论并以其名义传播。</p>
-<h3>◆ 商业与AI禁止</h3>
-<p>・禁止将本音源用于商业AI产品的开发或训练（凡涉及收费、赞助、捐赠，或作为商业产品/服务组成部分的 AI 开发与训练，均视为商业用途）<br>・禁止将本音源渲染的人声或按上述 AI 条款生成的人声制成可供重新合成歌声或语音的采样声库并发布。<br>・禁止修改角色核心设定用于商业角色</p>
-<hr>
-<h3>△ 需要联系作者确认的事项</h3>
-<p>「创作与发布」已允许的受托制作和成品交付无需单独申请。以下用途请提前联系作者获得授权：</p>
-<h3>◆ 商业使用</h3>
-<p>・正式商业场景下的使用（本协议已明确允许且无需申请的用途除外）<br>・企业主导的PR视频、广告、代言等<br>・通过发行商发行音乐、将音乐收录于商业唱片或付费专辑，或供商业游戏使用，须事先取得作者授权。<br>・将角色「熵尾音 こうせい」的设定或形象用于企业宣传、大规模生产的商品，或作为虚拟主播的出镜形象，须事先取得作者明确授权。</p>
-<h3>◆ 特殊使用</h3>
-<p>・游戏内置语音使用<br>・企业/商业项目合作</p>
-<h3>◆ 其他</h3>
-<p>・同人以外的商用授权申请<br>・专辑封面以外的商品，如直接使用官方立绘或其裁切、改色版本，须事先取得作者授权。</p>
-<hr>
-<h3>■ 免责声明</h3>
-<p>・使用者应自行确认其制作、发布的作品符合适用法律，并已取得所用第三方素材所需的授权。使用者对其制作、发布作品的行为依法承担相应责任。<br>・使用本音源即表示使用者同意并遵守本协议的全部条款。<br>・角色设定如有补充，由黑篙通过官方渠道发布。使用权限的变更由声库官网公布，生效日期为对应声库版本的更新日期。</p>
-<hr>
-<h3>■ 协议效力与终止</h3>
-<p>・若使用者严重违反本协议条款，作者有权单方面终止对其的音源使用授权。<br>・即使作者停止公开分发本音源，已取得音源的用户仍可依本协议继续使用。<br>・协议变更不影响生效前依当时协议已完成的行为。依当时协议已发布的作品，可以继续在原渠道展示，并沿用原有的平台收益方式。<br>・变更生效后，如将作品用于新的发行、商品或商业合作，该项新用途适用届时有效的协议。</p>
-<hr>
-<h3>🔷🔹 常见问题（FAQ）</h3>
-<p>Q: 个人投稿、领取平台创作激励或参赛奖金，需要联系作者吗？<br>A: 无需联系。个人可以自行向视频或音乐平台投稿，领取平台创作激励或比赛奖金。通过发行商发行音乐，则须事先取得作者授权。</p>
-<p>Q: 我可以只使用咬青的声音，不署角色名或作者名吗？<br>A: 可以。无论是否以角色名义发布作品，角色名和声库作者名都可自行决定是否标注。可以使用本音源合成的歌声或语音，但不得分发声库自带的原始录音。</p>
-<p>Q: 客户指定用咬青制作商业歌曲，我可以收费接单吗？<br>A: 可以。接单、收费、制作和交付成品无需另行申请。交付的咬青人声须直接用本 UTAU 音源调声、渲染，可以按规定修音、混音。成品之后的发行或其他用途，按本协议相应条款及其他适用协议执行。</p>
-<p>Q: 个人创作可以用咬青的人声作 AI 参考，也可以自己训练模型吗？<br>A: 可以用已渲染的人声作参考，在本地或在线生成新的歌声或语音。在线服务须明确排除用提交的音频训练模型。用原始录音或渲染人声训练模型，仅限本人在本地进行非公开的调声实验。<br>个人创作中按上述条件渲染或生成的人声可以单独或随作品上传，供非商业分享。个人同人作品也可以按协议领取平台创作激励。委托交付的咬青人声须直接由本 UTAU 音源调声、渲染。模型、权重及可复现咬青音色的数据不得外传或公开部署。</p>
-<p>Q: 官方立绘的使用范围是什么？<br>A: 可在使用本音源的作品封面或视频中展示官方立绘。用于专辑封面时，许可限于非付费专辑。在专辑封面以外的商品上使用官方立绘，须事先取得作者授权。裁切、改色后的立绘适用相同规则。</p>
-<p>Q: 用AI修音/混音可以吗？<br>A: 可以。使用在线工具时，请先确认服务条款或当前设置明确排除将提交的音频用于模型训练。详见「人工智能（AI）与技术支持」。</p>
-<p>Q: 我的用途没有在协议里写明，怎么办？<br>A: 对用途归类有疑问时，欢迎联系作者咨询。可以简单说明项目内容、使用的是合成声音还是角色形象，以及成品将如何发布或使用。属于本协议列明的须授权用途时，请在取得作者明确同意后再使用。</p>
-<hr>
-<h3>🔷🔹 联系方式</h3>
-<p>如有问题、建议或商业合作意向，欢迎通过以下方式联系作者：</p>
-<p>Email：heigao75@qq.com<br>Twitter/X：@heigao_tickle<br>Bilibili：黑篙 UID：695724697</p>
-<hr>
-<p>© 黑篙 2026 All Rights Reserved.</p></div>
-          </div>
-          <div class="protocol-content" id="protocol-en" lang="en" hidden>
-            <div class="protocol-text"><h3>Voicebank Guide and Terms of Use for &quot;熵尾音 こうせい (Kousei)&quot;</h3>
-<p>日本語版は Readme_JP.txt をご覧ください。<br>中文版请参阅 Readme.txt。</p>
-<p>UTAU Voicebank &quot;熵尾音 こうせい (Kousei)&quot;<br>Version: V1.1<br>Last updated: November 2026<br>Copyright: 黑篙 (Heigao)<br>※ The voicebank and character details may change in future versions.</p>
-<p>Created and produced by: 黑篙 (Heigao)<br>※ Each version of these terms takes effect on the update date of the corresponding voicebank version. The terms published for that version on the official voicebank website (<a href="https://kuro-utau.heigao.me/">https://kuro-utau.heigao.me/</a>) are authoritative. Heigao will announce major changes to usage permissions in advance.<br>For details on keeping existing works online, monetizing them and putting them to new uses, see &quot;Changes to These Terms and Termination.&quot;</p>
-<hr>
-<h3>🔷🔹 Introduction</h3>
-<p>Thank you for downloading version V1.1 of the UTAU voicebank &quot;熵尾音 こうせい (Kousei).&quot;<br>※ Heigao holds the rights to the voicebank’s original recordings, official character artwork and written character profile.<br>When you make a song or other work with this voicebank, your original contributions, such as lyrics, music, arrangements and vocal tuning, remain yours to the extent protected by law. If you cover, mix or adapt someone else’s work, check the permissions for the original music, lyrics, backing track and any other material you use.</p>
-<p>This CVVC &amp; VCV voicebank was made from original recordings in three voice styles, each recorded at a single pitch. As this is a personal project, you may hear variations in volume, recording quality and vocal delivery. Adjust the parameters as needed.</p>
-<hr>
-<h3>Voicebank Information</h3>
-<p>Type: JA CVVC &amp; VCV<br>Recording pitches: Soft B2, Original B3, Falsetto B4<br>Comfortable range: D2–D6<br>Vocal character: A powerful voice with a confident delivery.</p>
-<h3>Usage Instructions</h3>
-<p>Recommended engine: HiFiUTAU works best with this voicebank.<br>Engine GitHub: <a href="https://github.com/xiaobaijunya/HiFiUTAU-engine">https://github.com/xiaobaijunya/HiFiUTAU-engine</a></p>
-<p>The three voice styles are Original (modal voice, _O), Falsetto (_F) and Soft (_S).<br>Main: Uses Original up to and including A#4, and Falsetto from B4 upwards.<br>Original: Modal voice.<br>Falsetto: Falsetto voice.<br>Soft: A gentle voice, as if murmuring to oneself.</p>
-<h3>Character Profile</h3>
-<h3>【Basic Information】</h3>
-<p>Name: 熵尾音 こうせい (Kousei), also written 熵尾音 咬青<br>Age: Approximately 17<br>Birthday: August 14<br>Gender: Male<br>Height: About 168 cm<br>Species: Wolf beastman</p>
-<h3>【Character Description】</h3>
-<p>Kousei comes from outer space and is one of the independent offshoots of an unknown entity. He dozes off easily, and his actions are often guided by his subconscious. He was born with his facial markings and twin tails, both of which can change depending on the state he’s in. He’s especially fond of watermelon.</p>
-<p>Twin tails:<br>The twin tails Kousei was born with give him a natural advantage when it comes to balance. They’re soft and fluffy and hold in warmth exceptionally well. In his sleep, he often instinctively curls both tails around himself.</p>
-<p>Collar microphone:<br>The collar uses a directional array of over a hundred million nanosensors to pick up the movements Kousei makes as he produces sound, along with the vibrations of his vocal folds. It builds an acoustic model of him in real time. From those physical measurements alone, it can create and record an accurate digital reconstruction of any sound he makes.</p>
-<hr>
-<h3>Tuning Notes</h3>
-<p>・This voicebank was made independently. Pronunciation can vary, and transitions between samples may sound uneven.<br>・Some sounds may need a little manual adjustment to flow naturally.<br>・For notes at the extremes of the range or songs that call for a powerful delivery, please tune the vocals before using them.</p>
-<hr>
-<h3>🔷🔹 Using the Character</h3>
-<h3>◆ Character Identity and Credit</h3>
-<p>You can use the voicebank in either of these ways:<br>1. Feature &quot;熵尾音 こうせい&quot; as the character singing or speaking.<br>2. Use the synthesized singing or speech on its own, without presenting it as a performance by the character.<br>In either case, the character credit and the credit for Heigao as the voicebank’s creator are both optional. If you name the creator, make sure the credit is accurate.</p>
-<h3>◆ Fan Works</h3>
-<p>You may adapt or reinterpret the character’s appearance within reason. For example, you may:<br>・Change clothing, hairstyle, pose or other nonessential details.<br>・Adapt the design to suit the style of your work.</p>
-<h3>◆ Age Ratings and Content Notices</h3>
-<p>When you publish a work, label it with an age rating appropriate to its content and the platform’s requirements.<br>・If your work deals with sensitive material, give your audience a content notice before they encounter it and apply any required access restrictions.<br>・If you depict the character, you must also follow applicable law and the platform’s rules on depictions of underage characters.</p>
-<hr>
-<h3>⚪ Permitted Uses (No Need to Contact the Author)</h3>
-<p>You may do the following without contacting Heigao:</p>
-<h3>◆ Creating and Sharing Your Work</h3>
-<p>・Make works for personal, noncommercial use, study or research. You may also use the synthesized singing or speech without presenting the work as a performance by Kousei.<br>・Enter works made with the voicebank in competitions and accept prize money.<br>・Upload videos, livestream and monetize your work as part of personal or fan activities. You may also upload your own work directly to music platforms under the rules for individual creators in these terms.<br>・Create and post fan works, including covers and remixes. You may display the official character artwork on the cover of a work made with this voicebank or in its video. For album covers, this permission applies only to albums released free of charge, including when the artwork is cropped or recolored.<br>・Make and sell fan merchandise as part of your personal activities, including items featuring your own illustrations. Use of the official artwork on merchandise requires prior permission as described below. Album covers follow the rule above.<br>・You may take paid commissions for vocal tuning or song production, including commercial songs for which the client specifically requests this voicebank. You may accept payment, produce the work and deliver it without separate permission from Heigao. The Kousei vocals you deliver must be tuned and rendered directly from this UTAU voicebank. You may use pitch correction, mixing and other post-production tools as described below, but you must not use an AI singing synthesis, voice cloning or voice conversion model to generate or replace the Kousei vocals you deliver. The relevant provisions of these terms and any other applicable agreements govern subsequent uses such as releases, promotion and use in games.</p>
-<h3>◆ AI and Audio Processing</h3>
-<p>・Audio post-production: You may use AI tools for pitch correction, mixing and other post-processing of vocals rendered with this voicebank. If you use an online service for pitch correction, mixing or generating new singing or speech from reference audio as described below, the service’s terms or your current settings must explicitly exclude the audio you submit from model training.<br>・Personal voice experiments: For your own creative work, you may use vocals rendered with this voicebank as reference audio to generate new singing or speech, locally or online. If you train a model on the voicebank’s original recordings or on vocals rendered with it, do so locally and in private, solely for your own vocal-tuning experiments. Examples include SVC, RVC, voice conversion, singing voice synthesis, voice cloning, text-to-speech (TTS), LoRA fine-tuning and model merging. If Heigao releases an official AI voice model, the terms published with that model will govern its use.<br>・No sharing of models or reusable voice data: Do not give anyone else model files, LoRA or other fine-tuned weights, or merged models obtained by training on this voicebank or on vocals rendered with it. The same restriction applies to embeddings or other features extracted directly from that audio if they let someone reproduce Kousei’s vocal timbre. Together, these models and data are called “derivative voicebanks” in these terms. Ordinary tuning parameters that contain only note pitches and durations do not count as timbre data under this rule. The restriction covers all forms of transfer, including public releases, sales, private transfers, group or cloud links, swaps and gifts.<br>・No public deployment: Do not upload, deploy or connect this voicebank (including its original recorded samples) or a derivative voicebank to public AI services, online inference APIs, open-source repositories or model-sharing communities. Do not upload this voicebank as a training dataset for a public AI model. The permission to use online processing and generation applies only to rendered vocals.<br>・Publishing and monetizing finished works: For noncommercial sharing, you may upload vocals you render or generate for a personal project under the conditions above, either on their own or as part of the finished work. These terms govern publication and monetization of your work. You may earn platform creator rewards for personal fan works. Do not deliver model-generated or voice-converted audio as Kousei’s vocals on a commission. The terms on credit, commercial use and content apply to the finished work. Do not supply models, weights or feature data that can reproduce Kousei’s vocal timbre with it.</p>
-<h3>◆ Editing and Sharing Files</h3>
-<p>・You may edit and share the oto.ini timing file and the .frq frequency tables separately from the voicebank. Do not include any of the voicebank’s recorded samples.<br>・You may create derivative works and adaptations.</p>
-<h3>◆ Names and Credits</h3>
-<p>・You may choose whether to credit the character, the voicebank’s creator or both.<br>・You may use the rendered vocals without presenting them as a performance by &quot;熵尾音 こうせい.&quot;</p>
-<hr>
-<h3>× Prohibited Uses</h3>
-<p>The following uses are prohibited:</p>
-<h3>◆ Voicebank Files and Creator Credits</h3>
-<p>・Do not distribute the original recorded samples included in the voicebank or copies converted to another audio format. Finished songs and spoken works rendered with the voicebank may be published in accordance with the applicable provisions of these terms.<br>・Do not package the voicebank in any form as part of a paid product.<br>・Do not falsely claim that you or anyone else created this voicebank.<br>・Do not use modified or processed voicebank samples to create and release a derivative voicebank.</p>
-<h3>◆ Prohibited Content</h3>
-<p>・Do not use the voicebank or character to create or distribute content that violates applicable laws or regulations.<br>・Do not use the voicebank or character to spread hateful or discriminatory content or to promote extremist political or extremist religious views.<br>・Do not create malicious content that seriously harms the character’s public image. Examples include posing as an official account to issue insulting statements or fabricating remarks and circulating them in the name of the creator or voice provider.</p>
-<h3>◆ Commercial and AI Restrictions</h3>
-<p>・Do not use this voicebank to develop or train a commercial AI product.<br>・AI development or training that involves fees, sponsorship or donations, or forms part of a commercial product or service, counts as commercial use.<br>・Do not compile vocals rendered with this voicebank or generated under the AI provisions above into a sample library and release it for use in synthesizing new singing or speech.<br>・Do not change the character’s core traits for use in a commercial character.</p>
-<hr>
-<h3>△ Uses That Require Prior Permission</h3>
-<p>Commissioned production and delivery as permitted under “Creating and Sharing Your Work” require no separate approval. Contact Heigao and obtain permission before proceeding with the following uses:</p>
-<h3>◆ Commercial Use</h3>
-<p>・Use in a commercial project, except where these terms expressly allow the activity without prior permission.<br>・Company-led promotional videos, advertisements, endorsements and similar projects.<br>・Releasing music through a distributor, including it on a commercial record or paid album, or supplying it for use in a commercial game.<br>・You must obtain Heigao’s express permission in advance to use the character concept or likeness of “熵尾音 こうせい” in corporate promotions, on mass-produced merchandise or as a VTuber’s on-screen persona.</p>
-<h3>◆ Other Projects</h3>
-<p>・Integrating spoken audio into a game.<br>・Collaborating on a corporate project.<br>・Collaborating on a commercial project.</p>
-<h3>◆ Other</h3>
-<p>・Commercial uses outside fan activities.<br>・Using the official character artwork, including cropped or recolored versions, on merchandise other than album covers requires Heigao’s prior permission.</p>
-<hr>
-<h3>Responsibilities</h3>
-<p>・You are responsible for checking that the works you create and publish comply with applicable law and that you have the necessary permissions for third-party material. You are legally responsible for your own actions in creating and publishing those works.<br>・By using this voicebank, you agree to follow these terms.<br>・Heigao will publish additions to the character profile through official channels. Changes to usage permissions will be published on the official voicebank website and take effect on the update date of the corresponding voicebank version.</p>
-<hr>
-<h3>Changes to These Terms and Termination</h3>
-<p>・If you seriously breach these terms, Heigao may unilaterally terminate your permission to use the voicebank.<br>・If Heigao stops distributing the voicebank publicly, users who already have it may continue to use it under these terms.<br>・Changes do not affect actions completed in accordance with the terms in force at the time. A work published under those terms may stay on its original channels and continue earning revenue in the same way on those platforms. If you later use it for a new release, merchandise or a commercial collaboration, the terms in force at the time of that new use apply.</p>
-<hr>
-<h3>🔷🔹 Frequently Asked Questions (FAQ)</h3>
-<p>Q: Do I need to contact Heigao to post my own work, earn platform creator rewards or accept a competition prize?<br>A: No. You may upload your own work directly to video or music platforms, earn creator rewards and accept prize money.<br>Releasing music through a distributor requires Heigao’s prior permission.</p>
-<p>Q: Can I use just the voice and leave out the character’s and creator’s names?<br>A: Yes. Whether or not you present the work as a performance by Kousei, both credits are optional. You may use the synthesized singing or speech, but you must not distribute the original recordings supplied with the voicebank.</p>
-<p>Q: Can I take a paid commission if the client asks me to use Kousei for a commercial song?<br>A: Yes. You may accept the job, charge for it, produce the track and deliver it without separate permission. The Kousei vocals you deliver must be tuned and rendered directly from this UTAU voicebank. Pitch correction and mixing are allowed under these terms. Any subsequent release or other use of the finished work is subject to the relevant provisions of these terms and any other applicable agreements.</p>
-<p>Q: Can I use Kousei’s vocals as reference audio for AI or train my own model for a personal project?<br>A: You may use rendered vocals as reference audio to generate new singing or speech locally or online. For an online service, its terms or your current settings must explicitly rule out training on the submitted audio. If you train a model on the original recordings or on rendered vocals, keep the training local, private and solely for your own vocal-tuning experiments.<br>You may upload vocals you render or generate this way for a personal project, on their own or as part of the finished work, for noncommercial sharing. Under these terms, you may also earn platform creator rewards for personal fan works. Kousei vocals delivered on commission must be tuned and rendered directly from this UTAU voicebank. Do not share or publicly deploy models, weights or feature data that can reproduce Kousei’s vocal timbre.</p>
-<p>Q: Where can I use the official character artwork?<br>A: You may display it on the cover of a work made with this voicebank or in its video. For album covers, this permission applies only to albums released free of charge. To use the official artwork on merchandise other than album covers, get Heigao’s permission first. Cropping or recoloring the artwork does not change these conditions.</p>
-<p>Q: Can I use AI for pitch correction or mixing?<br>A: Yes. For online tools, check that the service’s terms or your current settings explicitly rule out using the audio you submit for model training. See “AI and Audio Processing” for details.</p>
-<p>Q: What if my use isn&#x27;t listed?<br>A: If you are unsure which rule applies, you are welcome to ask Heigao. You can briefly describe your project, how it uses the synthesized voice or the character’s likeness, and how you plan to release or use the finished work.<br>If these terms list your use as requiring prior permission, wait for Heigao’s express approval before proceeding.</p>
-<hr>
-<h3>🔷🔹 Contact Information</h3>
-<p>For questions, suggestions or business inquiries, you can reach Heigao here:</p>
-<p>Email: heigao75@qq.com<br>Twitter/X: @heigao_tickle<br>Bilibili: 黑篙 UID: 695724697</p>
-<hr>
-<p>© 黑篙 2026 All Rights Reserved.</p></div>
-          </div>
-          <div class="protocol-content" id="protocol-jp" lang="ja" hidden>
-            <div class="protocol-text"><h3>UTAU音源「熵尾音 こうせい」利用ガイド・利用規約</h3>
-<p>中文版请参阅 Readme.txt。<br>For the English version, see Readme_EN.txt.</p>
-<p>UTAU音源「熵尾音 こうせい」<br>バージョン：V1.1<br>更新年月：2026年11月<br>著作権者：黑篙（Heigao）<br>※音源やキャラクター設定は、今後変更する場合があります。</p>
-<p>制作・責任者：黑篙（Heigao）<br>※各版の規約は、対応する音源バージョンの更新日から適用されます。利用条件は、音源の公式サイト（<a href="https://kuro-utau.heigao.me/">https://kuro-utau.heigao.me/</a>）に掲載された該当バージョンの規約を正本とします。利用条件の重大な変更は事前にお知らせします。<br>公開済みの作品の掲載・収益化や、新たな用途での利用については「規約の変更と利用許諾の終了」をご覧ください。</p>
-<hr>
-<h3>🔷🔹はじめに</h3>
-<p>UTAU音源「熵尾音 こうせい」V1.1をダウンロードしていただき、ありがとうございます。<br>※本音源の収録音声、公式立ち絵、キャラクター設定の文章に関する権利は、黑篙に帰属します。<br>本音源を使って作品を制作した方は、作詞・作曲・編曲・調声など、ご自身が独自に創作した部分について、法令に基づく権利を有します。他の方の作品をカバー、ミックス、アレンジする際は、原曲、歌詞、伴奏音源などの利用条件を別途ご確認ください。</p>
-<p>オリジナルの録音をもとに制作した、3種類の声色を持つCVVC・VCV音源です。各声色はそれぞれ単一の音高で収録しています。個人制作のため、音量や音質、発声にばらつきがあります。必要に応じてパラメータを調整してください。</p>
-<hr>
-<h3>音源情報</h3>
-<p>形式：JA CVVC &amp; VCV<br>収録音高：ソフト B2、地声 B3、裏声 B4<br>得意音域：D2–D6<br>声の特徴：力強く、堂々とした歌声。</p>
-<h3>使い方</h3>
-<p>推奨エンジン：本音源の持ち味を生かすには、HiFiUTAUをおすすめします。<br>エンジンのGitHubページ：<a href="https://github.com/xiaobaijunya/HiFiUTAU-engine">https://github.com/xiaobaijunya/HiFiUTAU-engine</a></p>
-<p>声色は地声（_O）、裏声（_F）、ソフト（_S）の3種類です。<br>Main：A#4以下では地声、B4以上では裏声に自動で切り替わります。<br>Original：地声<br>Falsetto：裏声<br>Soft：ひとりごとをつぶやくような、やわらかな声。</p>
-<h3>キャラクター設定</h3>
-<h3>【基本情報】</h3>
-<p>名前：熵尾音 こうせい（熵尾音 咬青）<br>年齢：約17歳<br>誕生日：8月14日<br>性別：男性<br>身長：約168cm<br>種族：狼獣人</p>
-<h3>【キャラクター紹介】</h3>
-<p>こうせいは宇宙からやってきました。ある未知の存在に由来する独立した分体のひとつです。すぐにうとうとしてしまい、無意識のうちに行動することもしばしばです。顔の模様と2本のしっぽは生まれつきのもので、その時々の状態に応じて変化します。好物はスイカです。</p>
-<p>生まれつきの2本のしっぽ：<br>生まれつき2本のしっぽを持つこうせいは、そのおかげでバランスを取るのが得意です。しっぽはどちらもふさふさで柔らかく、保温性にも優れています。眠っているときは、本能的に2本のしっぽで自分の体を包み込むことがよくあります。</p>
-<p>首輪型マイク：<br>この首輪は、1億個を超えるナノセンサーの指向性を生かし、こうせいが声を出すときの動きと声帯の振動を捉えます。こうせいの音響モデルをリアルタイムで構築し、得られた物理データだけをもとに、彼が発するあらゆる音をデジタル空間で精密に再現し、録音します。</p>
-<hr>
-<h3>注意事項</h3>
-<p>・個人制作のため、発音が安定しない箇所や、音のつながりが不自然な箇所があります。<br>・音によっては、手動で少し調整すると自然に聞こえます。<br>・極端に高い音や低い音、力強い歌い方が求められる曲では、調声してからお使いください。</p>
-<hr>
-<h3>🔷🔹 キャラクターの利用について</h3>
-<h3>◆ キャラクター名義とクレジット</h3>
-<p>本音源は、次のどちらの形でもお使いいただけます。<br>1.「熵尾音 こうせい」が歌ったり話したりする作品として使う。<br>2. キャラクター名義を使わず、合成した歌声や話し声だけを使う。<br>どちらの場合も、キャラクター名や音源制作者「黑篙」をクレジットに記載するかどうかは自由です。制作者名を記載する際は、正確に表記してください。</p>
-<h3>◆ 二次創作について</h3>
-<p>二次創作では、キャラクターの外見を適度にアレンジできます。たとえば、次のような変更が可能です。<br>・服装、髪型、ポーズなど、キャラクターの基本設定に関わらない部分を変える。<br>・ご自身の作品の作風に合わせて描き方を変える。</p>
-<h3>◆ 年齢区分と作品公開時の注意書き</h3>
-<p>作品を公開するときは、内容と投稿先のルールに沿って対象年齢を表示してください。<br>・配慮が必要な題材を扱う場合は、視聴者が該当箇所に触れる前に注意書きを示し、必要な閲覧制限を設定してください。<br>・キャラクターの姿を描写する場合は、適用される法令と、未成年のキャラクターの描写に関する投稿先のルールも守ってください。</p>
-<hr>
-<h3>⚪ 作者への連絡が不要な利用</h3>
-<p>次の用途では、事前の連絡は不要です。</p>
-<h3>◆ 作品の制作・公開</h3>
-<p>・個人の非商用利用や、学習・研究を目的とした作品制作。キャラクター名義を使わず、合成した歌声や話し声だけを使うこともできます。<br>・本音源を使った作品でコンテストに応募し、賞金を受け取ること。<br>・同人活動や個人の活動の範囲での動画投稿、ライブ配信、収益化。音楽配信サイトへの個人による直接投稿も、本規約の個人の創作に関する条件に従って行えます。<br>・カバーやリミックスなどの二次創作と、その投稿。本音源を使った作品の表紙や動画には公式立ち絵を使用できます。アルバムのジャケットに使用できるのは、アルバムを無償で頒布・配信する場合に限ります。立ち絵を切り抜いたり、色を変えたりした場合も同様です。<br>・個人の同人活動の範囲でのグッズの制作・販売。ご自身で描いたイラストを使ったグッズも含みます。公式立ち絵を商品に使用する場合は、後述のとおり作者の事前許諾が必要です。アルバムのジャケットには前項の規定が適用されます。<br>・調声や楽曲制作の有償依頼を受けることができます。商用楽曲の制作で依頼主から本音源を指定された場合も、受注、報酬の受け取り、制作、納品にあたって作者の許諾を別途得る必要はありません。納品する作品のこうせいの声には、このUTAU音源で直接調声して書き出した音声を使用してください。以下の条件に従ってピッチ補正やミックスなどの後処理はできますが、納品するこうせいの声を、AI歌声合成・音声クローニング・声質変換のモデルで生成したり差し替えたりすることはできません。リリース、宣伝、ゲームでの使用など、納品後の利用については、実際の用途に応じて本規約の該当する条項と、ほかに適用される契約・規約に従ってください。</p>
-<h3>◆ AIの利用と音声処理</h3>
-<p>・音声の後処理：本音源で書き出した歌声や話し声のピッチ補正、ミックスなどの後処理にAIツールを使えます。オンラインでピッチ補正やミックス、または下記の参照音声を使った生成を行う場合は、サービスの利用規約または現在の設定で、送信した音声がモデルの学習対象から明確に除外されている必要があります。<br>・個人の音声合成実験：個人の創作では、本音源で書き出した音声を参考に、新たな歌声や話し声を生成できます。ローカルでもオンラインでも利用できます。本音源の収録音声または本音源で書き出した音声を使ってモデルを学習させることができるのは、ご自身の調声実験として、ローカルかつ非公開で行う場合に限ります。SVC、RVC、声質変換、歌声合成、音声クローニング、読み上げ（TTS）、LoRAによる追加学習、モデルのマージなどが該当します。今後、黑篙が公式AI音声モデルを配布する場合は、そのモデルの配布時の利用条件に従ってください。<br>・モデル・声質データの第三者への提供禁止：本音源や本音源で書き出した音声を使った学習で得たモデルファイル、LoRAなどの追加学習済みの重み、マージ済みモデルは、第三者に提供できません。これらの音声から直接抽出した埋め込みベクトル（embedding）などの特徴量のうち、こうせいの声質を再現できるものも対象です（これらのモデルとデータを以下「二次音源」と総称します）。音の高さと長さだけを記録した通常の調声パラメータは、この声質データに含まれません。一般公開、販売、個人間の送信、グループやクラウドのリンクを使った共有、交換、無償譲渡など、提供方法は問いません。<br>・一般公開サービスへのアップロード・設置の禁止：本音源（元の収録音声を含む）や上記の二次音源を、一般公開のAIサービス、オンライン推論API、オープンソースのリポジトリ、モデル共有サイトにアップロードしたり、設置・接続したりすることを禁止します。本音源を公開AIモデルの学習用データセットとしてアップロードすることも禁止します。上記のオンラインでの後処理や生成に使えるのは、本音源で書き出した音声に限ります。<br>・完成作品の公開・収益化：個人の創作で上記の条件に沿って書き出した音声や生成した音声は、非商用での共有を目的として、音声単体でも作品の一部としても投稿できます。個人作品の公開・収益化には本規約の該当する条件が適用され、個人の同人作品については、投稿先のクリエイター向け奨励金も受け取れます。モデルで生成・声質変換した音声を、依頼作品でこうせいの声として納品することはできません。完成作品にもクレジット、商用利用、作品内容の制限などの規定が適用されます。モデル、重み、こうせいの声質を再現できる特徴量を作品と一緒に提供することは禁止します。</p>
-<h3>◆ ファイルの改変・共有</h3>
-<p>・原音設定ファイル（oto.ini）と周波数表ファイル（.frq）は、編集して音源とは別に配布できます。本音源の収録音声は同梱しないでください。<br>・作品の二次創作やアレンジ。</p>
-<h3>◆ クレジットと名義</h3>
-<p>・キャラクター名と音源制作者名の表記は、いずれも任意です。<br>・本音源で書き出した歌声や話し声は、「熵尾音 こうせい」の名義を使わずに利用できます。</p>
-<hr>
-<h3>× 禁止事項</h3>
-<p>次の行為を禁止します。</p>
-<h3>◆ 音源ファイルと制作者名</h3>
-<p>・本音源の収録音声を第三者に配布すること。別の音声形式に変換したものも含みます。本音源で書き出した完成楽曲や音声作品は、本規約の該当する条件に従って公開できます。<br>・本音源を、形態を問わず有料製品に同梱すること。<br>・自分や他の人が本音源を制作したと偽ること。<br>・本音源のサンプルを改変・加工し、それを使って二次音源を制作して公開すること。</p>
-<h3>◆ 作品内容に関する禁止事項</h3>
-<p>・本音源やキャラクターを使って、適用される法令に違反する内容を制作・拡散すること。<br>・本音源やキャラクターを使って、憎悪や差別を広める内容を発信したり、政治的または宗教的な過激思想を宣伝したりすること。<br>・悪意をもってキャラクターのイメージを著しく損なう内容を制作すること。たとえば、公式を装って侮辱的な声明を出す行為や、作者・音声提供者が言っていないことを本人の発言として広める行為が該当します。</p>
-<h3>◆ 商用利用・AIに関する禁止事項</h3>
-<p>・本音源を商用AI製品の開発や学習に使うこと。<br>・料金の徴収、スポンサーからの支援、寄付を伴うAIの開発・学習や、商用の製品・サービスの一部として行うAIの開発・学習は、すべて商用利用に当たります。<br>・本音源で書き出した音声や上記のAI利用条件に従って生成した音声を、新たな歌声や話し声の合成に使えるサンプル音源にまとめて公開すること。<br>・キャラクターの根幹に関わる設定を改変し、商用キャラクターに転用すること。</p>
-<hr>
-<h3>△ 作者の事前許諾が必要な利用</h3>
-<p>「作品の制作・公開」で認めている依頼制作や納品について、個別の申請は不要です。次の用途では、あらかじめ作者に連絡し、許諾を受けてください。</p>
-<h3>◆ 商用利用</h3>
-<p>・商業企画での利用。ただし、本規約で個別の許諾なしに利用できると明記しているものを除きます。<br>・企業が主体となるPR動画、広告、商品・サービスの推薦など。<br>・ディストリビューターを通じた楽曲のリリース、商業盤や有料アルバムへの楽曲の収録、商用ゲームへの楽曲提供。<br>・「熵尾音 こうせい」の設定や姿を企業の宣伝や量産グッズに使う場合、またはVTuberが活動に使うアバターとして採用する場合は、事前に作者から明確な許諾を得てください。</p>
-<h3>◆ その他のプロジェクト</h3>
-<p>・本音源で生成した台詞やナレーションなどのボイスをゲームに組み込むこと。<br>・企業との共同企画。<br>・商業プロジェクトへの協力。</p>
-<h3>◆ その他</h3>
-<p>・同人活動の範囲を超える商用利用。<br>・アルバムのジャケット以外の商品に公式立ち絵を使用する場合は、事前に作者の許諾が必要です。立ち絵の一部を切り抜いたものや、色を変えたものも対象です。</p>
-<hr>
-<h3>利用者の責任</h3>
-<p>・制作・公開する作品が適用法令に沿っていること、第三者の素材について必要な許諾を得ていることは、ご自身でご確認ください。ご自身による制作・公開については、法令に従い利用者が責任を負います。<br>・本音源を利用することで、本規約のすべての条項に同意し、これを守るものとします。<br>・キャラクター設定の追加は、黑篙が公式の発信先でお知らせします。利用条件の変更は音源の公式サイトで公表し、対応する音源バージョンの更新日から適用します。</p>
-<hr>
-<h3>規約の変更と利用許諾の終了</h3>
-<p>・本規約に重大な違反があった場合、作者はその利用者への音源の利用許諾を一方的に終了できます。<br>・本音源の一般配布が終了しても、すでに入手した方は本規約に従って引き続き利用できます。<br>・規約の変更は、適用開始前に当時の規約に従ってすでに行ったことには影響しません。当時の規約に従って公開した作品は、元の公開先で引き続き掲載し、その公開先での従来の方法による収益化も継続できます。改定後に新たな配信・頒布、商品化、商業企画などに使う場合、その新たな用途には利用時点の規約が適用されます。</p>
-<hr>
-<h3>🔷🔹 よくある質問（FAQ）</h3>
-<p>Q: 個人で作品を投稿したり、投稿先の奨励金やコンテストの賞金を受け取ったりする際は、作者への連絡が必要ですか？<br>A: 連絡は不要です。個人で動画サイトや音楽配信サイトに直接投稿でき、奨励金やコンテストの賞金も受け取れます。<br>ディストリビューターを通じて楽曲をリリースする場合は、事前に作者の許諾を得てください。</p>
-<p>Q: こうせいの声だけを使い、キャラクター名や音源制作者名を表記せずに作品を公開できますか？<br>A: はい。キャラクター名義で公開する場合も、キャラクター名と音源制作者名のクレジットはどちらも任意です。本音源で合成した歌声や話し声は使用できますが、音源に付属する元の録音は配布できません。</p>
-<p>Q: 商用楽曲の制作でこうせいを指定されたとき、有償で依頼を受けてもよいですか？<br>A: はい。受注、報酬の受け取り、制作、納品に個別の許諾は不要です。こうせいの声として納品する音声は、このUTAU音源で直接調声して書き出してください。規約の範囲内でピッチ補正やミックスもできます。リリースなど、納品後の利用については、本規約の該当する条項と、ほかに適用される契約・規約に従ってください。</p>
-<p>Q: 個人の創作で、こうせいの声をAIの参照音声に使ったり、自分でモデルを学習させたりできますか？<br>A: 本音源で書き出した音声を参照音声として使い、ローカルでもオンラインでも新しい歌声や話し声を生成できます。オンラインで行う場合は、サービスの利用規約または現在の設定で、送信した音声がモデルの学習対象から明確に除外されている必要があります。収録音声や書き出した音声を使ってモデルを学習させる場合は、ご自身の調声実験として、ローカルかつ非公開で行ってください。<br>個人の創作でこの条件に沿って書き出した音声や生成した音声は、非商用での共有を目的として、音声単体でも作品の一部としても投稿できます。個人の同人作品については、本規約に従って投稿先のクリエイター向け奨励金も受け取れます。依頼作品でこうせいの声として納品できるのは、本UTAU音源で直接調声して書き出した音声です。モデル、重み、こうせいの声質を再現できる特徴量の共有や一般公開サービスへの設置は禁止します。</p>
-<p>Q: 公式立ち絵はどの範囲で使えますか？<br>A: 本音源を使った作品の表紙や動画に使用できます。アルバムのジャケットへの使用は、無償で頒布・配信するアルバムに限ります。ジャケット以外の商品に公式立ち絵を使う場合は、事前に作者の許諾を得てください。切り抜きや色の変更を加えても、使用条件は同じです。</p>
-<p>Q: AIをピッチ補正やミックスに使えますか？<br>A: はい。オンラインツールを使う場合は、サービスの利用規約または現在の設定で、送信した音声がモデルの学習対象から明確に除外されていることを事前にご確認ください。詳しくは「AIの利用と音声処理」をご覧ください。</p>
-<p>Q: 自分の用途が規約に見当たらないときはどうすればいいですか？<br>A: どの規定に当てはまるか判断に迷う場合は、お気軽に作者にご相談ください。ご相談の際は、企画の概要や合成音声・キャラクターの姿の使い方、完成作品の公開・利用方法などを簡単に添えていただけると助かります。<br>本規約で事前許諾が必要とされている用途では、作者から明確な同意を得てからご利用ください。</p>
-<hr>
-<h3>🔷🔹 連絡先</h3>
-<p>ご質問、ご意見、お仕事のご相談は、以下の連絡先までお寄せください。</p>
-<p>Email：heigao75@qq.com<br>Twitter/X：@heigao_tickle<br>Bilibili：黑篙 UID：695724697</p>
-<hr>
-<p>© 黑篙 2026 All Rights Reserved.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section anim-paused" id="faq">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-msg="0">常见问题</h2>
-          <p>FAQ</p>
-        </div>
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary class="faq-question" aria-controls="faq-answer-1">
-              <span data-msg="0">Q: 个人投稿、领取平台创作激励或参赛奖金，需要联系作者吗？</span>
-              <span class="faq-icon"></span>
-            </summary>
-            <div class="faq-answer" id="faq-answer-1">
-              <div data-msg="lines" class="faq-answer-content">无需联系。个人可以自行向视频或音乐平台投稿，领取平台创作激励或比赛奖金。通过发行商发行音乐，则须事先取得作者授权。</div>
-            </div>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-question" aria-controls="faq-answer-2">
-              <span data-msg="0">Q: 我可以只使用咬青的声音，不署角色名或作者名吗？</span>
-              <span class="faq-icon"></span>
-            </summary>
-            <div class="faq-answer" id="faq-answer-2">
-              <div data-msg="lines" class="faq-answer-content">可以。无论是否以角色名义发布作品，角色名和声库作者名都可自行决定是否标注。可以使用本音源合成的歌声或语音，但不得分发声库自带的原始录音。</div>
-            </div>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-question" aria-controls="faq-answer-3">
-              <span data-msg="0">Q: 客户指定用咬青制作商业歌曲，我可以收费接单吗？</span>
-              <span class="faq-icon"></span>
-            </summary>
-            <div class="faq-answer" id="faq-answer-3">
-              <div data-msg="lines" class="faq-answer-content">可以。接单、收费、制作和交付成品无需另行申请。交付的咬青人声须直接用本 UTAU 音源调声、渲染，可以按规定修音、混音。成品之后的发行或其他用途，按本协议相应条款及其他适用协议执行。</div>
-            </div>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-question" aria-controls="faq-answer-4">
-              <span data-msg="0">Q: 个人创作可以用咬青的人声作 AI 参考，也可以自己训练模型吗？</span>
-              <span class="faq-icon"></span>
-            </summary>
-            <div class="faq-answer" id="faq-answer-4">
-              <div data-msg="lines" class="faq-answer-content">可以用已渲染的人声作参考，在本地或在线生成新的歌声或语音。在线服务须明确排除用提交的音频训练模型。用原始录音或渲染人声训练模型，仅限本人在本地进行非公开的调声实验。<br>个人创作中按上述条件渲染或生成的人声可以单独或随作品上传，供非商业分享。个人同人作品也可以按协议领取平台创作激励。委托交付的咬青人声须直接由本 UTAU 音源调声、渲染。模型、权重及可复现咬青音色的数据不得外传或公开部署。</div>
-            </div>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-question" aria-controls="faq-answer-5">
-              <span data-msg="0">Q: 官方立绘的使用范围是什么？</span>
-              <span class="faq-icon"></span>
-            </summary>
-            <div class="faq-answer" id="faq-answer-5">
-              <div data-msg="lines" class="faq-answer-content">可在使用本音源的作品封面或视频中展示官方立绘。用于专辑封面时，许可限于非付费专辑。在专辑封面以外的商品上使用官方立绘，须事先取得作者授权。裁切、改色后的立绘适用相同规则。</div>
-            </div>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-question" aria-controls="faq-answer-6">
-              <span data-msg="0">Q: 用AI修音/混音可以吗？</span>
-              <span class="faq-icon"></span>
-            </summary>
-            <div class="faq-answer" id="faq-answer-6">
-              <div data-msg="lines" class="faq-answer-content">可以。使用在线工具时，请先确认服务条款或当前设置明确排除将提交的音频用于模型训练。详见「人工智能（AI）与技术支持」。</div>
-            </div>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-question" aria-controls="faq-answer-7">
-              <span data-msg="0">Q: 我的用途没有在协议里写明，怎么办？</span>
-              <span class="faq-icon"></span>
-            </summary>
-            <div class="faq-answer" id="faq-answer-7">
-              <div data-msg="lines" class="faq-answer-content">对用途归类有疑问时，欢迎联系作者咨询。可以简单说明项目内容、使用的是合成声音还是角色形象，以及成品将如何发布或使用。属于本协议列明的须授权用途时，请在取得作者明确同意后再使用。</div>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section section-alt anim-paused" id="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2 data-msg="0">联系方式</h2>
-          <p data-msg="0">Contact</p>
-        </div>
-        <div class="contact-grid">
-          <a href="mailto:heigao75@qq.com" class="contact-item">
-            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></div>
-            <div>
-              <div class="profile-label">Email</div>
-              <div class="profile-value">heigao75@qq.com</div>
-            </div>
-          </a>
-          <a href="https://twitter.com/heigao_tickle" target="_blank" class="contact-item">
-            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></div>
-            <div>
-              <div class="profile-label">Twitter/X</div>
-              <div class="profile-value">@heigao_tickle</div>
-            </div>
-          </a>
-          <a href="https://space.bilibili.com/695724697" target="_blank" class="contact-item">
-            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg></div>
-            <div>
-              <div class="profile-label">Bilibili</div>
-              <div class="profile-value">黑篙</div>
-            </div>
-          </a>
-          <a href="https://heigao.me/" target="_blank" class="contact-item">
-            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></div>
-            <div>
-              <div data-msg="0" class="profile-label">个人网站</div>
-              <div class="profile-value">heigao.me</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer - Teto Style -->
-    <footer class="footer">
-      <div class="footer-inner">
-        <div class="footer-sns">
-          <a href="https://space.bilibili.com/695724697" target="_blank" class="bilibili" title="Bilibili"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg></a>
-          <a href="https://twitter.com/heigao_tickle" target="_blank" title="Twitter/X"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
-          <a href="https://github.com/Heigao-Clank/kuro-voicebank" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
-            </svg></a>
-          <a data-msg="title" href="https://heigao.me/" target="_blank" title="个人网站"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></a>
-        </div>
-        <p data-msg="0" class="footer-text">熵尾音 咬青 UTAU Voicebank</p>
-        <p data-msg="0" class="footer-copyright">© 2026 黑篙 All Rights Reserved.</p>
-      </div>
-    </footer>
-  </div><!-- /.main-content -->
-
-  <!-- Scripts -->
-  <script defer src="assets/main.js?v=af107cf7c1d7"></script>
-
-
-</body></html>
+    <noscript>
+      <p class="shortcuts"><a href="kousei.html#demo">试听</a> · <a href="kousei.html#download">下载</a> · <a href="kousei.html#guidelines">使用协议</a></p>
+      <p class="shortcuts"><a href="index-en.html" lang="en">Voicebank details in English</a> · <a href="index-jp.html" lang="ja">日本語の音源ページ</a></p>
+    </noscript>
+  </main>
+</body>
+</html>
