@@ -1,10 +1,11 @@
 (function () {
-  const pageLanguage = document.documentElement.lang;
-  const ui = {
+  let pageLanguage = document.documentElement.lang;
+  const labels = {
     'zh-CN': {play: '播放', failed: '试听加载失败，请点播放按钮重试。', retry: '重试播放', pause: '暂停', seek: '播放进度', copied: '已复制', manual: '请选择并复制命令'},
     en: {play: 'Play', failed: 'Audio could not be loaded. Press play to try again.', retry: 'Retry playback', pause: 'Pause', seek: 'Playback position', copied: 'Copied', manual: 'Select and copy the command'},
     ja: {play: '再生', failed: '試聴音声を読み込めませんでした。再生ボタンを押して、もう一度お試しください。', retry: '再生を再試行', pause: '一時停止', seek: '再生位置', copied: 'コピーしました', manual: 'コマンドを選択してコピーしてください'}
-  }[pageLanguage];
+  };
+  let ui = labels[pageLanguage];
 
   const header = document.querySelector('.topnav');
   const navigation = header.querySelector('.topnav-nav');
@@ -75,7 +76,7 @@
   const command = document.querySelector('.install-command code');
   const status = document.querySelector('.copy-status');
   copy.hidden = false;
-  const copyLabel = copy.title;
+  let copyLabel = copy.title;
   let feedbackTimer;
   copy.addEventListener('click', async () => {
     let copied = false;
@@ -107,6 +108,7 @@
   }
 
   var players = document.querySelectorAll('.demo-card');
+  const refreshPlayers = [];
   players.forEach(function (card) {
     var audio = card.querySelector('audio');
     var playButton = card.querySelector('.demo-play-btn');
@@ -115,13 +117,12 @@
     var timeLabel = card.querySelector('.demo-time');
     var playIcon = playButton.querySelector('.icon-play');
     var pauseIcon = playButton.querySelector('.icon-pause');
-    var title = card.querySelector('.demo-card-desc').textContent.trim();
+    const track = card.querySelector('.demo-card-desc');
     const message = card.querySelector('.demo-status');
     let failed = false;
     let playRequest = 0;
     slider.setAttribute('role', 'slider');
     slider.tabIndex = 0;
-    slider.setAttribute('aria-label', ui.seek + ' · ' + title);
     slider.setAttribute('aria-valuemin', '0');
 
     function duration() {
@@ -147,7 +148,7 @@
       playIcon.style.display = playing ? 'none' : 'block';
       pauseIcon.style.display = playing ? 'block' : 'none';
       const label = failed ? ui.retry : (playing ? ui.pause : ui.play);
-      playButton.setAttribute('aria-label', label + ' · ' + title);
+      playButton.setAttribute('aria-label', label + ' · ' + track.textContent.trim());
     }
 
     function showFailure() {
@@ -218,8 +219,133 @@
       renderProgress();
     });
     if (audio.error || audio.networkState === audio.NETWORK_NO_SOURCE) showFailure();
-    renderButton();
+    function refreshLanguage() {
+      slider.setAttribute('aria-label', ui.seek + ' · ' + track.textContent.trim());
+      if (failed) message.textContent = ui.failed;
+      renderButton();
+    }
+    refreshPlayers.push(refreshLanguage);
+    refreshLanguage();
     renderProgress();
+  });
+
+  // Generated pages mark only the text nodes and attributes that differ between locales.
+  const slots = [];
+  for (const element of document.querySelectorAll('[data-msg]')) {
+    const textNodes = Array.from(element.childNodes).filter(node =>
+      node.nodeType === Node.TEXT_NODE && node.data.trim());
+    for (const key of element.dataset.msg.split(' ')) {
+      if (key === 'lines') {
+        const original = Array.from(element.childNodes, node => node.nodeName === 'BR' ? '\n' : node.textContent).join('');
+        slots.push({original, write(value) {
+          const lines = value.split('\n');
+          element.replaceChildren(lines[0]);
+          for (const line of lines.slice(1)) element.append(document.createElement('br'), line);
+        }});
+      } else if (/^\d+$/.test(key)) {
+        const node = textNodes[Number(key)];
+        slots.push({original: node.data, write: value => { node.data = value; }});
+      } else {
+        slots.push({original: element.getAttribute(key), write: value => element.setAttribute(key, value)});
+      }
+    }
+  }
+  const version = document.documentElement.dataset.msgVersion;
+  const messages = new Map([[pageLanguage, Promise.resolve(slots.map(slot => slot.original))]]);
+  function loadMessages(lang) {
+    if (!messages.has(lang)) {
+      const request = new Promise((resolve, reject) => {
+        // A classic script also works when previewing the static site via file://.
+        const script = document.createElement('script');
+        script.src = 'assets/locales/' + lang + '.js?v=' + version;
+        script.onload = () => {
+          const [revision, code, values] = script.messages || [];
+          script.remove();
+          if (revision === version && code === lang && values?.length === slots.length) resolve(values);
+          else reject(new Error('Locale version mismatch'));
+        };
+        script.onerror = () => { script.remove(); reject(new Error('Locale unavailable')); };
+        document.head.append(script);
+      });
+      messages.set(lang, request.catch(error => { messages.delete(lang); throw error; }));
+    }
+    return messages.get(lang);
+  }
+
+  function readingPosition() {
+    if (window.scrollY < 2) return null;
+    const edge = header.getBoundingClientRect().bottom + 12;
+    const candidates = document.querySelectorAll(
+      'section[id], .section-title, .demo-card, .profile-detail-row, details, .protocol-tabs');
+    let anchor;
+    for (const element of candidates) {
+      const top = element.getBoundingClientRect().top;
+      if (element.getClientRects().length && top <= edge && (!anchor || top >= anchor.top)) {
+        anchor = {element, top};
+      }
+    }
+    return anchor;
+  }
+
+  function switchProtocol(code) {
+    const old = document.querySelector('.protocol-content:not([hidden])');
+    const heads = Array.from(old.querySelectorAll('h3'));
+    const top = old.getBoundingClientRect().top;
+    const chapter = heads.findLastIndex(h => h.getBoundingClientRect().top <= top);
+    const offset = chapter < 0 ? old.scrollTop : top - heads[chapter].getBoundingClientRect().top;
+    document.querySelector('.protocol-tab[data-lang="' + code + '"]').click();
+    const panel = document.getElementById('protocol-' + code);
+    const heading = panel.querySelectorAll('h3')[chapter];
+    panel.scrollTop = heading ? panel.scrollTop + heading.getBoundingClientRect().top -
+      panel.getBoundingClientRect().top + offset : offset;
+  }
+
+  const codes = ['zh-CN', 'en', 'ja'];
+  const errorLabels = {'zh-CN': '译文加载失败，请再点一次语言。', en: 'Couldn’t load the translation. Select the language to retry.', ja: '翻訳を読み込めませんでした。言語をもう一度選んでください。'};
+  const notice = document.createElement('span');
+  notice.setAttribute('role', 'status');
+  let latest = 0;
+  languages.forEach((link, i) => {
+    const lang = codes[i];
+    link.setAttribute('lang', lang);
+    if (lang === pageLanguage) link.setAttribute('aria-current', 'true');
+    link.addEventListener('click', async event => {
+      if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const selection = ++latest;
+      notice.remove();
+      if (lang === pageLanguage) return;
+      let values;
+      try {
+        values = await loadMessages(lang);
+      } catch {
+        if (selection === latest) {
+          notice.textContent = errorLabels[pageLanguage];
+          link.parentNode.append(notice);
+        }
+        return;
+      }
+      if (selection !== latest) return;
+      const anchor = readingPosition();
+      clearTimeout(feedbackTimer);
+      slots.forEach((slot, index) => slot.write(values[index]));
+      document.documentElement.lang = pageLanguage = lang;
+      ui = labels[lang];
+      copyLabel = copy.title;
+      copy.classList.remove('copied');
+      status.textContent = '';
+      refreshPlayers.forEach(refresh => refresh());
+      languages.forEach(other => {
+        other.classList.toggle('active', other === link);
+        if (other === link) other.setAttribute('aria-current', 'true');
+        else other.removeAttribute('aria-current');
+      });
+      const panelCode = {'zh-CN': 'zh', en: 'en', ja: 'jp'}[lang];
+      switchProtocol(panelCode);
+      if (anchor) window.scrollBy({top: anchor.element.getBoundingClientRect().top - anchor.top, behavior: 'instant'});
+      highlightNav();
+      revealActiveLink();
+    });
   });
 
   if('IntersectionObserver' in window){

@@ -94,9 +94,108 @@ async function checkAudio(browser, file) {
   }
 }
 
+async function checkPendingLanguage(browser) {
+  const page = await browser.newPage({viewport: {width: 390, height: 844}, reducedMotion: 'reduce'});
+  try {
+    await page.goto(new URL('index.html#faq', root).href);
+    const english = page.locator('.topnav-lang a[lang="en"]');
+    const japanese = page.locator('.topnav-lang a[lang="ja"]');
+    await page.route(/\/locales\/en\.js\?/, route => route.abort());
+    await english.click();
+    await page.locator('.topnav-lang [role="status"]').waitFor();
+    assert.equal(await page.locator('html').getAttribute('lang'), 'zh-CN');
+    await page.unroute(/\/locales\/en\.js\?/);
+
+    let release;
+    const pending = new Promise(resolve => { release = resolve; });
+    await page.route(/\/locales\/en\.js\?/, async route => { await pending; await route.continue(); });
+    const requested = page.waitForRequest(req => req.url().includes('/locales/en.js'));
+    await english.click();
+    await requested;
+    const question = page.locator('.faq-item').nth(3);
+    await question.evaluate(el => {
+      el.open = true;
+      window.scrollBy({top: el.getBoundingClientRect().top - document.querySelector('.topnav').offsetHeight, behavior: 'instant'});
+    });
+    const top = await question.evaluate(el => el.getBoundingClientRect().top);
+    await japanese.click();
+    await page.waitForFunction(() => document.documentElement.lang === 'ja');
+    assert.ok(Math.abs(await question.evaluate(el => el.getBoundingClientRect().top) - top) < 4);
+    const response = page.waitForEvent('requestfinished', r => r.url().includes('/locales/en.js'));
+    release();
+    await response;
+    assert.equal(await page.locator('html').getAttribute('lang'), 'ja');
+    await english.click();
+    await page.waitForFunction(() => document.documentElement.lang === 'en');
+    assert.ok(await question.evaluate(el => el.open));
+    assert.equal(await page.locator('.topnav-lang [role="status"]').count(), 0);
+  } finally {
+    await page.close();
+  }
+}
+
+async function checkLanguageSwitch(browser) {
+  for (const width of [390, 1440]) {
+    const page = await browser.newPage({viewport: {width, height: 844}, reducedMotion: 'reduce'});
+    const errors = [];
+    const requests = [];
+    page.on('pageerror', error => errors.push(error.message));
+    page.on('request', request => requests.push(new URL(request.url()).pathname));
+    const snapshot = () => page.evaluate(() => ({
+      title: document.title,
+      fields: Array.from(document.querySelectorAll('[data-msg]'), element =>
+        element.dataset.msg.split(' ').map(key => {
+          if (key === 'lines') return element.innerHTML;
+          if (!/^\d+$/.test(key)) return element.getAttribute(key);
+          return Array.from(element.childNodes).filter(n => n.nodeType === 3 && n.data.trim())[Number(key)].data;
+        })),
+      protocol: document.querySelector('.protocol-content:not([hidden])').lang,
+      slider: document.querySelector('.demo-progress').getAttribute('aria-label')
+    }));
+    const initial = {};
+    try {
+      for (const [file] of locales) {
+        await page.goto(new URL(file, root).href);
+        initial[await page.locator('html').getAttribute('lang')] = await snapshot();
+      }
+      const langLink = lang => page.locator('.topnav-lang a[lang="' + lang + '"]');
+      for (const [file] of locales) {
+        await page.goto(new URL(file + '#demo', root).href);
+        const start = await page.locator('html').getAttribute('lang');
+        const url = page.url();
+        requests.length = 0;
+        await page.locator('.demo-play-btn').first().click();
+        await page.waitForFunction(() => document.querySelector('audio').currentTime > 0);
+        await page.evaluate(() => {
+          window.originalPlayer = document.querySelector('audio');
+          document.querySelector('.faq-item').open = true;
+          document.querySelector('.accordion').open = true;
+        });
+        const sequence = Object.keys(initial).filter(lang => lang !== start);
+        for (const lang of [...sequence, start, ...sequence]) {
+          await langLink(lang).click();
+          await page.waitForFunction(lang => document.documentElement.lang === lang, lang);
+          assert.deepEqual(await snapshot(), initial[lang]);
+          assert.equal(page.url(), url);
+          assert.ok(await page.evaluate(() =>
+            document.querySelector('audio') === window.originalPlayer && !window.originalPlayer.paused &&
+            document.querySelector('.faq-item').open && document.querySelector('.accordion').open));
+        }
+        assert.equal(requests.filter(url => url.includes('/locales/')).length, 2);
+        assert.ok(!requests.some(url => url.endsWith('.html')));
+      }
+      assert.deepEqual(errors, []);
+    } finally {
+      await page.close();
+    }
+  }
+}
+
 (async () => {
   const browser = await chromium.launch({executablePath:process.env.CHROME_PATH});
   try {
+    if (!root.startsWith('file:')) await checkPendingLanguage(browser);
+    await checkLanguageSwitch(browser);
     for (const [file, lang] of locales) {
       await checkLocale(browser, file, lang);
       await checkNativeControls(browser, file);

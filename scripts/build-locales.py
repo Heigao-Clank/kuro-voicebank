@@ -5,6 +5,7 @@ import hashlib
 import re
 from pathlib import Path
 from site_content import render_pages
+from locale_messages import build_messages
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -299,10 +300,12 @@ def main():
     parser.add_argument('--check', action='store_true', help='Report stale pages without writing files.')
     args = parser.parse_args()
     src = (ROOT / 'index.html').read_text()
+    src = re.sub(r' data-msg(?:-version)?="[^"]*"', "", src)
     for asset in ('style.css', 'assets/mobile-cover.css', 'assets/main.js'):
         src = version_asset(src, ROOT, asset)
     shells = {'zh': src, 'en': apply(src, locale_en()), 'jp': apply(src, locale_jp())}
     pages = render_pages(ROOT, shells)
+    build_messages(pages)
     archive = ROOT / 'assets/terms-v1.html'
     pages['assets/terms-v1.html'] = version_asset(archive.read_text(), archive.parent, '../style.css')
     stale = []
@@ -313,6 +316,7 @@ def main():
             if args.check:
                 stale.append(name)
             else:
+                page.parent.mkdir(parents=True, exist_ok=True)
                 page.write_bytes(content)
     if stale:
         raise SystemExit('Rebuild with python3 scripts/build-locales.py: ' + ', '.join(stale))
